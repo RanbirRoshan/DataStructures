@@ -135,12 +135,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="libdatastruct.h" />
+    <ClInclude Include="src\binomialheap\binomialheap.hpp" />
+    <ClInclude Include="src\binomialheap\binomialheap.hxx" />
+    <ClInclude Include="src\common\environ.h" />
     <ClInclude Include="src\common\treecommon.h" />
     <ClInclude Include="src\libstr\libstr.h" />
     <ClInclude Include="src\simplebtree\simplebtree.hpp" />
     <ClInclude Include="src\simplebtree\simplebtree.hxx" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\binomialheap\binomialheap.cpp" />
     <ClCompile Include="src\simplebtree\simplebtree.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
