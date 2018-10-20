@@ -26,6 +26,7 @@
 int main(int argc, char *argv[])
 {
 		SearchApp myApp;
+		char      ignore_warning;
 
 	if (argc < 1)
 		std::cout << TEXT"\n\nPlease provide the input file name as command line argument.";
@@ -38,7 +39,7 @@ int main(int argc, char *argv[])
 
 	std::cout << TEXT"\n\nPress enter key to end.";
 
-	getchar();
+	ignore_warning = getchar();
 
 	return 0;
 }
