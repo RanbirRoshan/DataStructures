@@ -21,8 +21,13 @@
  */
 class SBTNode: public TreeNode {
 public:
+
+	eTreeNodeType NodeType();
+
+private:
 	
-	inline eTreeNodeType NodeType();
+	// the node property can only be viewed and modified by the following library classes
+	friend class SBTree;
 
 	SBTNode	*		uLeftChild;		///< left child of tree
 	SBTNode *		uRightChild;	///< right child of tree
@@ -31,11 +36,11 @@ public:
 /*
 	brief	the comparision function used by the tree class
 
-	return   0	means the node are equal
-			>0  means the node will go to right
-			<0  means the node will go to left
+	return   0	means the keys are equal
+			>0  means the pKey1 is greater than pKey2
+			<0  means the pKey1 is smaller than pKey2
 */
-typedef __int64 (*KeyCmpFunc) (void* pCmpNode1, void *pCmpNode2);
+typedef __int64 (*KeyCmpFunc) (void* pKey1, void *pKey2);
 
 /*
 	brief	the function prototype for destory interface of simple binary tree

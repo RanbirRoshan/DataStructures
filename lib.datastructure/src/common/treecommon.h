@@ -29,7 +29,9 @@ enum eTreeNodeType {
  */
 class TreeNode {
 public:
-	virtual eTreeNodeType NodeType() = 0;
+	virtual ~TreeNode() {};
+
+	eTreeNodeType NodeType() { return TNT_UNKNOWN; };
 };
 
 #endif // !TREE_COMMON_HPP

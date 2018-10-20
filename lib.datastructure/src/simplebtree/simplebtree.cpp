@@ -1,4 +1,28 @@
+/*
+* @brief	the file contains non-inline function definition for class SBTree
+*
+* @author	Ranbir Roshan
+*
+* @date		19/10/2018
+*
+* @last-modified 20/10/2018
+*/
+
 #include "..\..\libdatastruct.h"
+
+/*!
+* \brief	The function is useful in identifying the node type provided for
+*			any tree operation. As most node types have some common hiererchy
+*			it is reqired for verifying the node type in relevent tree operation
+*
+* \return	The node type of the current tree node
+*
+* \note	The function cannot be inlined as it is a virtual function
+*/
+eTreeNodeType SBTNode::NodeType ()
+{
+	return TNT_SBTREE;
+}
 
 /*
 	breif the custructor of the tree
@@ -29,6 +53,9 @@ bool SBTree::Insert(SBTNode * pNode)
 		vRoot = pNode;
 		return true;
 	}
+
+	if (pNode->NodeType() != TNT_SBTREE)
+		return false;
 
 	node = &vRoot;
 
