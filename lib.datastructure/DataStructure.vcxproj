@@ -135,8 +135,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="libdatastruct.h" />
+    <ClInclude Include="src\common\treecommon.h" />
     <ClInclude Include="src\libstr\libstr.h" />
     <ClInclude Include="src\simplebtree\simplebtree.hpp" />
+    <ClInclude Include="src\simplebtree\simplebtree.hxx" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\simplebtree\simplebtree.cpp" />

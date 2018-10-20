@@ -12,16 +12,16 @@
 #include "..\assignment.h"
 #include <iostream>
 
-/*
- * @brief	main function starting point of the program
+/*!
+ * \brief  main function starting point of the program
  * 
- * @param	[in]	argc	argument count 
- *			[in]	argv	argument vector
- *
- * @note	the program need 1 arguments if more than 1 arguments are provided
+ * \param[in] argc	argument count 
+ * \param[in] argv[]	argument vector
+ * \return int
+ * 
+ * \note	the program need 1 arguments if more than 1 arguments are provided
  *			only the first argument will be considered and the others will be 
  *			ignored
- *
  */
 int main(int argc, char *argv[])
 {
@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 	else {
 
 		if (myApp.Initialize (argv[0]))
-			myApp.Execute();	// execute as initialization was successful
+			myApp.Execute();	///< execute as initialization was successful
 
 	}
 

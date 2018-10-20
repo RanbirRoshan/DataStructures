@@ -39,3 +39,5 @@ interseting_problems/*
 *.sdf
 *.suo
 *.opendb
+/html/*
+/latex/*

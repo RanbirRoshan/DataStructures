@@ -1,15 +1,31 @@
-/**
-	brief: the file contains decleration of simple binary tree class
-
-	author: ranbir roshan
-*/
+/*
+ * @brief: the file contains decleration of simple binary tree class
+ *
+ * @author	Ranbir Roshan
+ *
+ * @date	19/10/2018
+ *
+ * @last-modified 19/10/2018
+ */
 #ifndef SIMPLE_BINARY_TREE
 #define SIMPLE_BINARY_TREE
 
-class SBTNode {
+#include "../common/treecommon.h"
+
+/*!
+ * /brief	this is the node class that is to be extended by anyone who intents to use 
+ *			a simple binary tree
+ * 
+ * /note	Extend this node class to work with the following data structure
+ *			- Simple Binary Tree (Class: SBTree)
+ */
+class SBTNode: public TreeNode {
 public:
-	SBTNode	*		uLeftChild;
-	SBTNode *		uRightChild;
+	
+	inline eTreeNodeType NodeType();
+
+	SBTNode	*		uLeftChild;		///< left child of tree
+	SBTNode *		uRightChild;	///< right child of tree
 };
 
 /*
@@ -26,28 +42,35 @@ typedef __int64 (*KeyCmpFunc) (void* pCmpNode1, void *pCmpNode2);
 */
 typedef void	(*SBTreeDestroyFunc) (SBTNode *pNode);
 
-/*
-	brief:	a simple binary tree class
-
-	note:	the nodes used with the interface provided by this class
+/*!
+ * 
+ * /brief	a simple binary tree class
+ * /note:	the nodes used with the interface provided by this class
 			should extend SBTNode class
 			the tree is not height balanced
+ *
+ * /TODO	the implementation for this class is not complete
 */
 class SBTree {
 public:
+	// constructor and destructor
 	SBTree  (int pKeyOffset, KeyCmpFunc *pKeyCmpFunc, SBTreeDestroyFunc *pDestroyFunc);
 	~SBTree ();
 
+	// tree operations
 	bool		Insert	(SBTNode *	pNode);
 	SBTNode*	Find	(void *	pkey);
 	SBTNode*	Remove	(void * pKey);
+	void		Destroy (SBTreeDestroyFunc *pDestroyFunc);
 
-	void		Destroy	(SBTreeDestroyFunc *pDestroyFunc);
+
 private:
-	SBTNode *			vRoot;
-	int					vKeyOffset;			// the offset of the key in the user defined node
-	KeyCmpFunc*			vKeyCmpFunc;		// user callback function for key comparision
-	SBTreeDestroyFunc * vDestroyFunc;		// user callback function to destroy the nodes that are in the tree
+	SBTNode *			vRoot;				///< Root of the tree.
+	int					vKeyOffset;			///< The offset of the key in the user defined node.
+	KeyCmpFunc*			vKeyCmpFunc;		///< User callback function for key comparision.
+	SBTreeDestroyFunc * vDestroyFunc;		///< User callback function to destroy the nodes that are in the tree.
 };
+
+#include "simplebtree.hxx"
 
 #endif

@@ -19,6 +19,9 @@
     <Filter Include="Source Files\simplebtree">
       <UniqueIdentifier>{10ef92c5-dba8-470d-92f4-7c5043826786}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\common">
+      <UniqueIdentifier>{4c90c74a-4fa5-4b19-8b1c-3e5abb2f92fa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -32,6 +35,12 @@
     </ClInclude>
     <ClInclude Include="src\libstr\libstr.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\treecommon.h">
+      <Filter>Header Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\simplebtree\simplebtree.hxx">
+      <Filter>Header Files\simplebtree</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
