@@ -40,7 +40,7 @@ private:
 			>0  means the pKey1 is greater than pKey2
 			<0  means the pKey1 is smaller than pKey2
 */
-typedef __int64 (*KeyCmpFunc) (void* pKey1, void *pKey2);
+typedef __int64 (*KeyCmpFunc) (const void* pKey1, const void *pKey2);
 
 /*
 	brief	the function prototype for destory interface of simple binary tree

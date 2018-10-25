@@ -32,13 +32,18 @@
 *.app
 *.pdb
 	
+unittest/My Advisor Results - unittest/*
 adsassignment/Debug/*
+adsassignment/Release/*
 lib.datastructure/Debug/*
+lib.datastructure/Release/*
 interseting_problems/*
 unittest/Debug/*
+unittest/Release/*
 *.ipch
 *.sdf
 *.tmp
+*vcxproj.user
 *.suo
 *.opendb
 utility/html/*
@@ -49,3 +54,4 @@ utility/cppunit-1.12.1/src/cppunit/Release/*
 utility/cppunit-1.12.1/src/cppunit/ReleaseDll/*
 utility/cppunit-1.12.1/src/ipch/*
 utility/cppunit-1.12.1/lib/*
+lib.datastructure/Release/*

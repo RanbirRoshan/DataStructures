@@ -16,18 +16,20 @@
  /*!
   * \brief	constructor for the class BinomialHeap
   * 
-  * \param pKeyOffset	Offset of key in the node. Use offsetof to find the same.
-  * \param pKeyCmpFunc  Key comparison function
+  * \param[in] pKeyOffset	Offset of key in the node. Use offsetof to find the same.
+  * \param[in] pKeyCmpFunc  Key comparison function
+  *	\param[in] pMinHeap     True if the heap is supposed to behave as min heap else false
   */
-BinomialHeap::BinomialHeap (Offset pKeyOffset, KeyCmpFunc pKeyCmpFunc)
+BinomialHeap::BinomialHeap (Offset pKeyOffset, KeyCmpFunc pKeyCmpFunc, bool pMinHeap)
 {
 	// the developer is expected to provide this for data structure to work
-	assert(pKeyCmpFunc == nullptr);
+	assert(pKeyCmpFunc != nullptr);
 
 	vRoot		= nullptr;
 	vLastSibling= nullptr;
 	vKeyOffset	= pKeyOffset;
 	vKeyCmpFunc = pKeyCmpFunc;
+	vIsMinHeap  = pMinHeap;
 }
 
 /*!
@@ -98,7 +100,7 @@ BinomialHeapNode *	BinomialHeap::Insert(BinomialHeapNode* pNode)
 	}
 
 	// make developer life easy by pointing out wrong node use for the data structure
-	assert(pNode->NodeType () != TNT_BINOMIAL_HEAP);
+	assert(pNode->NodeType () == TNT_BINOMIAL_HEAP);
 
 	if (!vRoot) {
 		
@@ -112,8 +114,10 @@ BinomialHeapNode *	BinomialHeap::Insert(BinomialHeapNode* pNode)
 	pNode->uRightSibling = vRoot->uRightSibling;
 	vRoot->uRightSibling = pNode;
 
-	if (vRoot == vLastSibling)
+	if (vRoot == vLastSibling) {
 		vLastSibling = pNode;
+		vLastSibling->uRightSibling = vRoot;
+	}
 
 	if (IsSecondNodeBtr(vRoot, pNode)) {
 
@@ -133,7 +137,7 @@ void BinomialHeap::Destroy()
 		BinomialHeapNode * node;
 		BinomialHeapNode * tempnode;
 
-	// if we have reached start of the circular list then we return as this node is already accounted for
+	// if we have reached start of the circular lie return as this node is already accounted for
 	if (!vRoot)
 		return;
 
@@ -187,6 +191,8 @@ bool BinomialHeap::Meld(BinomialHeap* pMeldHeap, bool pDeleteAfterMeld)
 	{
 		vRoot = pMeldHeap->vRoot;
 		vLastSibling = pMeldHeap->vLastSibling;
+		pMeldHeap->vRoot = nullptr;
+		pMeldHeap->vLastSibling = nullptr;
 
 		if (pDeleteAfterMeld)
 			delete pMeldHeap;
@@ -235,13 +241,13 @@ bool BinomialHeap::IsSecondNodeBtr(BinomialHeapNode * pNode1, BinomialHeapNode *
 	// see if the current node should be the new node
 	switch (vIsMinHeap) {
 
-	case 0:	// Min Binomial Heap
-		if (vKeyCmpFunc(pNode1 + vKeyOffset, pNode2 + vKeyOffset) > 0)
+	case 1:	// Min Binomial Heap
+		if (vKeyCmpFunc(((char*)pNode1) + vKeyOffset, ((char*)pNode2) + vKeyOffset) > 0)
 			return true;
 		break;
 
-	case 1: // Max Binomial Heap
-		if (vKeyCmpFunc(pNode1 + vKeyOffset, pNode2 + vKeyOffset) < 0)
+	case 0: // Max Binomial Heap
+		if (vKeyCmpFunc(((char*)pNode1) + vKeyOffset, ((char*)pNode2) + vKeyOffset) < 0)
 			return true;
 		break;
 	}
@@ -268,17 +274,20 @@ BinomialHeapNode * BinomialHeap::RemoveMinMax()
 		vLastSibling = nullptr;
 		vRoot = nullptr;
 	}
-	else if (vLastSibling->uRightSibling == vRoot) {
+	else if (vRoot->uRightSibling == vLastSibling) {
 		vRoot = vLastSibling;
 		vRoot->uRightSibling = nullptr;
 	}
 	else {
 			BinomialHeapNode * prev_node;
+			BinomialHeapNode * start;
 
 		vRoot = vRoot->uRightSibling;
-		prev_node = vRoot;
+		prev_node = vLastSibling;
+		vLastSibling->uRightSibling = vRoot;
+		start = vRoot;
 
-		for (BinomialHeapNode* temp = vRoot->uRightSibling; temp != node; temp = temp->uRightSibling)
+		for (BinomialHeapNode* temp = vRoot->uRightSibling; temp != start; temp = temp->uRightSibling)
 		{
 			if (IsSecondNodeBtr(vRoot, temp)) {
 				vLastSibling = prev_node;
@@ -332,19 +341,28 @@ void BinomialHeap::MergeHeap()
 		// repeateadly mearging to form a node with unique degree
 		while (temp) {
 
-			node = map.at(temp->uDegree);
+			iter = map.find(temp->uDegree);
+			
+			if (iter == map.end())
+				node = nullptr;
+			else
+				node = iter->second;
 			
 			// merge is needed
 			if (node) {
 
-				map.erase(vRoot->uDegree);
+				map.erase(temp->uDegree);
 
 				if (IsSecondNodeBtr(temp, node)) {
+					if (!node->uChild)
+						node->uChild = new BinomialHeap(vKeyOffset, vKeyCmpFunc, vIsMinHeap);
 					node->uChild->Insert(temp);
 					node->uDegree += temp->uDegree;
 					temp = node;
 				}
 				else {
+					if (!temp->uChild)
+						temp->uChild = new BinomialHeap(vKeyOffset, vKeyCmpFunc, vIsMinHeap);
 					temp->uChild->Insert (node);
 					temp->uDegree += node->uDegree;
 				}

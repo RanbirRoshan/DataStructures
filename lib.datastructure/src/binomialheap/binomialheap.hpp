@@ -56,7 +56,7 @@ class BinomialHeap {
 public:
 
 	// constructor and destructor
-	BinomialHeap	(Offset pKeyOffset, KeyCmpFunc pKeyCmpFunc);
+	BinomialHeap	(Offset pKeyOffset, KeyCmpFunc pKeyCmpFunc, bool pMinHeap);
 	~BinomialHeap	();
 
 	// property access or modification APIs
@@ -78,7 +78,7 @@ private:
 	KeyCmpFunc  		vKeyCmpFunc;		///< function to compare keys for decision making
 	Offset				vKeyOffset;			///< offset of the key in the node of the tree
 
-	__int8				vIsMinHeap : 1;		///< 0 implies min heap and 1 implies max heap
+	__int8				vIsMinHeap;// 1;		///< 0 implies min heap and 1 implies max heap
 };
 
 // include all inline definitions

@@ -21,6 +21,7 @@ enum eTreeNodeType {
 	TNT_UNKNOWN = 0,	///< Unknown node type
 	TNT_SBTREE,			///< Simple binary tree node
 	TNT_BINOMIAL_HEAP,	///< Binomial heap node
+	TNT_FIBO_HEAP,		///< Fibonacci heap node
 };
 
 /*!

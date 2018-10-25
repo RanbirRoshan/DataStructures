@@ -13,6 +13,21 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\binomialheaptest">
+      <UniqueIdentifier>{924ed30f-8388-4b32-a916-061c93b4da35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\DataStructue">
+      <UniqueIdentifier>{eec2e69a-b241-4616-ac7d-d227bcc6532e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\DataStructue\binomialheaptest">
+      <UniqueIdentifier>{9fd8d2eb-4724-4bc5-aed1-e5fff3206b11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\fibonacciheaptest">
+      <UniqueIdentifier>{47e3cd7b-5ceb-4089-9040-2eed25d303eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\fibonacciheaptest">
+      <UniqueIdentifier>{5e39ae2f-810f-4c74-a756-b24851768fd2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -21,10 +36,25 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\lib.datastructure\binomialheaptest\binomialheaptest.cpp">
+      <Filter>Source Files\binomialheaptest</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib.datastructure\fibonacciheaptest\fibonacciheaptest.cpp">
+      <Filter>Source Files\fibonacciheaptest</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Header.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib.datastructure\binomialheaptest\binomialheaptest.h">
+      <Filter>Header Files\DataStructue\binomialheaptest</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib.datastructure\datastructuretestsuite.h">
+      <Filter>Header Files\DataStructue</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib.datastructure\fibonacciheaptest\fibonacciheaptest.hpp">
+      <Filter>Header Files\fibonacciheaptest</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

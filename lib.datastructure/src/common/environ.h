@@ -34,4 +34,7 @@
 
 #endif
 
+
+#include <TCHAR.H>
+
 #endif // !ENVIRONMENT_HPP

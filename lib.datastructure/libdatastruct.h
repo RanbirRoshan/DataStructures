@@ -14,4 +14,7 @@
 // binomial tree support
 #include "src\binomialheap\binomialheap.hpp"
 
+// fibonacci heap support
+#include "src\fibonacciheap\fibonacciheap.hpp"
+
 #endif // !LIB_DATA_STRUCTURE

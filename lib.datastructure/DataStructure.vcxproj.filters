@@ -28,6 +28,15 @@
     <Filter Include="Source Files\binomialheap">
       <UniqueIdentifier>{095de8d4-5327-4cd2-84f9-458f88460f59}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\fibonacciheap">
+      <UniqueIdentifier>{bed060b8-1d3e-4e70-ad61-c79fd3dab252}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\fibonacciheap">
+      <UniqueIdentifier>{e105ccf9-98c4-46dd-87bb-5442903b423a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Common">
+      <UniqueIdentifier>{813874f2-919f-45bb-9d08-2795b287a249}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -57,6 +66,12 @@
     <ClInclude Include="src\common\environ.h">
       <Filter>Header Files\common</Filter>
     </ClInclude>
+    <ClInclude Include="src\fibonacciheap\fibonacciheap.hpp">
+      <Filter>Header Files\fibonacciheap</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fibonacciheap\fibonacciheap.hxx">
+      <Filter>Header Files\fibonacciheap</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\simplebtree\simplebtree.cpp">
@@ -64,6 +79,9 @@
     </ClCompile>
     <ClCompile Include="src\binomialheap\binomialheap.cpp">
       <Filter>Source Files\binomialheap</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fibonacciheap\fibonacciheap.cpp">
+      <Filter>Source Files\fibonacciheap</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

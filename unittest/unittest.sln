@@ -5,10 +5,13 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "unittest", "unittest.vcxproj", "{8AF18F4D-9693-4D20-A4EC-F05F7E9E92A3}"
 	ProjectSection(ProjectDependencies) = postProject
+		{F646EA54-2812-4E0B-8DCB-2894A2B87C11} = {F646EA54-2812-4E0B-8DCB-2894A2B87C11}
 		{D3A0E990-798B-48B0-83E8-C755DF828589} = {D3A0E990-798B-48B0-83E8-C755DF828589}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cppunit", "..\utility\cppunit-1.12.1\src\cppunit\cppunit.vcxproj", "{D3A0E990-798B-48B0-83E8-C755DF828589}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataStructure", "..\lib.datastructure\DataStructure.vcxproj", "{F646EA54-2812-4E0B-8DCB-2894A2B87C11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,6 +57,22 @@ Global
 		{D3A0E990-798B-48B0-83E8-C755DF828589}.Template|x64.ActiveCfg = Template|Win32
 		{D3A0E990-798B-48B0-83E8-C755DF828589}.Template|x86.ActiveCfg = Template|Win32
 		{D3A0E990-798B-48B0-83E8-C755DF828589}.Template|x86.Build.0 = Template|Win32
+		{F646EA54-2812-4E0B-8DCB-2894A2B87C11}.Debug|ARM.ActiveCfg = Debug|Win32
+		{F646EA54-2812-4E0B-8DCB-2894A2B87C11}.Debug|x64.ActiveCfg = Debug|x64
+		{F646EA54-2812-4E0B-8DCB-2894A2B87C11}.Debug|x64.Build.0 = Debug|x64
+		{F646EA54-2812-4E0B-8DCB-2894A2B87C11}.Debug|x86.ActiveCfg = Debug|Win32
+		{F646EA54-2812-4E0B-8DCB-2894A2B87C11}.Debug|x86.Build.0 = Debug|Win32
+		{F646EA54-2812-4E0B-8DCB-2894A2B87C11}.Release|ARM.ActiveCfg = Release|Win32
+		{F646EA54-2812-4E0B-8DCB-2894A2B87C11}.Release|x64.ActiveCfg = Release|x64
+		{F646EA54-2812-4E0B-8DCB-2894A2B87C11}.Release|x64.Build.0 = Release|x64
+		{F646EA54-2812-4E0B-8DCB-2894A2B87C11}.Release|x86.ActiveCfg = Release|Win32
+		{F646EA54-2812-4E0B-8DCB-2894A2B87C11}.Release|x86.Build.0 = Release|Win32
+		{F646EA54-2812-4E0B-8DCB-2894A2B87C11}.Template|ARM.ActiveCfg = Release|x64
+		{F646EA54-2812-4E0B-8DCB-2894A2B87C11}.Template|ARM.Build.0 = Release|x64
+		{F646EA54-2812-4E0B-8DCB-2894A2B87C11}.Template|x64.ActiveCfg = Release|x64
+		{F646EA54-2812-4E0B-8DCB-2894A2B87C11}.Template|x64.Build.0 = Release|x64
+		{F646EA54-2812-4E0B-8DCB-2894A2B87C11}.Template|x86.ActiveCfg = Release|Win32
+		{F646EA54-2812-4E0B-8DCB-2894A2B87C11}.Template|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
