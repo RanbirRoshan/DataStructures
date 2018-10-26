@@ -1,5 +1,0 @@
-<map id="BinomialHeap::MergeHeap" name="BinomialHeap::MergeHeap">
-<area shape="rect" id="node2" href="$class_binomial_heap.html#ad4b1e5217cc1bb85d1a33ce1339ce9ec" title="The function compares the two nodes and based on the heap type (min/max) would return true if the 2nd..." alt="" coords="420,5,631,32"/>
-<area shape="rect" id="node3" href="$class_binomial_heap.html#adf0eadf422e33c41f71f862e2527220c" title="The function would attempt to insert the new node into the Binomial Heap. " alt="" coords="229,56,372,83"/>
-<area shape="rect" id="node4" href="$class_binomial_heap_node.html#a2735792d379ea33559e49d921eae964f" title="The function is useful in identifying the node type provided for any tree operation. As most node types have some common hiererchy it is reqired for verifying the node type in relevent tree operation. " alt="" coords="426,56,625,83"/>
-</map>

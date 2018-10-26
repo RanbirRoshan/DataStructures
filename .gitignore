@@ -1,0 +1,7 @@
+docs/*.map
+docs/*.md5
+utility/*
+adsassignment/*
+interseting_problems/*
+lib.datastructure/*
+unittest/*

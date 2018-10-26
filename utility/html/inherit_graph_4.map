@@ -1,6 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$class_tree_node.html" title="TreeNode" alt="" coords="5,31,83,57"/>
-<area shape="rect" id="node2" href="$class_binomial_heap_node.html" title="The file contains the binomial heap class declaration and associated other decleration. " alt="" coords="131,5,263,32"/>
-<area shape="rect" id="node4" href="$class_s_b_t_node.html" title="SBTNode" alt="" coords="158,56,235,83"/>
-<area shape="rect" id="node3" href="$class_fibo_heap_node.html" title="The file contains the fibonacci heap class declaration and associated other decleration. " alt="" coords="311,5,417,32"/>
-</map>

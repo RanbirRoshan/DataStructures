@@ -1,4 +1,0 @@
-<map id="BinomialHeapNode" name="BinomialHeapNode">
-<area shape="rect" id="node3" href="$class_binomial_heap.html" title="Contains binomial heap class implementation. Both min and max heap property are supported. The property can only be defined while constructiona and cannot be changed there after. " alt="" coords="20,185,123,212"/>
-<area shape="rect" id="node2" href="$class_tree_node.html" title="TreeNode" alt="" coords="33,5,110,32"/>
-</map>
