@@ -55,3 +55,4 @@ utility/cppunit-1.12.1/src/cppunit/ReleaseDll/*
 utility/cppunit-1.12.1/src/ipch/*
 utility/cppunit-1.12.1/lib/*
 lib.datastructure/Release/*
+docs/*
