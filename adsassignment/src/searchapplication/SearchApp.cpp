@@ -57,7 +57,7 @@ bool SearchApp::Initialize(const char * pInputFileName)
 {
 	if (pInputFileName == NULL || *pInputFileName == EOS)
 	{
-		cout << TEXT"\nThe input file name cannot be empty. \
+		cout << "\nThe input file name cannot be empty. \
 					 Please provide a input file name as first command line argument and try again.";
 		return false;
 	}
