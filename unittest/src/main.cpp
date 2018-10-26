@@ -12,6 +12,7 @@
 #include <cppunit/ui/text/TestRunner.h>
 #include <cppunit/XmlOutputter.h>
 #include <fstream>
+#include <ctime>
 //#include <cppunit/TestCase.h>
 
 #include "lib.datastructure\datastructuretestsuite.h"
@@ -21,9 +22,10 @@ using namespace CppUnit;
 
 int main(int argc, char **argv)
 {
-	/*// informs test-listener about testresults
-	CPPUNIT_NS::TestResult testresult;
+	std::srand(std::time(0));
 
+	// informs test-listener about testresults
+	CPPUNIT_NS::TestResult testresult;
 	// register listener for collecting the test-results
 	CPPUNIT_NS::TestResultCollector collectedresults;
 	testresult.addListener(&collectedresults);
@@ -32,36 +34,19 @@ int main(int argc, char **argv)
 	CPPUNIT_NS::BriefTestProgressListener progress;
 	testresult.addListener(&progress);
 
-
-	CppUnit::TestSuite *rootSuite = new CppUnit::TestSuite("All tests");
-	rootSuite->addTest(CppUnit::TestFactoryRegistry::getRegistry("Data Structure").makeTest());
-	CppUnit::TestFactoryRegistry::getRegistry().addTestToSuite(rootSuite);
-
 	// insert test-suite at test-runner by registry
-	CPPUNIT_NS::TextUi::TestRunner testrunner;
-	testrunner.addTest(CPPUNIT_NS::TestFactoryRegistry::getRegistry().makeTest());
+	CPPUNIT_NS::TestRunner testrunner;
+
+	// MODIFIED PART, TEST SUITES ADDED MANUALLY
+	testrunner.addTest(FibonacciHeapTest::suite());
+	testrunner.addTest(BinomialHeapTest::suite());
+
 	testrunner.run(testresult);
 
 	// output results in compiler-format
-	CPPUNIT_NS::CompilerOutputter compileroutputter(&collectedresults, std::cout);
+	CPPUNIT_NS::CompilerOutputter compileroutputter(&collectedresults, std::cerr);
 	compileroutputter.write();
-
-	// Output XML for Jenkins CPPunit plugin
-	ofstream xmlFileOut("cppTestResults.xml");
-	XmlOutputter xmlOut(&collectedresults, xmlFileOut);
-	xmlOut.write();
 
 	// return 0 if tests were successful
 	return collectedresults.wasSuccessful() ? 0 : 1;
-
-	CppUnit::TestSuite *rootSuite = new CppUnit::TestSuite("All tests");
-	rootSuite->addTest(CppUnit::TestFactoryRegistry::getRegistry("Data Structure").makeTest());
-	CppUnit::TestFactoryRegistry::getRegistry().addTestToSuite(rootSuite);
-	*/
-
-	CppUnit::TextUi::TestRunner runner;
-	//runner.addTest(CPPUNIT_NS::TestFactoryRegistry::getRegistry("Binomial Heap").makeTest());
-	runner.addTest(CPPUNIT_NS::TestFactoryRegistry::getRegistry("Fibonacci Heap").makeTest());
-	runner.run();
-	return 0;
 }

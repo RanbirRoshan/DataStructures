@@ -29,6 +29,4 @@ private:
 	FibonacciHeap *		testheapstrmax;
 };
 
-CPPUNIT_TEST_SUITE_NAMED_REGISTRATION(FibonacciHeapTest, "Fibonacci Heap");
-
 #endif //FIBONACCI_HEAP_TEST_HPP

@@ -2,6 +2,8 @@
 #include <cstdlib>
 #include <climits>
 
+CPPUNIT_TEST_SUITE_NAMED_REGISTRATION(BinomialHeapTest, "Binomial Heap");
+
 static long long IntCmpFunc(const void * pCmpVal1, const void * pCmpVal2)
 {
 	__int64 *val1 = (__int64 *) pCmpVal1;
@@ -183,7 +185,7 @@ void BinomialHeapTest::InsertTest()
 	long long val = LLONG_MIN;
 
 	// multi insert test
-	for ( iter = 0; iter < 10000; iter++){
+	for ( iter = 0; iter < 500; iter++){
 
 		// insert one elemet and find it
 		intnodemin = new BinomialHeapTestIntNode ();
@@ -207,7 +209,7 @@ void BinomialHeapTest::InsertTest()
 
 	CPPUNIT_ASSERT(iter == 0);
 	// multi insert test
-	for (iter = 0; iter < 10000; iter++) {
+	for (iter = 0; iter < 500; iter++) {
 
 		// insert one elemet and find it
 		intnodemax = new BinomialHeapTestIntNode ();

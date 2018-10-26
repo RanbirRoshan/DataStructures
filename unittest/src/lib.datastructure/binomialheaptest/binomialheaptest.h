@@ -29,6 +29,4 @@ private:
 	BinomialHeap *		testheapstrmax;
 };
 
-//CPPUNIT_TEST_SUITE_NAMED_REGISTRATION(BinomialHeapTest, "Binomial Heap");
-
 #endif
