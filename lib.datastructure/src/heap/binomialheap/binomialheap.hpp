@@ -22,7 +22,7 @@
 * \note	Extend this node class to work with the following data structure
 *			- Binomial Heap (Class: BinomialHeap)
 */
-class BinomialHeapNode : public TreeNode {
+class BinomialHeapNode : public HeapNode {
 public:
 
 	BinomialHeapNode ();
@@ -52,33 +52,24 @@ private:
  * 
  * \todo    Improve merge algorithm
  */
-class BinomialHeap {
+class BinomialHeap : public Heap{
 public:
 
 	// constructor and destructor
 	BinomialHeap	(Offset pKeyOffset, KeyCmpFunc pKeyCmpFunc, bool pMinHeap);
 	~BinomialHeap	();
 
-	// property access or modification APIs
-inline	bool IsMinHeap();
-
 	// heap operation API
 virtual void						Destroy		();
 		BinomialHeapNode *			Insert		(BinomialHeapNode* pNode);
 		bool						Meld		(BinomialHeap *pMeldNode, bool pDeleteAfterMeld = true);
 		BinomialHeapNode *			RemoveMinMax();
-inline	BinomialHeapNode * const	PeekMinMax  ();
 
 private:
-	bool	IsSecondNodeBtr	(BinomialHeapNode * pNode1, BinomialHeapNode * pNode2);
 	void	MergeHeap		();
 
-	BinomialHeapNode *	vRoot;				///< root of the binomial heap
 	BinomialHeapNode *  vLastSibling;		///< the last sibling in the top level of tree
-	KeyCmpFunc  		vKeyCmpFunc;		///< function to compare keys for decision making
-	Offset				vKeyOffset;			///< offset of the key in the node of the tree
 
-	__int8				vIsMinHeap;// 1;		///< 0 implies min heap and 1 implies max heap
 };
 
 // include all inline definitions

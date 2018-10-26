@@ -11,6 +11,9 @@
 #else
 #define ENVIRONMENT32
 #endif
+
+#include "Windows.h"
+
 #endif
 
 // Check GCC

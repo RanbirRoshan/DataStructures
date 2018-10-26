@@ -11,10 +11,7 @@
 // simple binary tree support
 #include "src\simplebtree\simplebtree.hpp"
 
-// binomial tree support
-#include "src\binomialheap\binomialheap.hpp"
-
-// fibonacci heap support
-#include "src\fibonacciheap\fibonacciheap.hpp"
+// heap support
+#include "src\heap\heapdatastructure.h"
 
 #endif // !LIB_DATA_STRUCTURE

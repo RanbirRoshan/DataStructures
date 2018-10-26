@@ -15,7 +15,7 @@
 
 class FibonacciHeap;
 
-class FiboHeapNode : public TreeNode {
+class FiboHeapNode : public HeapNode {
 public:
 
 	FiboHeapNode();
@@ -45,27 +45,19 @@ private:
  * \note	the data structue does not own the nodes and so it is the responsibility of the 
  *			user to free nodes stored in the 
  */
-class FibonacciHeap {
+class FibonacciHeap : public Heap{
 public:
 	//constructor and destructor
 	FibonacciHeap  (Offset pKeyOffset, KeyCmpFunc pKeyCmpFunc, bool pIsMinHeap);
 	~FibonacciHeap ();
 
 	// the fibonacci heap does not owns the node and so does not provide a destroy
-	//void Destroy ();
-
-	// property related API
-inline bool IsMinHeap ();
+	virtual void Destroy ();
 
 	//heap manipulation APIs
 	FiboHeapNode *  Insert(FiboHeapNode * pNode);
 
 private:
-
-	FiboHeapNode *		vRoot;				///< root of the heap
-	KeyCmpFunc  		vKeyCmpFunc;		///< function to compare keys for decision making
-	Offset				vKeyOffset;			///< offset of the key in the node of the tree
-	bool				vIsMinHeap;			///< property that shows if the struture is a min heap or max heap
 };
 
 #include "fibonacciheap.hxx"

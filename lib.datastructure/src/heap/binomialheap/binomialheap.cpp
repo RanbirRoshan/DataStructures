@@ -8,7 +8,7 @@
 * @last-modified 20/10/2018
 */
 
-#include "..\..\libdatastruct.h"
+#include "..\..\..\libdatastruct.h"
 #include <assert.h>
 #include <queue>
 #include <map>
@@ -20,16 +20,9 @@
   * \param[in] pKeyCmpFunc  Key comparison function
   *	\param[in] pMinHeap     True if the heap is supposed to behave as min heap else false
   */
-BinomialHeap::BinomialHeap (Offset pKeyOffset, KeyCmpFunc pKeyCmpFunc, bool pMinHeap)
+BinomialHeap::BinomialHeap (Offset pKeyOffset, KeyCmpFunc pKeyCmpFunc, bool pMinHeap):Heap(pKeyOffset, pKeyCmpFunc, pMinHeap)
 {
-	// the developer is expected to provide this for data structure to work
-	assert(pKeyCmpFunc != nullptr);
-
-	vRoot		= nullptr;
 	vLastSibling= nullptr;
-	vKeyOffset	= pKeyOffset;
-	vKeyCmpFunc = pKeyCmpFunc;
-	vIsMinHeap  = pMinHeap;
 }
 
 /*!
@@ -40,11 +33,6 @@ BinomialHeap::BinomialHeap (Offset pKeyOffset, KeyCmpFunc pKeyCmpFunc, bool pMin
  */
 BinomialHeap::~BinomialHeap()
 {
-	if (vRoot) {
-		// the tree has not been destroyed by the user or else the destroy would
-		// have made the root as nullptr
-		Destroy();
-	}
 }
 
 /*!
@@ -111,17 +99,17 @@ BinomialHeapNode *	BinomialHeap::Insert(BinomialHeapNode* pNode)
 	}
 
 	// add the node as the sibling of the current root
-	pNode->uRightSibling = vRoot->uRightSibling;
-	vRoot->uRightSibling = pNode;
+	pNode->uRightSibling = ((BinomialHeapNode*)vRoot)->uRightSibling;
+	((BinomialHeapNode*)vRoot)->uRightSibling = pNode;
 
 	if (vRoot == vLastSibling) {
 		vLastSibling = pNode;
-		vLastSibling->uRightSibling = vRoot;
+		vLastSibling->uRightSibling = (BinomialHeapNode*)vRoot;
 	}
 
 	if (IsSecondNodeBtr(vRoot, pNode)) {
 
-		vLastSibling = vRoot;
+		vLastSibling = (BinomialHeapNode*)vRoot;
 		vRoot = pNode;
 	}
 
@@ -141,7 +129,7 @@ void BinomialHeap::Destroy()
 	if (!vRoot)
 		return;
 
-	node = vRoot;
+	node = (BinomialHeapNode*)vRoot;
 
 	// destroying the circular link
 	vLastSibling->uRightSibling = nullptr;
@@ -175,7 +163,7 @@ bool BinomialHeap::Meld(BinomialHeap* pMeldHeap, bool pDeleteAfterMeld)
 		return true;
 
 	// heap type mismatch
-	if (vIsMinHeap != pMeldHeap->vIsMinHeap)
+	if (IsMinHeap () != pMeldHeap->IsMinHeap ())
 		return false;
 
 	// request to meld empty binomial heap
@@ -206,8 +194,8 @@ bool BinomialHeap::Meld(BinomialHeap* pMeldHeap, bool pDeleteAfterMeld)
 	}
 
 	// creating the new sibling circular link list
-	vLastSibling->uRightSibling = pMeldHeap->vRoot;
-	pMeldHeap->vLastSibling->uRightSibling = vRoot;
+	vLastSibling->uRightSibling = (BinomialHeapNode*)pMeldHeap->vRoot;
+	pMeldHeap->vLastSibling->uRightSibling = (BinomialHeapNode*)vRoot;
 
 	if (IsSecondNodeBtr (vRoot, pMeldHeap->vRoot))
 		vRoot = pMeldHeap->vRoot;
@@ -226,36 +214,6 @@ bool BinomialHeap::Meld(BinomialHeap* pMeldHeap, bool pDeleteAfterMeld)
 }
 
 /*!
- * \brief	The function compares the two nodes and based on the heap type (min/max) would return
- *			true if the 2nd node is better as per the heap type
- * 
- * \param[in] pNode1	First comparison node
- * \param[in] pNode2	Second comparison node
- * 
- * \return		true if the second node has less value and heap is min heap or second value is 
- *				greater and the heap is	a max heap. Else it would return false.
- */
-bool BinomialHeap::IsSecondNodeBtr(BinomialHeapNode * pNode1, BinomialHeapNode * pNode2)
-{
-
-	// see if the current node should be the new node
-	switch (vIsMinHeap) {
-
-	case 1:	// Min Binomial Heap
-		if (vKeyCmpFunc(((char*)pNode1) + vKeyOffset, ((char*)pNode2) + vKeyOffset) > 0)
-			return true;
-		break;
-
-	case 0: // Max Binomial Heap
-		if (vKeyCmpFunc(((char*)pNode1) + vKeyOffset, ((char*)pNode2) + vKeyOffset) < 0)
-			return true;
-		break;
-	}
-
-	return false;
-}
-
-/*!
  * \brief	The function provides the min node if the heap is of min type else the max node
  * 
  * \return  A valid node pointer or null pointer
@@ -267,27 +225,27 @@ BinomialHeapNode * BinomialHeap::RemoveMinMax()
 	if (!vRoot)
 		return nullptr;
 
-	node = vRoot;
+	node = (BinomialHeapNode*)vRoot;
 
 	if (vRoot == vLastSibling)
 	{
 		vLastSibling = nullptr;
 		vRoot = nullptr;
 	}
-	else if (vRoot->uRightSibling == vLastSibling) {
+	else if (((BinomialHeapNode*)vRoot)->uRightSibling == vLastSibling) {
 		vRoot = vLastSibling;
-		vRoot->uRightSibling = nullptr;
+		((BinomialHeapNode*)vRoot)->uRightSibling = nullptr;
 	}
 	else {
 			BinomialHeapNode * prev_node;
 			BinomialHeapNode * start;
 
-		vRoot = vRoot->uRightSibling;
+		vRoot = ((BinomialHeapNode*)vRoot)->uRightSibling;
 		prev_node = vLastSibling;
-		vLastSibling->uRightSibling = vRoot;
-		start = vRoot;
+		vLastSibling->uRightSibling = (BinomialHeapNode*)vRoot;
+		start = (BinomialHeapNode*)vRoot;
 
-		for (BinomialHeapNode* temp = vRoot->uRightSibling; temp != start; temp = temp->uRightSibling)
+		for (BinomialHeapNode* temp = ((BinomialHeapNode*)vRoot)->uRightSibling; temp != start; temp = temp->uRightSibling)
 		{
 			if (IsSecondNodeBtr(vRoot, temp)) {
 				vLastSibling = prev_node;
@@ -296,7 +254,7 @@ BinomialHeapNode * BinomialHeap::RemoveMinMax()
 			prev_node = temp;
 		}
 
-		vLastSibling->uRightSibling = vRoot;
+		vLastSibling->uRightSibling = (BinomialHeapNode*)vRoot;
 	}
 
 	Meld(node->uChild);
@@ -332,8 +290,8 @@ void BinomialHeap::MergeHeap()
 
 	while (vRoot) {
 
-		temp = vRoot;
-		vRoot = vRoot->uRightSibling;
+		temp = (BinomialHeapNode*)vRoot;
+		vRoot = ((BinomialHeapNode*)vRoot)->uRightSibling;
 		
 		// loosing the link from individual nodes
 		temp->uRightSibling = nullptr;

@@ -22,20 +22,32 @@
     <Filter Include="Header Files\common">
       <UniqueIdentifier>{4c90c74a-4fa5-4b19-8b1c-3e5abb2f92fa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\binomialheap">
-      <UniqueIdentifier>{05bcfe22-41d2-4b66-aa72-ffa99405c29e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\binomialheap">
-      <UniqueIdentifier>{095de8d4-5327-4cd2-84f9-458f88460f59}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\fibonacciheap">
-      <UniqueIdentifier>{bed060b8-1d3e-4e70-ad61-c79fd3dab252}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\fibonacciheap">
-      <UniqueIdentifier>{e105ccf9-98c4-46dd-87bb-5442903b423a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Common">
       <UniqueIdentifier>{813874f2-919f-45bb-9d08-2795b287a249}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\heap">
+      <UniqueIdentifier>{449cc28f-dce3-431d-ba26-1115c02b1709}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\heap\simpleheap">
+      <UniqueIdentifier>{cbe8843d-c697-438d-977d-954106cd43c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\heap\binomialheap">
+      <UniqueIdentifier>{05bcfe22-41d2-4b66-aa72-ffa99405c29e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\heap\fibonacciheap">
+      <UniqueIdentifier>{bed060b8-1d3e-4e70-ad61-c79fd3dab252}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\heap">
+      <UniqueIdentifier>{4682c134-9ce0-4992-8c41-8b92f35350ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\heap\fibonacciheap">
+      <UniqueIdentifier>{e105ccf9-98c4-46dd-87bb-5442903b423a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\heap\binomialheap">
+      <UniqueIdentifier>{095de8d4-5327-4cd2-84f9-458f88460f59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\heap\simpleheap">
+      <UniqueIdentifier>{8b0668e3-12ee-4eb5-99dc-918da417a922}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -57,31 +69,43 @@
     <ClInclude Include="src\simplebtree\simplebtree.hxx">
       <Filter>Header Files\simplebtree</Filter>
     </ClInclude>
-    <ClInclude Include="src\binomialheap\binomialheap.hpp">
-      <Filter>Header Files\binomialheap</Filter>
-    </ClInclude>
-    <ClInclude Include="src\binomialheap\binomialheap.hxx">
-      <Filter>Header Files\binomialheap</Filter>
-    </ClInclude>
     <ClInclude Include="src\common\environ.h">
       <Filter>Header Files\common</Filter>
     </ClInclude>
-    <ClInclude Include="src\fibonacciheap\fibonacciheap.hpp">
-      <Filter>Header Files\fibonacciheap</Filter>
+    <ClInclude Include="src\heap\heapdatastructure.h">
+      <Filter>Header Files\heap</Filter>
     </ClInclude>
-    <ClInclude Include="src\fibonacciheap\fibonacciheap.hxx">
-      <Filter>Header Files\fibonacciheap</Filter>
+    <ClInclude Include="src\heap\fibonacciheap\fibonacciheap.hpp">
+      <Filter>Header Files\heap\fibonacciheap</Filter>
+    </ClInclude>
+    <ClInclude Include="src\heap\fibonacciheap\fibonacciheap.hxx">
+      <Filter>Header Files\heap\fibonacciheap</Filter>
+    </ClInclude>
+    <ClInclude Include="src\heap\binomialheap\binomialheap.hpp">
+      <Filter>Header Files\heap\binomialheap</Filter>
+    </ClInclude>
+    <ClInclude Include="src\heap\binomialheap\binomialheap.hxx">
+      <Filter>Header Files\heap\binomialheap</Filter>
+    </ClInclude>
+    <ClInclude Include="src\heap\simpleheap\simpleheap.hpp">
+      <Filter>Header Files\heap\simpleheap</Filter>
+    </ClInclude>
+    <ClInclude Include="src\heap\simpleheap\simpleheap.hxx">
+      <Filter>Header Files\heap\simpleheap</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\simplebtree\simplebtree.cpp">
       <Filter>Source Files\simplebtree</Filter>
     </ClCompile>
-    <ClCompile Include="src\binomialheap\binomialheap.cpp">
-      <Filter>Source Files\binomialheap</Filter>
+    <ClCompile Include="src\heap\binomialheap\binomialheap.cpp">
+      <Filter>Source Files\heap\binomialheap</Filter>
     </ClCompile>
-    <ClCompile Include="src\fibonacciheap\fibonacciheap.cpp">
-      <Filter>Source Files\fibonacciheap</Filter>
+    <ClCompile Include="src\heap\fibonacciheap\fibonacciheap.cpp">
+      <Filter>Source Files\heap\fibonacciheap</Filter>
+    </ClCompile>
+    <ClCompile Include="src\heap\simpleheap\simpleheap.cpp">
+      <Filter>Source Files\heap\simpleheap</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

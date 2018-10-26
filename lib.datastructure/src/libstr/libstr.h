@@ -14,6 +14,5 @@
 #define LIBSTR_H
 
 #define EOS '\0'
-#define TEXT 
 
 #endif

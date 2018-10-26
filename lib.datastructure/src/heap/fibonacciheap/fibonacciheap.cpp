@@ -9,7 +9,7 @@
 * lastmodified 25/10/2018
 */
 
-#include "../../libdatastruct.h"
+#include "../../../libdatastruct.h"
 
 /*!
 * \brief	The function is useful in identifying the node type provided for
@@ -44,12 +44,9 @@ FiboHeapNode::FiboHeapNode()
   * \param[in] pKeyCmpFunc  Key comparison function
   *	\param[in] pMinHeap     True if the heap is supposed to behave as min heap else false
  */
-FibonacciHeap::FibonacciHeap (Offset pKeyOffset, KeyCmpFunc pKeyCmpFunc, bool pIsMinHeap)
+FibonacciHeap::FibonacciHeap (Offset pKeyOffset, KeyCmpFunc pKeyCmpFunc, bool pIsMinHeap): Heap (pKeyOffset, pKeyCmpFunc, pIsMinHeap)
 {
-	vKeyOffset  = pKeyOffset;
-	vKeyCmpFunc = pKeyCmpFunc;
-	vIsMinHeap  = pIsMinHeap;
-	vRoot		= nullptr;
+
 }
 
 /*!
@@ -61,15 +58,16 @@ FibonacciHeap::~FibonacciHeap()
 
 }
 
-/*
 /*!
  * \brief	The function cleans up the entire heap by calling delete on every node on the heap
+ *			but as Fibbonaci heap does not own any node so no destroy only the root and other associated
+ *			properties are reset
  * 
- *
+ */
 void FibonacciHeap::Destroy()
 {
-
-}*/
+	vRoot = nullptr;
+}
 
 /*!
  * \brief		the funciton provides capability to insert a node in the tree
