@@ -32,7 +32,7 @@
 *.app
 *.pdb
 	
-unittest/My Advisor Results - unittest/*
+*My Advisor Results*
 adsassignment/Debug/*
 adsassignment/Release/*
 lib.datastructure/Debug/*
