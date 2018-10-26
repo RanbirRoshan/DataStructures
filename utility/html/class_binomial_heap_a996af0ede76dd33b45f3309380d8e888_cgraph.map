@@ -1,0 +1,7 @@
+<map id="BinomialHeap::RemoveMinMax" name="BinomialHeap::RemoveMinMax">
+<area shape="rect" id="node2" href="$class_binomial_heap.html#ad4b1e5217cc1bb85d1a33ce1339ce9ec" title="The function compares the two nodes and based on the heap type (min/max) would return true if the 2nd..." alt="" coords="671,55,881,82"/>
+<area shape="rect" id="node3" href="$class_binomial_heap.html#adb1ead55dc8580ee25d72db1e92485c9" title="The function melds all the childs on the passed Binomial Heap into itslef. " alt="" coords="482,30,621,56"/>
+<area shape="rect" id="node4" href="$class_binomial_heap.html#ad4b76f97b4eff7234c963ee0c9f5ca23" title="The function when called repeatedly merges nodes of same degree till all the nodes left at the top le..." alt="" coords="256,80,432,107"/>
+<area shape="rect" id="node5" href="$class_binomial_heap.html#adf0eadf422e33c41f71f862e2527220c" title="The function would attempt to insert the new node into the Binomial Heap. " alt="" coords="480,131,623,158"/>
+<area shape="rect" id="node6" href="$class_binomial_heap_node.html#a2735792d379ea33559e49d921eae964f" title="The function is useful in identifying the node type provided for any tree operation. As most node types have some common hiererchy it is reqired for verifying the node type in relevent tree operation. " alt="" coords="677,131,875,158"/>
+</map>

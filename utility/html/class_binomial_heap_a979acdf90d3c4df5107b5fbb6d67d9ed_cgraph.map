@@ -1,0 +1,3 @@
+<map id="BinomialHeap::~BinomialHeap" name="BinomialHeap::~BinomialHeap">
+<area shape="rect" id="node2" href="$class_binomial_heap.html#ab7da1595f48e2ddbc28bd91e092a6f11" title="The function destroys the tree by calling delete on all its node and setting the root as null..." alt="" coords="252,5,407,32"/>
+</map>

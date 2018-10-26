@@ -1,0 +1,3 @@
+<map id="SBTree::Insert" name="SBTree::Insert">
+<area shape="rect" id="node2" href="$class_s_b_t_node.html#a4ad8ea43d39bb20ac202f8e337302731" title="The function is useful in identifying the node type provided for any tree operation. As most node types have some common hiererchy it is reqired for verifying the node type in relevent tree operation. " alt="" coords="159,5,301,32"/>
+</map>

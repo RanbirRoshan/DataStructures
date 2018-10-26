@@ -1,0 +1,6 @@
+<map id="BinomialHeap::IsSecondNodeBtr" name="BinomialHeap::IsSecondNodeBtr">
+<area shape="rect" id="node2" href="$class_binomial_heap.html#adf0eadf422e33c41f71f862e2527220c" title="The function would attempt to insert the new node into the Binomial Heap. " alt="" coords="264,5,407,32"/>
+<area shape="rect" id="node3" href="$class_binomial_heap.html#ad4b76f97b4eff7234c963ee0c9f5ca23" title="The function when called repeatedly merges nodes of same degree till all the nodes left at the top le..." alt="" coords="455,56,631,83"/>
+<area shape="rect" id="node4" href="$class_binomial_heap.html#a996af0ede76dd33b45f3309380d8e888" title="The function provides the min node if the heap is of min type else the max node. " alt="" coords="679,107,881,133"/>
+<area shape="rect" id="node5" href="$class_binomial_heap.html#adb1ead55dc8580ee25d72db1e92485c9" title="The function melds all the childs on the passed Binomial Heap into itslef. " alt="" coords="473,157,612,184"/>
+</map>
