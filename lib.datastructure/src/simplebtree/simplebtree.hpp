@@ -13,10 +13,12 @@
 #include "../common/treecommon.h"
 
 /*!
- * /brief	this is the node class that is to be extended by anyone who intents to use 
+ * \class   SBTNode
+ *
+ * \brief	this is the node class that is to be extended by anyone who intents to use 
  *			a simple binary tree
  * 
- * /note	Extend this node class to work with the following data structure
+ * \note	Extend this node class to work with the following data structure
  *			- Simple Binary Tree (Class: SBTree)
  */
 class SBTNode: public TreeNode {
@@ -33,28 +35,30 @@ private:
 	SBTNode *		uRightChild;	///< right child of tree
 };
 
-/*
-	brief	the comparision function used by the tree class
-
-	return   0	means the keys are equal
-			>0  means the pKey1 is greater than pKey2
-			<0  means the pKey1 is smaller than pKey2
+/*!
+ *	\brief	the comparision function used by the tree class
+ *
+ *	\return   0	means the keys are equal
+ * 			 >0  means the pKey1 is greater than pKey2
+ *	 		 <0  means the pKey1 is smaller than pKey2
 */
 typedef __int64 (*KeyCmpFunc) (const void* pKey1, const void *pKey2);
 
-/*
-	brief	the function prototype for destory interface of simple binary tree
+/*!
+ *	\brief	the function prototype for destory interface of simple binary tree
 */
 typedef void	(*SBTreeDestroyFunc) (SBTNode *pNode);
 
 /*!
- * 
- * /brief	a simple binary tree class
- * /note:	the nodes used with the interface provided by this class
-			should extend SBTNode class
-			the tree is not height balanced
+ * \class   SBTree
  *
- * /TODO	the implementation for this class is not complete
+ * \brief	a simple binary tree class
+ *
+ * \note:	the nodes used with the interface provided by this class
+ *			should extend SBTNode class
+ *			the tree is not height balanced
+ *
+ * \todo	the implementation for this class is not complete
 */
 class SBTree {
 public:

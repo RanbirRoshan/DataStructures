@@ -15,6 +15,15 @@
 
 class FibonacciHeap;
 
+/*!
+* \class	FiboHeapNode
+*
+* \brief	this is the node class that is to be extended by anyone who intents to use
+*			a "fibonacci heap"
+*
+* \note	Extend this node class to work with the following data structure
+*			- "Fibonacci Heap" (Class: FibonacciHeap)
+*/
 class FiboHeapNode : public HeapNode {
 public:
 
@@ -31,7 +40,8 @@ private:
 	FiboHeapNode *		vParent;			///< pointer to the parent of the current node
 	FiboHeapNode *		vRightSibling;		///< next itme in circular link list
 	FiboHeapNode *		vLeftSibling;		///< previous item in circular link list
-	__int8				vChildCut;			///< flag to show if a child was lost since it was added to its parent
+	bool				vChildCut;			///< flag to show if a child was lost since it was added to its parent
+	FibonacciHeap*      vInHeap;			///< pointer to the heap it belong to, used for stopping across heap operation
 };
 
 /*!
@@ -44,6 +54,8 @@ private:
  * 
  * \note	the data structue does not own the nodes and so it is the responsibility of the 
  *			user to free nodes stored in the 
+ *
+* \todo		FibonacciHeap class implementation
  */
 class FibonacciHeap : public Heap{
 public:
@@ -55,9 +67,19 @@ public:
 	virtual void Destroy ();
 
 	//heap manipulation APIs
-	FiboHeapNode *  Insert(FiboHeapNode * pNode);
+	FiboHeapNode *  Insert (FiboHeapNode * pNode);
+	FiboHeapNode *  RemoveMinMax ();
+	FiboHeapNode *  Remove (FiboHeapNode * pNode);
+
+inline	bool	IncreaseKey (FiboHeapNode * pNode, void * pNewKey, size_t pSize);
+inline	bool	DecreaseKey (FiboHeapNode * pNode, void * pNewKey, size_t pSize);
 
 private:
+		void	MergeHeap ();
+static	void	AddSiblingToNode (FiboHeapNode *pNode, FiboHeapNode * pNewSibling);
+		bool	ChangeKey (FiboHeapNode * pNode, void * pNewKey, size_t pSize);
+		void	MeldNode (FiboHeapNode *pNode);
+		void	ChildCut (FiboHeapNode *pNode);
 };
 
 #include "fibonacciheap.hxx"

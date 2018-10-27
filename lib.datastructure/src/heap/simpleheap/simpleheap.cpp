@@ -29,29 +29,19 @@ Heap::~Heap()
 	}
 }
 
-/*!
-* \brief	The function compares the two nodes and based on the heap type (min/max) would return
-*			true if the 2nd node is better as per the heap type
-*
-* \param[in] pNode1	First comparison node
-* \param[in] pNode2	Second comparison node
-*
-* \return		true if the second node has less value and heap is min heap or second value is
-*				greater and the heap is	a max heap. Else it would return false.
-*/
-bool Heap::IsSecondNodeBtr(HeapNode * pNode1, HeapNode * pNode2)
+bool Heap::IsSecondKeyBtr(void * pKey1, void * pKey2)
 {
 
 	// see if the current node should be the new node
 	switch (vIsMinHeap) {
 
 	case 1:	// Min Binomial Heap
-		if (vKeyCmpFunc(((char*)pNode1) + vKeyOffset, ((char*)pNode2) + vKeyOffset) > 0)
+		if (vKeyCmpFunc(pKey1, pKey2) > 0)
 			return true;
 		break;
 
 	case 0: // Max Binomial Heap
-		if (vKeyCmpFunc(((char*)pNode1) + vKeyOffset, ((char*)pNode2) + vKeyOffset) < 0)
+		if (vKeyCmpFunc(pKey1, pKey2) < 0)
 			return true;
 		break;
 	}
