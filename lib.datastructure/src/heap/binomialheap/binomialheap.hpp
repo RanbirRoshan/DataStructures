@@ -1,4 +1,4 @@
-/*!
+/*
 * @brief	The file contains the binomial heap class declaration and associated 
 *			other decleration.
 *
@@ -20,7 +20,7 @@
 *			a binomial heap
 *
 * \note	Extend this node class to work with the following data structure
-*			- Binomial Heap (Class: BinomialHeap)
+*			- "Binomial Heap" (Class: BinomialHeap)
 */
 class BinomialHeapNode : public HeapNode {
 public:

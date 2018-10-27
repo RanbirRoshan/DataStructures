@@ -22,8 +22,8 @@ using namespace CppUnit;
 
 int main(int argc, char **argv)
 {
-	std::srand(std::time(0));
-
+	std::srand((unsigned int)std::time(0));
+	
 	// informs test-listener about testresults
 	CPPUNIT_NS::TestResult testresult;
 	// register listener for collecting the test-results

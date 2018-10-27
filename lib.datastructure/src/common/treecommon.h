@@ -14,8 +14,11 @@
 #define TREE_COMMON_HPP
 
 /*!
- * /breif	enumuration for identifying the tree node type
- * 
+ * \enum    eTreeNodeType
+ *
+ * \brief	enumuration for identifying the tree node type
+ *
+ * \var  TNT_UNKNOWN
  */
 enum eTreeNodeType {
 	TNT_UNKNOWN = 0,	///< Unknown node type
@@ -26,9 +29,11 @@ enum eTreeNodeType {
 };
 
 /*!
- * /brief	virtual base class for all the node types.
+ * \class	TreeNode
+ *
+ * \brief	virtual base class for all the node types.
  * 
- * /note	this is a pure virtual class and hence cannot be instantiated
+ * \note	this is a pure virtual class and hence cannot be instantiated
  */
 class TreeNode {
 public:

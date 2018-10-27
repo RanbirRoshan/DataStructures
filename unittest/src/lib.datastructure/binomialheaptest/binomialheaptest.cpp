@@ -20,9 +20,9 @@ static long long IntCmpFunc(const void * pCmpVal1, const void * pCmpVal2)
 
 static long long StrCmpFunc(const void * pCmpVal1, const void * pCmpVal2)
 {
-	wchar_t * val1 = (wchar_t *) pCmpVal1;
-	wchar_t * val2 = (wchar_t *)pCmpVal2;
-	while (*val1 != *val2)
+	wchar_t * val1 = *(wchar_t **)pCmpVal1;
+	wchar_t * val2 = *(wchar_t **)pCmpVal2;
+	while (*val1 == *val2)
 	{
 		if (val1 == EOS)
 			return 0;
@@ -31,9 +31,8 @@ static long long StrCmpFunc(const void * pCmpVal1, const void * pCmpVal2)
 		val2++;
 	}
 
-	return val1 - val2;
+	return *val1 - *val2;
 }
-
 
 class BinomialHeapTestIntNode : public BinomialHeapNode {
 	friend class BinomialHeapTest;
@@ -56,10 +55,10 @@ void BinomialHeapTest::setUp()
 
 void BinomialHeapTest::tearDown()
 {
-	//delete testheapintmin;
-	//delete testheapstrmin;
-	//delete testheapintmax;
-	//delete testheapstrmax;
+	delete testheapintmin;
+	delete testheapstrmin;
+	delete testheapintmax;
+	delete testheapstrmax;
 }
 
 
@@ -213,7 +212,8 @@ void BinomialHeapTest::InsertTest()
 
 		// insert one elemet and find it
 		intnodemax = new BinomialHeapTestIntNode ();
-		intnodemax->uKey = intnodemax->uKey;
+		intnodemax->uKey = std::rand() * 10000000000;
+		intnodemax->uKey *= (intnodemax->uKey & 1) ? 1 : -1;
 		testheapintmax->Insert(intnodemax);
 	}
 
