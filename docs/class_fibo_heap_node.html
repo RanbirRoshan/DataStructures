@@ -9,6 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +53,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('class_fibo_heap_node.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,17 +84,18 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
-<a href="#friends">Friends</a> &#124;
-<a href="class_fibo_heap_node-members.html">List of all members</a>  </div>
+<a href="#friends">Friends</a>  </div>
   <div class="headertitle">
 <div class="title">FiboHeapNode Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>this is the node class that is to be extended by anyone who intents to use a "fibonacci heap"  
+ <a href="class_fibo_heap_node.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="fibonacciheap_8hpp_source.html">fibonacciheap.hpp</a>&gt;</code></p>
 <div class="dynheader">
@@ -77,19 +103,21 @@ Inheritance diagram for FiboHeapNode:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_fibo_heap_node__inherit__graph.png" border="0" usemap="#_fibo_heap_node_inherit__map" alt="Inheritance graph"/></div>
 <map name="_fibo_heap_node_inherit__map" id="_fibo_heap_node_inherit__map">
-<area shape="rect" id="node2" href="class_heap_node.html" title="HeapNode" alt="" coords="17,80,100,107"/>
-<area shape="rect" id="node3" href="class_tree_node.html" title="TreeNode" alt="" coords="20,5,97,32"/>
+<area shape="rect" id="node2" href="class_heap_node.html" title="this is the node class that is to be extended by anyone who intents to use a &quot;heap&quot; ..." alt="" coords="17,80,100,107"/>
+<area shape="rect" id="node3" href="class_tree_node.html" title="virtual base class for all the node types. " alt="" coords="20,5,97,32"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for FiboHeapNode:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_fibo_heap_node__coll__graph.png" border="0" usemap="#_fibo_heap_node_coll__map" alt="Collaboration graph"/></div>
 <map name="_fibo_heap_node_coll__map" id="_fibo_heap_node_coll__map">
-<area shape="rect" id="node2" href="class_heap_node.html" title="HeapNode" alt="" coords="17,81,100,108"/>
-<area shape="rect" id="node3" href="class_tree_node.html" title="TreeNode" alt="" coords="20,5,97,32"/>
+<area shape="rect" id="node2" href="class_heap_node.html" title="this is the node class that is to be extended by anyone who intents to use a &quot;heap&quot; ..." alt="" coords="5,81,88,108"/>
+<area shape="rect" id="node5" href="class_heap.html" title="the class provides heap. Both min and max heap are supported by this class. Subjected to intializatio..." alt="" coords="77,171,129,197"/>
+<area shape="rect" id="node3" href="class_tree_node.html" title="virtual base class for all the node types. " alt="" coords="8,5,85,32"/>
+<area shape="rect" id="node4" href="class_fibonacci_heap.html" title="the class provides fibonacci heap. The heap works similar to binomial heap but in addition to binomia..." alt="" coords="63,247,171,273"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -97,7 +125,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a20419d29e61830e56f36773754e80771"><td class="mdescLeft">&#160;</td><td class="mdescRight">cunstructor for the fibonacci heap node  <a href="#a20419d29e61830e56f36773754e80771">More...</a><br /></td></tr>
 <tr class="separator:a20419d29e61830e56f36773754e80771"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72400f6fb8a3b2301ca02778d99f0fff"><td class="memItemLeft" align="right" valign="top">eTreeNodeType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fibo_heap_node.html#a72400f6fb8a3b2301ca02778d99f0fff">NodeType</a> ()</td></tr>
-<tr class="memdesc:a72400f6fb8a3b2301ca02778d99f0fff"><td class="mdescLeft">&#160;</td><td class="mdescRight">The file contains the non inline definitions for fibonacci heap and other associated decleration.  <a href="#a72400f6fb8a3b2301ca02778d99f0fff">More...</a><br /></td></tr>
+<tr class="memdesc:a72400f6fb8a3b2301ca02778d99f0fff"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function is useful in identifying the node type provided for any tree operation. As most node types have some common hiererchy it is reqired for verifying the node type in relevent tree operation.  <a href="#a72400f6fb8a3b2301ca02778d99f0fff">More...</a><br /></td></tr>
 <tr class="separator:a72400f6fb8a3b2301ca02778d99f0fff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_heap_node"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_heap_node')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_heap_node.html">HeapNode</a></td></tr>
 <tr class="memitem:ae7932b91f893c475c3c252a71bd749b3 inherit pub_methods_class_heap_node"><td class="memItemLeft" align="right" valign="top">eTreeNodeType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap_node.html#ae7932b91f893c475c3c252a71bd749b3">NodeType</a> ()</td></tr>
@@ -126,16 +154,25 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a7cf775f9d684d8f761e58f59136ba77a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_fibo_heap_node.html">FiboHeapNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fibo_heap_node.html#a7cf775f9d684d8f761e58f59136ba77a">vLeftSibling</a></td></tr>
 <tr class="memdesc:a7cf775f9d684d8f761e58f59136ba77a"><td class="mdescLeft">&#160;</td><td class="mdescRight">previous item in circular link list  <a href="#a7cf775f9d684d8f761e58f59136ba77a">More...</a><br /></td></tr>
 <tr class="separator:a7cf775f9d684d8f761e58f59136ba77a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d0d813d7c89cae1af38988fc338c32d"><td class="memItemLeft" align="right" valign="top">__int8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fibo_heap_node.html#a7d0d813d7c89cae1af38988fc338c32d">vChildCut</a></td></tr>
-<tr class="memdesc:a7d0d813d7c89cae1af38988fc338c32d"><td class="mdescLeft">&#160;</td><td class="mdescRight">flag to show if a child was lost since it was added to its parent  <a href="#a7d0d813d7c89cae1af38988fc338c32d">More...</a><br /></td></tr>
-<tr class="separator:a7d0d813d7c89cae1af38988fc338c32d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3eaa447759d31c6dcc11b57500818f7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fibo_heap_node.html#af3eaa447759d31c6dcc11b57500818f7">vChildCut</a></td></tr>
+<tr class="memdesc:af3eaa447759d31c6dcc11b57500818f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">flag to show if a child was lost since it was added to its parent  <a href="#af3eaa447759d31c6dcc11b57500818f7">More...</a><br /></td></tr>
+<tr class="separator:af3eaa447759d31c6dcc11b57500818f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8088e6840780897991c5391c39bf2e85"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_fibonacci_heap.html">FibonacciHeap</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fibo_heap_node.html#a8088e6840780897991c5391c39bf2e85">vInHeap</a></td></tr>
+<tr class="memdesc:a8088e6840780897991c5391c39bf2e85"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to the heap it belong to, used for stopping across heap operation  <a href="#a8088e6840780897991c5391c39bf2e85">More...</a><br /></td></tr>
+<tr class="separator:a8088e6840780897991c5391c39bf2e85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
 <tr class="memitem:a2ee084b410f86d6b52ca4809a60a0449"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fibo_heap_node.html#a2ee084b410f86d6b52ca4809a60a0449">FibonacciHeap</a></td></tr>
 <tr class="separator:a2ee084b410f86d6b52ca4809a60a0449"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>this is the node class that is to be extended by anyone who intents to use a "fibonacci heap" </p>
+<dl class="section note"><dt>Note</dt><dd>Extend this node class to work with the following data structure<ul>
+<li>"Fibonacci Heap" (Class: <a class="el" href="class_fibonacci_heap.html" title="the class provides fibonacci heap. The heap works similar to binomial heap but in addition to binomia...">FibonacciHeap</a>) </li>
+</ul>
+</dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a20419d29e61830e56f36773754e80771"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a20419d29e61830e56f36773754e80771">&#9670;&nbsp;</a></span>FiboHeapNode()</h2>
 
@@ -171,12 +208,23 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The file contains the non inline definitions for fibonacci heap and other associated decleration. </p>
-<dl class="section author"><dt>Author</dt><dd>Ranbir Roshan</dd></dl>
-<dl class="section date"><dt>Date</dt><dd>20/10/2018</dd></dl>
-<p>lastmodified 25/10/2018</p>
-<p>The function is useful in identifying the node type provided for any tree operation. As most node types have some common hiererchy it is reqired for verifying the node type in relevent tree operation</p>
+<p>The function is useful in identifying the node type provided for any tree operation. As most node types have some common hiererchy it is reqired for verifying the node type in relevent tree operation. </p>
 <dl class="section return"><dt>Returns</dt><dd>the node type of the current tree node </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_fibo_heap_node_a72400f6fb8a3b2301ca02778d99f0fff_icgraph.png" border="0" usemap="#class_fibo_heap_node_a72400f6fb8a3b2301ca02778d99f0fff_icgraph" alt=""/></div>
+<map name="class_fibo_heap_node_a72400f6fb8a3b2301ca02778d99f0fff_icgraph" id="class_fibo_heap_node_a72400f6fb8a3b2301ca02778d99f0fff_icgraph">
+<area shape="rect" id="node2" href="class_fibonacci_heap.html#ace7460151b2cc918debbd7c65920920b" title="the funciton provides capability to insert a node in the tree " alt="" coords="227,81,375,108"/>
+<area shape="rect" id="node3" href="class_fibonacci_heap.html#af5a274f58efe0a7bec42aee46d46f87b" title="The function when called repeatedly merges nodes of same degree till all the nodes left at the top le..." alt="" coords="423,81,605,108"/>
+<area shape="rect" id="node6" href="class_fibonacci_heap.html#a75ef3fcdd3bbe2527a316eabf829ea05" title="FibonacciHeap::ChangeKey" alt="" coords="1120,31,1303,57"/>
+<area shape="rect" id="node9" href="class_fibonacci_heap.html#ac1ee0019f2dea232dcae5dcd794af348" title="FibonacciHeap::ChildCut" alt="" coords="1129,81,1294,108"/>
+<area shape="rect" id="node4" href="class_fibonacci_heap.html#a75aed47464f1fd3ac6f2779e8b450265" title="FibonacciHeap::RemoveMinMax" alt="" coords="653,81,861,108"/>
+<area shape="rect" id="node5" href="class_fibonacci_heap.html#a29c7487db1e9afb23008d6163dd75715" title="FibonacciHeap::Remove" alt="" coords="909,81,1072,108"/>
+<area shape="rect" id="node7" href="class_fibonacci_heap.html#a8017a5ca5f7e3dea7f1fbb4fbe96d033" title="FibonacciHeap::IncreaseKey" alt="" coords="1354,5,1542,32"/>
+<area shape="rect" id="node8" href="class_fibonacci_heap.html#a8ebe8b0dc062c240925a9b568829faa5" title="FibonacciHeap::DecreaseKey" alt="" coords="1351,56,1545,83"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -203,7 +251,7 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
+<h2 class="groupheader">Field Documentation</h2>
 <a id="a76470a0dca78138030aa792ba49acf27"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a76470a0dca78138030aa792ba49acf27">&#9670;&nbsp;</a></span>vChild</h2>
 
@@ -228,8 +276,8 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a7d0d813d7c89cae1af38988fc338c32d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7d0d813d7c89cae1af38988fc338c32d">&#9670;&nbsp;</a></span>vChildCut</h2>
+<a id="af3eaa447759d31c6dcc11b57500818f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3eaa447759d31c6dcc11b57500818f7">&#9670;&nbsp;</a></span>vChildCut</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -238,7 +286,7 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">__int8 FiboHeapNode::vChildCut</td>
+          <td class="memname">bool FiboHeapNode::vChildCut</td>
         </tr>
       </table>
   </td>
@@ -273,6 +321,30 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p>the number of child to the current node </p>
+
+</div>
+</div>
+<a id="a8088e6840780897991c5391c39bf2e85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8088e6840780897991c5391c39bf2e85">&#9670;&nbsp;</a></span>vInHeap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_fibonacci_heap.html">FibonacciHeap</a>* FiboHeapNode::vInHeap</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>pointer to the heap it belong to, used for stopping across heap operation </p>
 
 </div>
 </div>
@@ -349,11 +421,15 @@ Friends</h2></td></tr>
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.14
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_fibo_heap_node.html">FiboHeapNode</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
+  </ul>
+</div>
 </body>
 </html>

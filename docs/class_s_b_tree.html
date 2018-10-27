@@ -9,6 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +53,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('class_s_b_tree.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,16 +84,17 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
-<a href="class_s_b_tree-members.html">List of all members</a>  </div>
+<a href="#pri-attribs">Private Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">SBTree Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>a simple binary tree class  
+ <a href="class_s_b_tree.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="simplebtree_8hpp_source.html">simplebtree.hpp</a>&gt;</code></p>
 <div class="dynheader">
@@ -76,10 +102,10 @@ Collaboration diagram for SBTree:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_s_b_tree__coll__graph.png" border="0" usemap="#_s_b_tree_coll__map" alt="Collaboration graph"/></div>
 <map name="_s_b_tree_coll__map" id="_s_b_tree_coll__map">
-<area shape="rect" id="node2" href="class_s_b_t_node.html" title="SBTNode" alt="" coords="5,83,83,109"/>
-<area shape="rect" id="node3" href="class_tree_node.html" title="TreeNode" alt="" coords="5,5,83,32"/>
+<area shape="rect" id="node2" href="class_s_b_t_node.html" title="this is the node class that is to be extended by anyone who intents to use a simple binary tree ..." alt="" coords="5,83,83,109"/>
+<area shape="rect" id="node3" href="class_tree_node.html" title="virtual base class for all the node types. " alt="" coords="5,5,83,32"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -112,8 +138,9 @@ Private Attributes</h2></td></tr>
 <tr class="separator:aadd8f28aac4c381cba88cde20ffc5567"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>/brief a simple binary tree class /note: the nodes used with the interface provided by this class should extend <a class="el" href="class_s_b_t_node.html">SBTNode</a> class the tree is not height balanced</p>
-<p>/TODO the implementation for this class is not complete </p>
+<div class="textblock"><p>a simple binary tree class </p>
+<dl class="section note"><dt>Note</dt><dd>: the nodes used with the interface provided by this class should extend <a class="el" href="class_s_b_t_node.html" title="this is the node class that is to be extended by anyone who intents to use a simple binary tree ...">SBTNode</a> class the tree is not height balanced</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>the implementation for this class is not complete </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac9d6a0eafa2782968b129320fe2c7f9d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac9d6a0eafa2782968b129320fe2c7f9d">&#9670;&nbsp;</a></span>SBTree()</h2>
@@ -263,7 +290,7 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
+<h2 class="groupheader">Field Documentation</h2>
 <a id="aadd8f28aac4c381cba88cde20ffc5567"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aadd8f28aac4c381cba88cde20ffc5567">&#9670;&nbsp;</a></span>vDestroyFunc</h2>
 
@@ -361,11 +388,15 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.14
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_s_b_tree.html">SBTree</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
+  </ul>
+</div>
 </body>
 </html>

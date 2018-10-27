@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['heap',['Heap',['../class_heap.html',1,'Heap'],['../class_heap.html#a5034dddc652f81270b217ef0ad72da3a',1,'Heap::Heap()']]],
-  ['heapnode',['HeapNode',['../class_heap_node.html',1,'']]]
+  ['execute',['Execute',['../class_search_app.html#ab78bf413170dafa0ac50b3ca07c6c097',1,'SearchApp']]]
 ];

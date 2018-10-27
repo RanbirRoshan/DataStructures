@@ -9,6 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +53,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('class_binomial_heap.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,13 +84,11 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
-<a href="class_binomial_heap-members.html">List of all members</a>  </div>
+<a href="#pri-attribs">Private Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">BinomialHeap Class Reference</div>  </div>
 </div><!--header-->
@@ -80,20 +103,20 @@ Inheritance diagram for BinomialHeap:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_binomial_heap__inherit__graph.png" border="0" usemap="#_binomial_heap_inherit__map" alt="Inheritance graph"/></div>
 <map name="_binomial_heap_inherit__map" id="_binomial_heap_inherit__map">
-<area shape="rect" id="node2" href="class_heap.html" title="Heap" alt="" coords="31,5,83,32"/>
+<area shape="rect" id="node2" href="class_heap.html" title="the class provides heap. Both min and max heap are supported by this class. Subjected to intializatio..." alt="" coords="31,5,83,32"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for BinomialHeap:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_binomial_heap__coll__graph.png" border="0" usemap="#_binomial_heap_coll__map" alt="Collaboration graph"/></div>
 <map name="_binomial_heap_coll__map" id="_binomial_heap_coll__map">
-<area shape="rect" id="node5" href="class_binomial_heap_node.html" title="The file contains the binomial heap class declaration and associated other decleration. " alt="" coords="5,336,137,363"/>
-<area shape="rect" id="node2" href="class_heap.html" title="Heap" alt="" coords="68,171,120,197"/>
-<area shape="rect" id="node3" href="class_heap_node.html" title="HeapNode" alt="" coords="91,81,174,108"/>
-<area shape="rect" id="node4" href="class_tree_node.html" title="TreeNode" alt="" coords="94,5,171,32"/>
+<area shape="rect" id="node5" href="class_binomial_heap_node.html" title="this is the node class that is to be extended by anyone who intents to use a binomial heap ..." alt="" coords="5,336,137,363"/>
+<area shape="rect" id="node2" href="class_heap.html" title="the class provides heap. Both min and max heap are supported by this class. Subjected to intializatio..." alt="" coords="68,171,120,197"/>
+<area shape="rect" id="node3" href="class_heap_node.html" title="this is the node class that is to be extended by anyone who intents to use a &quot;heap&quot; ..." alt="" coords="91,81,174,108"/>
+<area shape="rect" id="node4" href="class_tree_node.html" title="virtual base class for all the node types. " alt="" coords="94,5,171,32"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -107,19 +130,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ab7da1595f48e2ddbc28bd91e092a6f11"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function destroys the tree by calling delete on all its node and setting the root as null.  <a href="#ab7da1595f48e2ddbc28bd91e092a6f11">More...</a><br /></td></tr>
 <tr class="separator:ab7da1595f48e2ddbc28bd91e092a6f11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf0eadf422e33c41f71f862e2527220c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_binomial_heap_node.html">BinomialHeapNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_binomial_heap.html#adf0eadf422e33c41f71f862e2527220c">Insert</a> (<a class="el" href="class_binomial_heap_node.html">BinomialHeapNode</a> *pNode)</td></tr>
-<tr class="memdesc:adf0eadf422e33c41f71f862e2527220c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function would attempt to insert the new node into the Binomial <a class="el" href="class_heap.html">Heap</a>.  <a href="#adf0eadf422e33c41f71f862e2527220c">More...</a><br /></td></tr>
+<tr class="memdesc:adf0eadf422e33c41f71f862e2527220c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function would attempt to insert the new node into the Binomial <a class="el" href="class_heap.html" title="the class provides heap. Both min and max heap are supported by this class. Subjected to intializatio...">Heap</a>.  <a href="#adf0eadf422e33c41f71f862e2527220c">More...</a><br /></td></tr>
 <tr class="separator:adf0eadf422e33c41f71f862e2527220c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb1ead55dc8580ee25d72db1e92485c9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_binomial_heap.html#adb1ead55dc8580ee25d72db1e92485c9">Meld</a> (<a class="el" href="class_binomial_heap.html">BinomialHeap</a> *pMeldNode, bool pDeleteAfterMeld=true)</td></tr>
-<tr class="memdesc:adb1ead55dc8580ee25d72db1e92485c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function melds all the childs on the passed Binomial <a class="el" href="class_heap.html">Heap</a> into itslef.  <a href="#adb1ead55dc8580ee25d72db1e92485c9">More...</a><br /></td></tr>
+<tr class="memdesc:adb1ead55dc8580ee25d72db1e92485c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function melds all the childs on the passed Binomial <a class="el" href="class_heap.html" title="the class provides heap. Both min and max heap are supported by this class. Subjected to intializatio...">Heap</a> into itslef.  <a href="#adb1ead55dc8580ee25d72db1e92485c9">More...</a><br /></td></tr>
 <tr class="separator:adb1ead55dc8580ee25d72db1e92485c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a996af0ede76dd33b45f3309380d8e888"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_binomial_heap_node.html">BinomialHeapNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_binomial_heap.html#a996af0ede76dd33b45f3309380d8e888">RemoveMinMax</a> ()</td></tr>
 <tr class="memdesc:a996af0ede76dd33b45f3309380d8e888"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function provides the min node if the heap is of min type else the max node.  <a href="#a996af0ede76dd33b45f3309380d8e888">More...</a><br /></td></tr>
 <tr class="separator:a996af0ede76dd33b45f3309380d8e888"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_heap"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_heap')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_heap.html">Heap</a></td></tr>
 <tr class="memitem:a5034dddc652f81270b217ef0ad72da3a inherit pub_methods_class_heap"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#a5034dddc652f81270b217ef0ad72da3a">Heap</a> (Offset pKeyOffset, KeyCmpFunc pKeyCmpFunc, bool pMinHeap)</td></tr>
-<tr class="memdesc:a5034dddc652f81270b217ef0ad72da3a inherit pub_methods_class_heap"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor for the class <a class="el" href="class_heap.html">Heap</a>  <a href="class_heap.html#a5034dddc652f81270b217ef0ad72da3a">More...</a><br /></td></tr>
+<tr class="memdesc:a5034dddc652f81270b217ef0ad72da3a inherit pub_methods_class_heap"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor for the class <a class="el" href="class_heap.html" title="the class provides heap. Both min and max heap are supported by this class. Subjected to intializatio...">Heap</a>  <a href="class_heap.html#a5034dddc652f81270b217ef0ad72da3a">More...</a><br /></td></tr>
 <tr class="separator:a5034dddc652f81270b217ef0ad72da3a inherit pub_methods_class_heap"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a734051272cbd0945d3916a1a89707ba2 inherit pub_methods_class_heap"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#a734051272cbd0945d3916a1a89707ba2">~Heap</a> ()</td></tr>
+<tr class="memitem:a734051272cbd0945d3916a1a89707ba2 inherit pub_methods_class_heap"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#a734051272cbd0945d3916a1a89707ba2">~Heap</a> ()</td></tr>
 <tr class="separator:a734051272cbd0945d3916a1a89707ba2 inherit pub_methods_class_heap"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad97571afc31e8717e5afe64006067c49 inherit pub_methods_class_heap"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#ad97571afc31e8717e5afe64006067c49">IsMinHeap</a> ()</td></tr>
 <tr class="memdesc:ad97571afc31e8717e5afe64006067c49 inherit pub_methods_class_heap"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function indentifies the min heap or max heap property of binomial heap.  <a href="class_heap.html#ad97571afc31e8717e5afe64006067c49">More...</a><br /></td></tr>
@@ -148,6 +171,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a4fe12ad279a88030a0f444a46d8f4693 inherit pro_methods_class_heap"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#a4fe12ad279a88030a0f444a46d8f4693">IsSecondNodeBtr</a> (<a class="el" href="class_heap_node.html">HeapNode</a> *pNode1, <a class="el" href="class_heap_node.html">HeapNode</a> *pNode2)</td></tr>
 <tr class="memdesc:a4fe12ad279a88030a0f444a46d8f4693 inherit pro_methods_class_heap"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function compares the two nodes and based on the heap type (min/max) would return true if the 2nd node is better as per the heap type.  <a href="class_heap.html#a4fe12ad279a88030a0f444a46d8f4693">More...</a><br /></td></tr>
 <tr class="separator:a4fe12ad279a88030a0f444a46d8f4693 inherit pro_methods_class_heap"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5258caf94c98ed842bd7be0a3a7210a5 inherit pro_methods_class_heap"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#a5258caf94c98ed842bd7be0a3a7210a5">IsSecondKeyBtr</a> (void *pKey1, void *pKey2)</td></tr>
+<tr class="separator:a5258caf94c98ed842bd7be0a3a7210a5 inherit pro_methods_class_heap"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95327d2f451fe92847f26fd0443a7f61 inherit pro_methods_class_heap"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#a95327d2f451fe92847f26fd0443a7f61">GetKeyOffset</a> ()</td></tr>
+<tr class="separator:a95327d2f451fe92847f26fd0443a7f61 inherit pro_methods_class_heap"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_heap"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_heap')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_heap.html">Heap</a></td></tr>
 <tr class="memitem:a8c25f21af028dbe50bdf11fbc697559c inherit pro_attribs_class_heap"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_heap_node.html">HeapNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#a8c25f21af028dbe50bdf11fbc697559c">vRoot</a></td></tr>
 <tr class="separator:a8c25f21af028dbe50bdf11fbc697559c inherit pro_attribs_class_heap"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -227,6 +254,14 @@ Here is the caller graph for this function:</div>
 
 <p>The destructor is expected to destroy the tree and its content. </p>
 <dl class="section note"><dt>Note</dt><dd>The nodes cannot be part of two trees so the nodes if not already destroyed by the user will be destroyed here. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_binomial_heap_a979acdf90d3c4df5107b5fbb6d67d9ed_cgraph.png" border="0" usemap="#class_binomial_heap_a979acdf90d3c4df5107b5fbb6d67d9ed_cgraph" alt=""/></div>
+<map name="class_binomial_heap_a979acdf90d3c4df5107b5fbb6d67d9ed_cgraph" id="class_binomial_heap_a979acdf90d3c4df5107b5fbb6d67d9ed_cgraph">
+<area shape="rect" id="node2" href="class_binomial_heap.html#ab7da1595f48e2ddbc28bd91e092a6f11" title="The function destroys the tree by calling delete on all its node and setting the root as null..." alt="" coords="252,5,407,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -257,6 +292,14 @@ Here is the caller graph for this function:</div>
 <p>The function destroys the tree by calling delete on all its node and setting the root as null. </p>
 
 <p>Reimplemented from <a class="el" href="class_heap.html#ae6b65dcd056d6a73e82da0980ea55cd1">Heap</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_binomial_heap_ab7da1595f48e2ddbc28bd91e092a6f11_icgraph.png" border="0" usemap="#class_binomial_heap_ab7da1595f48e2ddbc28bd91e092a6f11_icgraph" alt=""/></div>
+<map name="class_binomial_heap_ab7da1595f48e2ddbc28bd91e092a6f11_icgraph" id="class_binomial_heap_ab7da1595f48e2ddbc28bd91e092a6f11_icgraph">
+<area shape="rect" id="node2" href="class_binomial_heap.html#a979acdf90d3c4df5107b5fbb6d67d9ed" title="The destructor is expected to destroy the tree and its content. " alt="" coords="208,5,407,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -276,7 +319,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>The function would attempt to insert the new node into the Binomial <a class="el" href="class_heap.html">Heap</a>. </p>
+<p>The function would attempt to insert the new node into the Binomial <a class="el" href="class_heap.html" title="the class provides heap. Both min and max heap are supported by this class. Subjected to intializatio...">Heap</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">pNode</td><td>The new node that is to be inserted into the binomial heap</td></tr>
@@ -301,6 +344,7 @@ Here is the call graph for this function:</div>
 <map name="class_binomial_heap_adf0eadf422e33c41f71f862e2527220c_cgraph" id="class_binomial_heap_adf0eadf422e33c41f71f862e2527220c_cgraph">
 <area shape="rect" id="node2" href="class_binomial_heap_node.html#a2735792d379ea33559e49d921eae964f" title="The function is useful in identifying the node type provided for any tree operation. As most node types have some common hiererchy it is reqired for verifying the node type in relevent tree operation. " alt="" coords="196,5,395,32"/>
 <area shape="rect" id="node3" href="class_heap.html#a4fe12ad279a88030a0f444a46d8f4693" title="The function compares the two nodes and based on the heap type (min/max) would return true if the 2nd..." alt="" coords="215,56,376,83"/>
+<area shape="rect" id="node4" href="class_heap.html#a5258caf94c98ed842bd7be0a3a7210a5" title="Heap::IsSecondKeyBtr" alt="" coords="443,56,597,83"/>
 </map>
 </div>
 <div class="dynheader">
@@ -341,10 +385,10 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>The function melds all the childs on the passed Binomial <a class="el" href="class_heap.html">Heap</a> into itslef. </p>
+<p>The function melds all the childs on the passed Binomial <a class="el" href="class_heap.html" title="the class provides heap. Both min and max heap are supported by this class. Subjected to intializatio...">Heap</a> into itslef. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">pMeldHeap</td><td>The Binomial <a class="el" href="class_heap.html">Heap</a> that is to be meld </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pMeldHeap</td><td>The Binomial <a class="el" href="class_heap.html" title="the class provides heap. Both min and max heap are supported by this class. Subjected to intializatio...">Heap</a> that is to be meld </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">pDeleteAfterMeld</td><td>The parameter has following behavior<ul>
 <li>True -pMeldHeap will be deleted post sucessful meld</li>
 <li>False -If operation is successful pMeldNode will become empty but will not be deleted. It is the responsiility of caller to free the memory.</li>
@@ -365,6 +409,7 @@ Here is the call graph for this function:</div>
 <map name="class_binomial_heap_adb1ead55dc8580ee25d72db1e92485c9_cgraph" id="class_binomial_heap_adb1ead55dc8580ee25d72db1e92485c9_cgraph">
 <area shape="rect" id="node2" href="class_heap.html#ad97571afc31e8717e5afe64006067c49" title="The function indentifies the min heap or max heap property of binomial heap. " alt="" coords="212,5,333,32"/>
 <area shape="rect" id="node3" href="class_heap.html#a4fe12ad279a88030a0f444a46d8f4693" title="The function compares the two nodes and based on the heap type (min/max) would return true if the 2nd..." alt="" coords="192,56,353,83"/>
+<area shape="rect" id="node4" href="class_heap.html#a5258caf94c98ed842bd7be0a3a7210a5" title="Heap::IsSecondKeyBtr" alt="" coords="401,56,556,83"/>
 </map>
 </div>
 <div class="dynheader">
@@ -408,9 +453,10 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="class_binomial_heap_ad4b76f97b4eff7234c963ee0c9f5ca23_cgraph.png" border="0" usemap="#class_binomial_heap_ad4b76f97b4eff7234c963ee0c9f5ca23_cgraph" alt=""/></div>
 <map name="class_binomial_heap_ad4b76f97b4eff7234c963ee0c9f5ca23_cgraph" id="class_binomial_heap_ad4b76f97b4eff7234c963ee0c9f5ca23_cgraph">
 <area shape="rect" id="node2" href="class_heap.html#a4fe12ad279a88030a0f444a46d8f4693" title="The function compares the two nodes and based on the heap type (min/max) would return true if the 2nd..." alt="" coords="487,5,648,32"/>
-<area shape="rect" id="node3" href="class_binomial_heap.html#abd9b76190bcb0c1a4a67e4785a857a6e" title="constructor for the class BinomialHeap " alt="" coords="229,31,420,57"/>
-<area shape="rect" id="node4" href="class_binomial_heap.html#adf0eadf422e33c41f71f862e2527220c" title="The function would attempt to insert the new node into the Binomial Heap. " alt="" coords="253,81,396,108"/>
-<area shape="rect" id="node5" href="class_binomial_heap_node.html#a2735792d379ea33559e49d921eae964f" title="The function is useful in identifying the node type provided for any tree operation. As most node types have some common hiererchy it is reqired for verifying the node type in relevent tree operation. " alt="" coords="468,81,667,108"/>
+<area shape="rect" id="node4" href="class_binomial_heap.html#abd9b76190bcb0c1a4a67e4785a857a6e" title="constructor for the class BinomialHeap " alt="" coords="229,31,420,57"/>
+<area shape="rect" id="node5" href="class_binomial_heap.html#adf0eadf422e33c41f71f862e2527220c" title="The function would attempt to insert the new node into the Binomial Heap. " alt="" coords="253,81,396,108"/>
+<area shape="rect" id="node3" href="class_heap.html#a5258caf94c98ed842bd7be0a3a7210a5" title="Heap::IsSecondKeyBtr" alt="" coords="715,5,869,32"/>
+<area shape="rect" id="node6" href="class_binomial_heap_node.html#a2735792d379ea33559e49d921eae964f" title="The function is useful in identifying the node type provided for any tree operation. As most node types have some common hiererchy it is reqired for verifying the node type in relevent tree operation. " alt="" coords="468,81,667,108"/>
 </map>
 </div>
 <div class="dynheader">
@@ -446,19 +492,20 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_binomial_heap_a996af0ede76dd33b45f3309380d8e888_cgraph.png" border="0" usemap="#class_binomial_heap_a996af0ede76dd33b45f3309380d8e888_cgraph" alt=""/></div>
 <map name="class_binomial_heap_a996af0ede76dd33b45f3309380d8e888_cgraph" id="class_binomial_heap_a996af0ede76dd33b45f3309380d8e888_cgraph">
-<area shape="rect" id="node2" href="class_heap.html#a4fe12ad279a88030a0f444a46d8f4693" title="The function compares the two nodes and based on the heap type (min/max) would return true if the 2nd..." alt="" coords="737,49,899,76"/>
-<area shape="rect" id="node3" href="class_binomial_heap.html#adb1ead55dc8580ee25d72db1e92485c9" title="The function melds all the childs on the passed Binomial Heap into itslef. " alt="" coords="275,37,413,64"/>
-<area shape="rect" id="node5" href="class_binomial_heap.html#ad4b76f97b4eff7234c963ee0c9f5ca23" title="The function when called repeatedly merges nodes of same degree till all the nodes left at the top le..." alt="" coords="256,113,432,140"/>
-<area shape="rect" id="node4" href="class_heap.html#ad97571afc31e8717e5afe64006067c49" title="The function indentifies the min heap or max heap property of binomial heap. " alt="" coords="515,49,636,76"/>
-<area shape="rect" id="node6" href="class_binomial_heap.html#abd9b76190bcb0c1a4a67e4785a857a6e" title="constructor for the class BinomialHeap " alt="" coords="480,150,671,177"/>
-<area shape="rect" id="node7" href="class_binomial_heap.html#adf0eadf422e33c41f71f862e2527220c" title="The function would attempt to insert the new node into the Binomial Heap. " alt="" coords="504,201,647,228"/>
-<area shape="rect" id="node8" href="class_binomial_heap_node.html#a2735792d379ea33559e49d921eae964f" title="The function is useful in identifying the node type provided for any tree operation. As most node types have some common hiererchy it is reqired for verifying the node type in relevent tree operation. " alt="" coords="719,201,917,228"/>
+<area shape="rect" id="node2" href="class_binomial_heap.html#adb1ead55dc8580ee25d72db1e92485c9" title="The function melds all the childs on the passed Binomial Heap into itslef. " alt="" coords="275,56,413,83"/>
+<area shape="rect" id="node6" href="class_binomial_heap.html#ad4b76f97b4eff7234c963ee0c9f5ca23" title="The function when called repeatedly merges nodes of same degree till all the nodes left at the top le..." alt="" coords="256,132,432,159"/>
+<area shape="rect" id="node3" href="class_heap.html#ad97571afc31e8717e5afe64006067c49" title="The function indentifies the min heap or max heap property of binomial heap. " alt="" coords="515,5,636,32"/>
+<area shape="rect" id="node4" href="class_heap.html#a4fe12ad279a88030a0f444a46d8f4693" title="The function compares the two nodes and based on the heap type (min/max) would return true if the 2nd..." alt="" coords="737,107,899,133"/>
+<area shape="rect" id="node5" href="class_heap.html#a5258caf94c98ed842bd7be0a3a7210a5" title="Heap::IsSecondKeyBtr" alt="" coords="965,107,1120,133"/>
+<area shape="rect" id="node7" href="class_binomial_heap.html#abd9b76190bcb0c1a4a67e4785a857a6e" title="constructor for the class BinomialHeap " alt="" coords="480,157,671,184"/>
+<area shape="rect" id="node8" href="class_binomial_heap.html#adf0eadf422e33c41f71f862e2527220c" title="The function would attempt to insert the new node into the Binomial Heap. " alt="" coords="504,208,647,235"/>
+<area shape="rect" id="node9" href="class_binomial_heap_node.html#a2735792d379ea33559e49d921eae964f" title="The function is useful in identifying the node type provided for any tree operation. As most node types have some common hiererchy it is reqired for verifying the node type in relevent tree operation. " alt="" coords="719,208,917,235"/>
 </map>
 </div>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
+<h2 class="groupheader">Field Documentation</h2>
 <a id="a488d3fd012ecbe0ac701a894ac012ad8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a488d3fd012ecbe0ac701a894ac012ad8">&#9670;&nbsp;</a></span>vLastSibling</h2>
 
@@ -484,11 +531,15 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.14
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_binomial_heap.html">BinomialHeap</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
+  </ul>
+</div>
 </body>
 </html>

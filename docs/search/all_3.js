@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['fiboheapnode',['FiboHeapNode',['../class_fibo_heap_node.html',1,'FiboHeapNode'],['../class_fibo_heap_node.html#a20419d29e61830e56f36773754e80771',1,'FiboHeapNode::FiboHeapNode()']]],
-  ['fibonacciheap',['FibonacciHeap',['../class_fibonacci_heap.html',1,'FibonacciHeap'],['../class_fibo_heap_node.html#a2ee084b410f86d6b52ca4809a60a0449',1,'FiboHeapNode::FibonacciHeap()'],['../class_fibonacci_heap.html#a4ea57edcc6bc8d6a74ebd54da31a38e5',1,'FibonacciHeap::FibonacciHeap()']]],
-  ['find',['Find',['../class_s_b_tree.html#addc6d12144a2c98cc2e9984194ded943',1,'SBTree']]]
+  ['decreasekey',['DecreaseKey',['../class_fibonacci_heap.html#a8ebe8b0dc062c240925a9b568829faa5',1,'FibonacciHeap']]],
+  ['destroy',['Destroy',['../class_binomial_heap.html#ab7da1595f48e2ddbc28bd91e092a6f11',1,'BinomialHeap::Destroy()'],['../class_fibonacci_heap.html#aef6edee06c4d627a799fe2435d4d3b33',1,'FibonacciHeap::Destroy()'],['../class_heap.html#ae6b65dcd056d6a73e82da0980ea55cd1',1,'Heap::Destroy()'],['../class_s_b_tree.html#a4e14faa674f9b459e4d4980b399ffd07',1,'SBTree::Destroy()']]],
+  ['datastructures',['DataStructures',['../md__r_e_a_d_m_e.html',1,'']]]
 ];

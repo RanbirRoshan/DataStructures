@@ -9,6 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +53,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('class_heap.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,19 +84,20 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
-<a href="#friends">Friends</a> &#124;
-<a href="class_heap-members.html">List of all members</a>  </div>
+<a href="#friends">Friends</a>  </div>
   <div class="headertitle">
 <div class="title">Heap Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>the class provides heap. Both min and max heap are supported by this class. Subjected to intialization only one of them can be used in an object.  
+ <a href="class_heap.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="simpleheap_8hpp_source.html">simpleheap.hpp</a>&gt;</code></p>
 <div class="dynheader">
@@ -82,23 +108,23 @@ Inheritance diagram for Heap:</div>
 <area shape="rect" id="node2" href="class_binomial_heap.html" title="Contains binomial heap class implementation. Both min and max heap property are supported. The property can only be defined while constructiona and cannot be changed there after. " alt="" coords="5,80,108,107"/>
 <area shape="rect" id="node3" href="class_fibonacci_heap.html" title="the class provides fibonacci heap. The heap works similar to binomial heap but in addition to binomia..." alt="" coords="132,80,240,107"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for Heap:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_heap__coll__graph.png" border="0" usemap="#_heap_coll__map" alt="Collaboration graph"/></div>
 <map name="_heap_coll__map" id="_heap_coll__map">
-<area shape="rect" id="node2" href="class_heap_node.html" title="HeapNode" alt="" coords="5,81,88,108"/>
-<area shape="rect" id="node3" href="class_tree_node.html" title="TreeNode" alt="" coords="8,5,85,32"/>
+<area shape="rect" id="node2" href="class_heap_node.html" title="this is the node class that is to be extended by anyone who intents to use a &quot;heap&quot; ..." alt="" coords="5,81,88,108"/>
+<area shape="rect" id="node3" href="class_tree_node.html" title="virtual base class for all the node types. " alt="" coords="8,5,85,32"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5034dddc652f81270b217ef0ad72da3a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#a5034dddc652f81270b217ef0ad72da3a">Heap</a> (Offset pKeyOffset, KeyCmpFunc pKeyCmpFunc, bool pMinHeap)</td></tr>
-<tr class="memdesc:a5034dddc652f81270b217ef0ad72da3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor for the class <a class="el" href="class_heap.html">Heap</a>  <a href="#a5034dddc652f81270b217ef0ad72da3a">More...</a><br /></td></tr>
+<tr class="memdesc:a5034dddc652f81270b217ef0ad72da3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor for the class <a class="el" href="class_heap.html" title="the class provides heap. Both min and max heap are supported by this class. Subjected to intializatio...">Heap</a>  <a href="#a5034dddc652f81270b217ef0ad72da3a">More...</a><br /></td></tr>
 <tr class="separator:a5034dddc652f81270b217ef0ad72da3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a734051272cbd0945d3916a1a89707ba2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#a734051272cbd0945d3916a1a89707ba2">~Heap</a> ()</td></tr>
+<tr class="memitem:a734051272cbd0945d3916a1a89707ba2"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#a734051272cbd0945d3916a1a89707ba2">~Heap</a> ()</td></tr>
 <tr class="separator:a734051272cbd0945d3916a1a89707ba2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad97571afc31e8717e5afe64006067c49"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#ad97571afc31e8717e5afe64006067c49">IsMinHeap</a> ()</td></tr>
 <tr class="memdesc:ad97571afc31e8717e5afe64006067c49"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function indentifies the min heap or max heap property of binomial heap.  <a href="#ad97571afc31e8717e5afe64006067c49">More...</a><br /></td></tr>
@@ -117,6 +143,10 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a4fe12ad279a88030a0f444a46d8f4693"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#a4fe12ad279a88030a0f444a46d8f4693">IsSecondNodeBtr</a> (<a class="el" href="class_heap_node.html">HeapNode</a> *pNode1, <a class="el" href="class_heap_node.html">HeapNode</a> *pNode2)</td></tr>
 <tr class="memdesc:a4fe12ad279a88030a0f444a46d8f4693"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function compares the two nodes and based on the heap type (min/max) would return true if the 2nd node is better as per the heap type.  <a href="#a4fe12ad279a88030a0f444a46d8f4693">More...</a><br /></td></tr>
 <tr class="separator:a4fe12ad279a88030a0f444a46d8f4693"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5258caf94c98ed842bd7be0a3a7210a5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#a5258caf94c98ed842bd7be0a3a7210a5">IsSecondKeyBtr</a> (void *pKey1, void *pKey2)</td></tr>
+<tr class="separator:a5258caf94c98ed842bd7be0a3a7210a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95327d2f451fe92847f26fd0443a7f61"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#a95327d2f451fe92847f26fd0443a7f61">GetKeyOffset</a> ()</td></tr>
+<tr class="separator:a95327d2f451fe92847f26fd0443a7f61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -139,7 +169,10 @@ Friends</h2></td></tr>
 <tr class="memitem:adb3c0687f1af3f2b8d59c2ff7ec01807"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#adb3c0687f1af3f2b8d59c2ff7ec01807">BinomialHeap</a></td></tr>
 <tr class="separator:adb3c0687f1af3f2b8d59c2ff7ec01807"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>the class provides heap. Both min and max heap are supported by this class. Subjected to intialization only one of them can be used in an object. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd><a class="el" href="class_heap.html" title="the class provides heap. Both min and max heap are supported by this class. Subjected to intializatio...">Heap</a> class implementation </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5034dddc652f81270b217ef0ad72da3a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5034dddc652f81270b217ef0ad72da3a">&#9670;&nbsp;</a></span>Heap()</h2>
 
@@ -172,7 +205,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>constructor for the class <a class="el" href="class_heap.html">Heap</a> </p>
+<p>constructor for the class <a class="el" href="class_heap.html" title="the class provides heap. Both min and max heap are supported by this class. Subjected to intializatio...">Heap</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">pKeyOffset</td><td>Offset of key in the node. Use offsetof to find the same. </td></tr>
@@ -189,6 +222,9 @@ Friends</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Heap::~Heap </td>
@@ -197,6 +233,11 @@ Friends</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <div class="dynheader">
 Here is the call graph for this function:</div>
@@ -238,7 +279,7 @@ Here is the call graph for this function:</div>
 
 <p>The function destroys the tree by calling delete on all its node and setting the root as null. </p>
 
-<p>Reimplemented in <a class="el" href="class_binomial_heap.html#ab7da1595f48e2ddbc28bd91e092a6f11">BinomialHeap</a>, and <a class="el" href="class_fibonacci_heap.html#aef6edee06c4d627a799fe2435d4d3b33">FibonacciHeap</a>.</p>
+<p>Reimplemented in <a class="el" href="class_fibonacci_heap.html#aef6edee06c4d627a799fe2435d4d3b33">FibonacciHeap</a>, and <a class="el" href="class_binomial_heap.html#ab7da1595f48e2ddbc28bd91e092a6f11">BinomialHeap</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -255,6 +296,41 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="class_heap_ae6b65dcd056d6a73e82da0980ea55cd1_icgraph.png" border="0" usemap="#class_heap_ae6b65dcd056d6a73e82da0980ea55cd1_icgraph" alt=""/></div>
 <map name="class_heap_ae6b65dcd056d6a73e82da0980ea55cd1_icgraph" id="class_heap_ae6b65dcd056d6a73e82da0980ea55cd1_icgraph">
 <area shape="rect" id="node2" href="class_heap.html#a734051272cbd0945d3916a1a89707ba2" title="Heap::~Heap" alt="" coords="159,5,257,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a95327d2f451fe92847f26fd0443a7f61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95327d2f451fe92847f26fd0443a7f61">&#9670;&nbsp;</a></span>GetKeyOffset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Heap::GetKeyOffset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_heap_a95327d2f451fe92847f26fd0443a7f61_icgraph.png" border="0" usemap="#class_heap_a95327d2f451fe92847f26fd0443a7f61_icgraph" alt=""/></div>
+<map name="class_heap_a95327d2f451fe92847f26fd0443a7f61_icgraph" id="class_heap_a95327d2f451fe92847f26fd0443a7f61_icgraph">
+<area shape="rect" id="node2" href="class_fibonacci_heap.html#a75ef3fcdd3bbe2527a316eabf829ea05" title="FibonacciHeap::ChangeKey" alt="" coords="192,31,375,57"/>
+<area shape="rect" id="node3" href="class_fibonacci_heap.html#a8017a5ca5f7e3dea7f1fbb4fbe96d033" title="FibonacciHeap::IncreaseKey" alt="" coords="426,5,614,32"/>
+<area shape="rect" id="node4" href="class_fibonacci_heap.html#a8ebe8b0dc062c240925a9b568829faa5" title="FibonacciHeap::DecreaseKey" alt="" coords="423,56,617,83"/>
 </map>
 </div>
 
@@ -284,14 +360,73 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p>The function indentifies the min heap or max heap property of binomial heap. </p>
-<dl class="section return"><dt>Returns</dt><dd>True if Min <a class="el" href="class_heap.html">Heap</a> otherwise False for a max <a class="el" href="class_heap.html">Heap</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if Min <a class="el" href="class_heap.html" title="the class provides heap. Both min and max heap are supported by this class. Subjected to intializatio...">Heap</a> otherwise False for a max <a class="el" href="class_heap.html" title="the class provides heap. Both min and max heap are supported by this class. Subjected to intializatio...">Heap</a> </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_heap_ad97571afc31e8717e5afe64006067c49_icgraph.png" border="0" usemap="#class_heap_ad97571afc31e8717e5afe64006067c49_icgraph" alt=""/></div>
 <map name="class_heap_ad97571afc31e8717e5afe64006067c49_icgraph" id="class_heap_ad97571afc31e8717e5afe64006067c49_icgraph">
-<area shape="rect" id="node2" href="class_binomial_heap.html#adb1ead55dc8580ee25d72db1e92485c9" title="The function melds all the childs on the passed Binomial Heap into itslef. " alt="" coords="175,5,313,32"/>
-<area shape="rect" id="node3" href="class_binomial_heap.html#a996af0ede76dd33b45f3309380d8e888" title="The function provides the min node if the heap is of min type else the max node. " alt="" coords="361,5,564,32"/>
+<area shape="rect" id="node2" href="class_binomial_heap.html#adb1ead55dc8580ee25d72db1e92485c9" title="The function melds all the childs on the passed Binomial Heap into itslef. " alt="" coords="203,5,341,32"/>
+<area shape="rect" id="node4" href="class_fibonacci_heap.html#a8017a5ca5f7e3dea7f1fbb4fbe96d033" title="FibonacciHeap::IncreaseKey" alt="" coords="178,56,366,83"/>
+<area shape="rect" id="node5" href="class_fibonacci_heap.html#a8ebe8b0dc062c240925a9b568829faa5" title="FibonacciHeap::DecreaseKey" alt="" coords="175,107,369,133"/>
+<area shape="rect" id="node3" href="class_binomial_heap.html#a996af0ede76dd33b45f3309380d8e888" title="The function provides the min node if the heap is of min type else the max node. " alt="" coords="417,5,620,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5258caf94c98ed842bd7be0a3a7210a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5258caf94c98ed842bd7be0a3a7210a5">&#9670;&nbsp;</a></span>IsSecondKeyBtr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Heap::IsSecondKeyBtr </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pKey1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pKey2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_heap_a5258caf94c98ed842bd7be0a3a7210a5_icgraph.png" border="0" usemap="#class_heap_a5258caf94c98ed842bd7be0a3a7210a5_icgraph" alt=""/></div>
+<map name="class_heap_a5258caf94c98ed842bd7be0a3a7210a5_icgraph" id="class_heap_a5258caf94c98ed842bd7be0a3a7210a5_icgraph">
+<area shape="rect" id="node2" href="class_fibonacci_heap.html#a75ef3fcdd3bbe2527a316eabf829ea05" title="FibonacciHeap::ChangeKey" alt="" coords="1337,68,1520,95"/>
+<area shape="rect" id="node5" href="class_heap.html#a4fe12ad279a88030a0f444a46d8f4693" title="The function compares the two nodes and based on the heap type (min/max) would return true if the 2nd..." alt="" coords="208,245,369,272"/>
+<area shape="rect" id="node3" href="class_fibonacci_heap.html#a8017a5ca5f7e3dea7f1fbb4fbe96d033" title="FibonacciHeap::IncreaseKey" alt="" coords="1571,43,1759,69"/>
+<area shape="rect" id="node4" href="class_fibonacci_heap.html#a8ebe8b0dc062c240925a9b568829faa5" title="FibonacciHeap::DecreaseKey" alt="" coords="1568,93,1763,120"/>
+<area shape="rect" id="node6" href="class_binomial_heap.html#adf0eadf422e33c41f71f862e2527220c" title="The function would attempt to insert the new node into the Binomial Heap. " alt="" coords="433,423,576,449"/>
+<area shape="rect" id="node7" href="class_binomial_heap.html#ad4b76f97b4eff7234c963ee0c9f5ca23" title="The function when called repeatedly merges nodes of same degree till all the nodes left at the top le..." alt="" coords="643,372,819,399"/>
+<area shape="rect" id="node9" href="class_binomial_heap.html#adb1ead55dc8580ee25d72db1e92485c9" title="The function melds all the childs on the passed Binomial Heap into itslef. " alt="" coords="662,321,801,348"/>
+<area shape="rect" id="node10" href="class_fibonacci_heap.html#ace7460151b2cc918debbd7c65920920b" title="the funciton provides capability to insert a node in the tree " alt="" coords="431,169,579,196"/>
+<area shape="rect" id="node11" href="class_fibonacci_heap.html#af5a274f58efe0a7bec42aee46d46f87b" title="The function when called repeatedly merges nodes of same degree till all the nodes left at the top le..." alt="" coords="640,220,823,247"/>
+<area shape="rect" id="node15" href="class_fibonacci_heap.html#a7fafd2d33518ad204cc9f1f954da3ad5" title="FibonacciHeap::MeldNode" alt="" coords="417,271,592,297"/>
+<area shape="rect" id="node8" href="class_binomial_heap.html#a996af0ede76dd33b45f3309380d8e888" title="The function provides the min node if the heap is of min type else the max node. " alt="" coords="873,347,1076,373"/>
+<area shape="rect" id="node14" href="class_fibonacci_heap.html#ac1ee0019f2dea232dcae5dcd794af348" title="FibonacciHeap::ChildCut" alt="" coords="1346,144,1511,171"/>
+<area shape="rect" id="node12" href="class_fibonacci_heap.html#a75aed47464f1fd3ac6f2779e8b450265" title="FibonacciHeap::RemoveMinMax" alt="" coords="871,220,1079,247"/>
+<area shape="rect" id="node13" href="class_fibonacci_heap.html#a29c7487db1e9afb23008d6163dd75715" title="FibonacciHeap::Remove" alt="" coords="1127,144,1289,171"/>
 </map>
 </div>
 
@@ -326,7 +461,7 @@ Here is the caller graph for this function:</div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -341,14 +476,31 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the second node has less value and heap is min heap or second value is greater and the heap is a max heap. Else it would return false. </dd></dl>
 <div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_heap_a4fe12ad279a88030a0f444a46d8f4693_cgraph.png" border="0" usemap="#class_heap_a4fe12ad279a88030a0f444a46d8f4693_cgraph" alt=""/></div>
+<map name="class_heap_a4fe12ad279a88030a0f444a46d8f4693_cgraph" id="class_heap_a4fe12ad279a88030a0f444a46d8f4693_cgraph">
+<area shape="rect" id="node2" href="class_heap.html#a5258caf94c98ed842bd7be0a3a7210a5" title="Heap::IsSecondKeyBtr" alt="" coords="215,5,369,32"/>
+</map>
+</div>
+<div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_heap_a4fe12ad279a88030a0f444a46d8f4693_icgraph.png" border="0" usemap="#class_heap_a4fe12ad279a88030a0f444a46d8f4693_icgraph" alt=""/></div>
 <map name="class_heap_a4fe12ad279a88030a0f444a46d8f4693_icgraph" id="class_heap_a4fe12ad279a88030a0f444a46d8f4693_icgraph">
-<area shape="rect" id="node2" href="class_binomial_heap.html#adf0eadf422e33c41f71f862e2527220c" title="The function would attempt to insert the new node into the Binomial Heap. " alt="" coords="215,5,357,32"/>
-<area shape="rect" id="node3" href="class_binomial_heap.html#ad4b76f97b4eff7234c963ee0c9f5ca23" title="The function when called repeatedly merges nodes of same degree till all the nodes left at the top le..." alt="" coords="405,56,581,83"/>
-<area shape="rect" id="node4" href="class_binomial_heap.html#a996af0ede76dd33b45f3309380d8e888" title="The function provides the min node if the heap is of min type else the max node. " alt="" coords="629,107,832,133"/>
-<area shape="rect" id="node5" href="class_binomial_heap.html#adb1ead55dc8580ee25d72db1e92485c9" title="The function melds all the childs on the passed Binomial Heap into itslef. " alt="" coords="424,157,563,184"/>
+<area shape="rect" id="node2" href="class_binomial_heap.html#adf0eadf422e33c41f71f862e2527220c" title="The function would attempt to insert the new node into the Binomial Heap. " alt="" coords="231,36,373,63"/>
+<area shape="rect" id="node3" href="class_binomial_heap.html#ad4b76f97b4eff7234c963ee0c9f5ca23" title="The function when called repeatedly merges nodes of same degree till all the nodes left at the top le..." alt="" coords="441,36,617,63"/>
+<area shape="rect" id="node5" href="class_binomial_heap.html#adb1ead55dc8580ee25d72db1e92485c9" title="The function melds all the childs on the passed Binomial Heap into itslef. " alt="" coords="459,87,598,113"/>
+<area shape="rect" id="node6" href="class_fibonacci_heap.html#ace7460151b2cc918debbd7c65920920b" title="the funciton provides capability to insert a node in the tree " alt="" coords="228,239,376,265"/>
+<area shape="rect" id="node7" href="class_fibonacci_heap.html#af5a274f58efe0a7bec42aee46d46f87b" title="The function when called repeatedly merges nodes of same degree till all the nodes left at the top le..." alt="" coords="437,188,620,215"/>
+<area shape="rect" id="node10" href="class_fibonacci_heap.html#a75ef3fcdd3bbe2527a316eabf829ea05" title="FibonacciHeap::ChangeKey" alt="" coords="1135,289,1317,316"/>
+<area shape="rect" id="node14" href="class_fibonacci_heap.html#a7fafd2d33518ad204cc9f1f954da3ad5" title="FibonacciHeap::MeldNode" alt="" coords="215,137,389,164"/>
+<area shape="rect" id="node4" href="class_binomial_heap.html#a996af0ede76dd33b45f3309380d8e888" title="The function provides the min node if the heap is of min type else the max node. " alt="" coords="671,61,873,88"/>
+<area shape="rect" id="node13" href="class_fibonacci_heap.html#ac1ee0019f2dea232dcae5dcd794af348" title="FibonacciHeap::ChildCut" alt="" coords="1143,188,1309,215"/>
+<area shape="rect" id="node8" href="class_fibonacci_heap.html#a75aed47464f1fd3ac6f2779e8b450265" title="FibonacciHeap::RemoveMinMax" alt="" coords="668,188,876,215"/>
+<area shape="rect" id="node9" href="class_fibonacci_heap.html#a29c7487db1e9afb23008d6163dd75715" title="FibonacciHeap::Remove" alt="" coords="924,188,1087,215"/>
+<area shape="rect" id="node11" href="class_fibonacci_heap.html#a8017a5ca5f7e3dea7f1fbb4fbe96d033" title="FibonacciHeap::IncreaseKey" alt="" coords="1369,264,1557,291"/>
+<area shape="rect" id="node12" href="class_fibonacci_heap.html#a8ebe8b0dc062c240925a9b568829faa5" title="FibonacciHeap::DecreaseKey" alt="" coords="1365,315,1560,341"/>
 </map>
 </div>
 
@@ -440,7 +592,7 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
+<h2 class="groupheader">Field Documentation</h2>
 <a id="a412afeebe145db2a04c28ee89726ed77"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a412afeebe145db2a04c28ee89726ed77">&#9670;&nbsp;</a></span>vIsMinHeap</h2>
 
@@ -534,11 +686,15 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.14
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_heap.html">Heap</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
+  </ul>
+</div>
 </body>
 </html>

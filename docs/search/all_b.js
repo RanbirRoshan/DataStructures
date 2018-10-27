@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['todo_20list',['Todo List',['../todo.html',1,'']]],
-  ['treenode',['TreeNode',['../class_tree_node.html',1,'']]]
+  ['peekminmax',['PeekMinMax',['../class_heap.html#a8bf4c943d350e2f23ecfc9644c31579b',1,'Heap']]]
 ];

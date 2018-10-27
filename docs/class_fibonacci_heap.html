@@ -9,6 +9,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -45,6 +53,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('class_fibonacci_heap.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,17 +84,17 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="class_fibonacci_heap-members.html">List of all members</a>  </div>
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a>  </div>
   <div class="headertitle">
 <div class="title">FibonacciHeap Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>the class provides fibonacci heap. The heap works similar to binomial heap but in addition to binomial heap provides the API for arbitrary node removal along with Increase Key of an arbitrary for Max <a class="el" href="class_heap.html">Heap</a> and Decrease Key for an arbitrary node in a Min <a class="el" href="class_heap.html">Heap</a>.  
+<p>the class provides fibonacci heap. The heap works similar to binomial heap but in addition to binomial heap provides the API for arbitrary node removal along with Increase Key of an arbitrary for Max <a class="el" href="class_heap.html" title="the class provides heap. Both min and max heap are supported by this class. Subjected to intializatio...">Heap</a> and Decrease Key for an arbitrary node in a Min <a class="el" href="class_heap.html" title="the class provides heap. Both min and max heap are supported by this class. Subjected to intializatio...">Heap</a>.  
  <a href="class_fibonacci_heap.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="fibonacciheap_8hpp_source.html">fibonacciheap.hpp</a>&gt;</code></p>
@@ -78,24 +103,24 @@ Inheritance diagram for FibonacciHeap:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_fibonacci_heap__inherit__graph.png" border="0" usemap="#_fibonacci_heap_inherit__map" alt="Inheritance graph"/></div>
 <map name="_fibonacci_heap_inherit__map" id="_fibonacci_heap_inherit__map">
-<area shape="rect" id="node2" href="class_heap.html" title="Heap" alt="" coords="33,5,85,32"/>
+<area shape="rect" id="node2" href="class_heap.html" title="the class provides heap. Both min and max heap are supported by this class. Subjected to intializatio..." alt="" coords="33,5,85,32"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for FibonacciHeap:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_fibonacci_heap__coll__graph.png" border="0" usemap="#_fibonacci_heap_coll__map" alt="Collaboration graph"/></div>
 <map name="_fibonacci_heap_coll__map" id="_fibonacci_heap_coll__map">
-<area shape="rect" id="node2" href="class_heap.html" title="Heap" alt="" coords="33,171,85,197"/>
-<area shape="rect" id="node3" href="class_heap_node.html" title="HeapNode" alt="" coords="18,81,101,108"/>
-<area shape="rect" id="node4" href="class_tree_node.html" title="TreeNode" alt="" coords="21,5,98,32"/>
+<area shape="rect" id="node2" href="class_heap.html" title="the class provides heap. Both min and max heap are supported by this class. Subjected to intializatio..." alt="" coords="33,171,85,197"/>
+<area shape="rect" id="node3" href="class_heap_node.html" title="this is the node class that is to be extended by anyone who intents to use a &quot;heap&quot; ..." alt="" coords="18,81,101,108"/>
+<area shape="rect" id="node4" href="class_tree_node.html" title="virtual base class for all the node types. " alt="" coords="21,5,98,32"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a4ea57edcc6bc8d6a74ebd54da31a38e5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fibonacci_heap.html#a4ea57edcc6bc8d6a74ebd54da31a38e5">FibonacciHeap</a> (Offset pKeyOffset, KeyCmpFunc pKeyCmpFunc, bool pIsMinHeap)</td></tr>
-<tr class="memdesc:a4ea57edcc6bc8d6a74ebd54da31a38e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor for Fibonacci <a class="el" href="class_heap.html">Heap</a> class  <a href="#a4ea57edcc6bc8d6a74ebd54da31a38e5">More...</a><br /></td></tr>
+<tr class="memdesc:a4ea57edcc6bc8d6a74ebd54da31a38e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor for Fibonacci <a class="el" href="class_heap.html" title="the class provides heap. Both min and max heap are supported by this class. Subjected to intializatio...">Heap</a> class  <a href="#a4ea57edcc6bc8d6a74ebd54da31a38e5">More...</a><br /></td></tr>
 <tr class="separator:a4ea57edcc6bc8d6a74ebd54da31a38e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9191a68a52e89c7c2883518c5a3a540"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fibonacci_heap.html#ab9191a68a52e89c7c2883518c5a3a540">~FibonacciHeap</a> ()</td></tr>
 <tr class="memdesc:ab9191a68a52e89c7c2883518c5a3a540"><td class="mdescLeft">&#160;</td><td class="mdescRight">destructor for the fibonacci heap class  <a href="#ab9191a68a52e89c7c2883518c5a3a540">More...</a><br /></td></tr>
@@ -106,11 +131,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ace7460151b2cc918debbd7c65920920b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_fibo_heap_node.html">FiboHeapNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fibonacci_heap.html#ace7460151b2cc918debbd7c65920920b">Insert</a> (<a class="el" href="class_fibo_heap_node.html">FiboHeapNode</a> *pNode)</td></tr>
 <tr class="memdesc:ace7460151b2cc918debbd7c65920920b"><td class="mdescLeft">&#160;</td><td class="mdescRight">the funciton provides capability to insert a node in the tree  <a href="#ace7460151b2cc918debbd7c65920920b">More...</a><br /></td></tr>
 <tr class="separator:ace7460151b2cc918debbd7c65920920b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75aed47464f1fd3ac6f2779e8b450265"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_fibo_heap_node.html">FiboHeapNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fibonacci_heap.html#a75aed47464f1fd3ac6f2779e8b450265">RemoveMinMax</a> ()</td></tr>
+<tr class="separator:a75aed47464f1fd3ac6f2779e8b450265"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29c7487db1e9afb23008d6163dd75715"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_fibo_heap_node.html">FiboHeapNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fibonacci_heap.html#a29c7487db1e9afb23008d6163dd75715">Remove</a> (<a class="el" href="class_fibo_heap_node.html">FiboHeapNode</a> *pNode)</td></tr>
+<tr class="separator:a29c7487db1e9afb23008d6163dd75715"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8017a5ca5f7e3dea7f1fbb4fbe96d033"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fibonacci_heap.html#a8017a5ca5f7e3dea7f1fbb4fbe96d033">IncreaseKey</a> (<a class="el" href="class_fibo_heap_node.html">FiboHeapNode</a> *pNode, void *pNewKey, size_t pSize)</td></tr>
+<tr class="separator:a8017a5ca5f7e3dea7f1fbb4fbe96d033"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ebe8b0dc062c240925a9b568829faa5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fibonacci_heap.html#a8ebe8b0dc062c240925a9b568829faa5">DecreaseKey</a> (<a class="el" href="class_fibo_heap_node.html">FiboHeapNode</a> *pNode, void *pNewKey, size_t pSize)</td></tr>
+<tr class="separator:a8ebe8b0dc062c240925a9b568829faa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_heap"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_heap')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_heap.html">Heap</a></td></tr>
 <tr class="memitem:a5034dddc652f81270b217ef0ad72da3a inherit pub_methods_class_heap"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#a5034dddc652f81270b217ef0ad72da3a">Heap</a> (Offset pKeyOffset, KeyCmpFunc pKeyCmpFunc, bool pMinHeap)</td></tr>
-<tr class="memdesc:a5034dddc652f81270b217ef0ad72da3a inherit pub_methods_class_heap"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor for the class <a class="el" href="class_heap.html">Heap</a>  <a href="class_heap.html#a5034dddc652f81270b217ef0ad72da3a">More...</a><br /></td></tr>
+<tr class="memdesc:a5034dddc652f81270b217ef0ad72da3a inherit pub_methods_class_heap"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor for the class <a class="el" href="class_heap.html" title="the class provides heap. Both min and max heap are supported by this class. Subjected to intializatio...">Heap</a>  <a href="class_heap.html#a5034dddc652f81270b217ef0ad72da3a">More...</a><br /></td></tr>
 <tr class="separator:a5034dddc652f81270b217ef0ad72da3a inherit pub_methods_class_heap"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a734051272cbd0945d3916a1a89707ba2 inherit pub_methods_class_heap"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#a734051272cbd0945d3916a1a89707ba2">~Heap</a> ()</td></tr>
+<tr class="memitem:a734051272cbd0945d3916a1a89707ba2 inherit pub_methods_class_heap"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#a734051272cbd0945d3916a1a89707ba2">~Heap</a> ()</td></tr>
 <tr class="separator:a734051272cbd0945d3916a1a89707ba2 inherit pub_methods_class_heap"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad97571afc31e8717e5afe64006067c49 inherit pub_methods_class_heap"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#ad97571afc31e8717e5afe64006067c49">IsMinHeap</a> ()</td></tr>
 <tr class="memdesc:ad97571afc31e8717e5afe64006067c49 inherit pub_methods_class_heap"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function indentifies the min heap or max heap property of binomial heap.  <a href="class_heap.html#ad97571afc31e8717e5afe64006067c49">More...</a><br /></td></tr>
@@ -121,19 +154,41 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4dd3a70e1c90740e1dbbde21e88617c9 inherit pub_methods_class_heap"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_heap_node.html">HeapNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#a4dd3a70e1c90740e1dbbde21e88617c9">RemoveMinMax</a> ()</td></tr>
 <tr class="separator:a4dd3a70e1c90740e1dbbde21e88617c9 inherit pub_methods_class_heap"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:af5a274f58efe0a7bec42aee46d46f87b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fibonacci_heap.html#af5a274f58efe0a7bec42aee46d46f87b">MergeHeap</a> ()</td></tr>
+<tr class="memdesc:af5a274f58efe0a7bec42aee46d46f87b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function when called repeatedly merges nodes of same degree till all the nodes left at the top level have unique degree.  <a href="#af5a274f58efe0a7bec42aee46d46f87b">More...</a><br /></td></tr>
+<tr class="separator:af5a274f58efe0a7bec42aee46d46f87b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75ef3fcdd3bbe2527a316eabf829ea05"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fibonacci_heap.html#a75ef3fcdd3bbe2527a316eabf829ea05">ChangeKey</a> (<a class="el" href="class_fibo_heap_node.html">FiboHeapNode</a> *pNode, void *pNewKey, size_t pSize)</td></tr>
+<tr class="separator:a75ef3fcdd3bbe2527a316eabf829ea05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fafd2d33518ad204cc9f1f954da3ad5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fibonacci_heap.html#a7fafd2d33518ad204cc9f1f954da3ad5">MeldNode</a> (<a class="el" href="class_fibo_heap_node.html">FiboHeapNode</a> *pNode)</td></tr>
+<tr class="separator:a7fafd2d33518ad204cc9f1f954da3ad5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1ee0019f2dea232dcae5dcd794af348"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fibonacci_heap.html#ac1ee0019f2dea232dcae5dcd794af348">ChildCut</a> (<a class="el" href="class_fibo_heap_node.html">FiboHeapNode</a> *pNode)</td></tr>
+<tr class="separator:ac1ee0019f2dea232dcae5dcd794af348"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:abd7191cfca30a92c4267ad989343a5dd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_fibonacci_heap.html#abd7191cfca30a92c4267ad989343a5dd">AddSiblingToNode</a> (<a class="el" href="class_fibo_heap_node.html">FiboHeapNode</a> *pNode, <a class="el" href="class_fibo_heap_node.html">FiboHeapNode</a> *pNewSibling)</td></tr>
+<tr class="separator:abd7191cfca30a92c4267ad989343a5dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_class_heap"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_heap')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_heap.html">Heap</a></td></tr>
 <tr class="memitem:a4fe12ad279a88030a0f444a46d8f4693 inherit pro_methods_class_heap"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#a4fe12ad279a88030a0f444a46d8f4693">IsSecondNodeBtr</a> (<a class="el" href="class_heap_node.html">HeapNode</a> *pNode1, <a class="el" href="class_heap_node.html">HeapNode</a> *pNode2)</td></tr>
 <tr class="memdesc:a4fe12ad279a88030a0f444a46d8f4693 inherit pro_methods_class_heap"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function compares the two nodes and based on the heap type (min/max) would return true if the 2nd node is better as per the heap type.  <a href="class_heap.html#a4fe12ad279a88030a0f444a46d8f4693">More...</a><br /></td></tr>
 <tr class="separator:a4fe12ad279a88030a0f444a46d8f4693 inherit pro_methods_class_heap"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5258caf94c98ed842bd7be0a3a7210a5 inherit pro_methods_class_heap"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#a5258caf94c98ed842bd7be0a3a7210a5">IsSecondKeyBtr</a> (void *pKey1, void *pKey2)</td></tr>
+<tr class="separator:a5258caf94c98ed842bd7be0a3a7210a5 inherit pro_methods_class_heap"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95327d2f451fe92847f26fd0443a7f61 inherit pro_methods_class_heap"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#a95327d2f451fe92847f26fd0443a7f61">GetKeyOffset</a> ()</td></tr>
+<tr class="separator:a95327d2f451fe92847f26fd0443a7f61 inherit pro_methods_class_heap"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_heap"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_heap')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_heap.html">Heap</a></td></tr>
 <tr class="memitem:a8c25f21af028dbe50bdf11fbc697559c inherit pro_attribs_class_heap"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_heap_node.html">HeapNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_heap.html#a8c25f21af028dbe50bdf11fbc697559c">vRoot</a></td></tr>
 <tr class="separator:a8c25f21af028dbe50bdf11fbc697559c inherit pro_attribs_class_heap"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>the class provides fibonacci heap. The heap works similar to binomial heap but in addition to binomial heap provides the API for arbitrary node removal along with Increase Key of an arbitrary for Max <a class="el" href="class_heap.html">Heap</a> and Decrease Key for an arbitrary node in a Min <a class="el" href="class_heap.html">Heap</a>. </p>
-<dl class="section note"><dt>Note</dt><dd>the data structue does not own the nodes and so it is the responsibility of the user to free nodes stored in the </dd></dl>
+<div class="textblock"><p>the class provides fibonacci heap. The heap works similar to binomial heap but in addition to binomial heap provides the API for arbitrary node removal along with Increase Key of an arbitrary for Max <a class="el" href="class_heap.html" title="the class provides heap. Both min and max heap are supported by this class. Subjected to intializatio...">Heap</a> and Decrease Key for an arbitrary node in a Min <a class="el" href="class_heap.html" title="the class provides heap. Both min and max heap are supported by this class. Subjected to intializatio...">Heap</a>. </p>
+<dl class="section note"><dt>Note</dt><dd>the data structue does not own the nodes and so it is the responsibility of the user to free nodes stored in the</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd><a class="el" href="class_fibonacci_heap.html" title="the class provides fibonacci heap. The heap works similar to binomial heap but in addition to binomia...">FibonacciHeap</a> class implementation </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4ea57edcc6bc8d6a74ebd54da31a38e5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4ea57edcc6bc8d6a74ebd54da31a38e5">&#9670;&nbsp;</a></span>FibonacciHeap()</h2>
@@ -167,12 +222,12 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>constructor for Fibonacci <a class="el" href="class_heap.html">Heap</a> class </p>
+<p>constructor for Fibonacci <a class="el" href="class_heap.html" title="the class provides heap. Both min and max heap are supported by this class. Subjected to intializatio...">Heap</a> class </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">pKeyOffset</td><td>Offset of key in the node. Use offsetof to find the same. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">pKeyCmpFunc</td><td>Key comparison function </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">pMinHeap</td><td>True if the heap is supposed to behave as min heap else false </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pIsMinHeap</td><td>True if the heap is supposed to behave as min heap else false </td></tr>
   </table>
   </dd>
 </dl>
@@ -195,10 +250,254 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>destructor for the fibonacci heap class </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_fibonacci_heap_ab9191a68a52e89c7c2883518c5a3a540_cgraph.png" border="0" usemap="#class_fibonacci_heap_ab9191a68a52e89c7c2883518c5a3a540_cgraph" alt=""/></div>
+<map name="class_fibonacci_heap_ab9191a68a52e89c7c2883518c5a3a540_cgraph" id="class_fibonacci_heap_ab9191a68a52e89c7c2883518c5a3a540_cgraph">
+<area shape="rect" id="node2" href="class_fibonacci_heap.html#aef6edee06c4d627a799fe2435d4d3b33" title="The function cleans up the entire heap by calling delete on every node on the heap but as Fibbonaci h..." alt="" coords="264,5,425,32"/>
+</map>
+</div>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="abd7191cfca30a92c4267ad989343a5dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd7191cfca30a92c4267ad989343a5dd">&#9670;&nbsp;</a></span>AddSiblingToNode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FibonacciHeap::AddSiblingToNode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_fibo_heap_node.html">FiboHeapNode</a> *&#160;</td>
+          <td class="paramname"><em>pNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_fibo_heap_node.html">FiboHeapNode</a> *&#160;</td>
+          <td class="paramname"><em>pNewSibling</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_fibonacci_heap_abd7191cfca30a92c4267ad989343a5dd_icgraph.png" border="0" usemap="#class_fibonacci_heap_abd7191cfca30a92c4267ad989343a5dd_icgraph" alt=""/></div>
+<map name="class_fibonacci_heap_abd7191cfca30a92c4267ad989343a5dd_icgraph" id="class_fibonacci_heap_abd7191cfca30a92c4267ad989343a5dd_icgraph">
+<area shape="rect" id="node2" href="class_fibonacci_heap.html#ace7460151b2cc918debbd7c65920920b" title="the funciton provides capability to insert a node in the tree " alt="" coords="232,132,380,159"/>
+<area shape="rect" id="node3" href="class_fibonacci_heap.html#af5a274f58efe0a7bec42aee46d46f87b" title="The function when called repeatedly merges nodes of same degree till all the nodes left at the top le..." alt="" coords="428,183,611,209"/>
+<area shape="rect" id="node10" href="class_fibonacci_heap.html#a7fafd2d33518ad204cc9f1f954da3ad5" title="FibonacciHeap::MeldNode" alt="" coords="432,233,607,260"/>
+<area shape="rect" id="node6" href="class_fibonacci_heap.html#a75ef3fcdd3bbe2527a316eabf829ea05" title="FibonacciHeap::ChangeKey" alt="" coords="1125,31,1308,57"/>
+<area shape="rect" id="node9" href="class_fibonacci_heap.html#ac1ee0019f2dea232dcae5dcd794af348" title="FibonacciHeap::ChildCut" alt="" coords="1134,81,1299,108"/>
+<area shape="rect" id="node4" href="class_fibonacci_heap.html#a75aed47464f1fd3ac6f2779e8b450265" title="FibonacciHeap::RemoveMinMax" alt="" coords="659,183,867,209"/>
+<area shape="rect" id="node5" href="class_fibonacci_heap.html#a29c7487db1e9afb23008d6163dd75715" title="FibonacciHeap::Remove" alt="" coords="915,81,1077,108"/>
+<area shape="rect" id="node7" href="class_fibonacci_heap.html#a8017a5ca5f7e3dea7f1fbb4fbe96d033" title="FibonacciHeap::IncreaseKey" alt="" coords="1359,5,1547,32"/>
+<area shape="rect" id="node8" href="class_fibonacci_heap.html#a8ebe8b0dc062c240925a9b568829faa5" title="FibonacciHeap::DecreaseKey" alt="" coords="1356,56,1551,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a75ef3fcdd3bbe2527a316eabf829ea05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75ef3fcdd3bbe2527a316eabf829ea05">&#9670;&nbsp;</a></span>ChangeKey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool FibonacciHeap::ChangeKey </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_fibo_heap_node.html">FiboHeapNode</a> *&#160;</td>
+          <td class="paramname"><em>pNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pNewKey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>pSize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_fibonacci_heap_a75ef3fcdd3bbe2527a316eabf829ea05_cgraph.png" border="0" usemap="#class_fibonacci_heap_a75ef3fcdd3bbe2527a316eabf829ea05_cgraph" alt=""/></div>
+<map name="class_fibonacci_heap_a75ef3fcdd3bbe2527a316eabf829ea05_cgraph" id="class_fibonacci_heap_a75ef3fcdd3bbe2527a316eabf829ea05_cgraph">
+<area shape="rect" id="node2" href="class_heap.html#a5258caf94c98ed842bd7be0a3a7210a5" title="Heap::IsSecondKeyBtr" alt="" coords="1383,72,1537,98"/>
+<area shape="rect" id="node3" href="class_heap.html#a95327d2f451fe92847f26fd0443a7f61" title="Heap::GetKeyOffset" alt="" coords="248,46,387,73"/>
+<area shape="rect" id="node4" href="class_heap.html#a4fe12ad279a88030a0f444a46d8f4693" title="The function compares the two nodes and based on the heap type (min/max) would return true if the 2nd..." alt="" coords="1165,148,1326,174"/>
+<area shape="rect" id="node5" href="class_fibonacci_heap.html#a29c7487db1e9afb23008d6163dd75715" title="FibonacciHeap::Remove" alt="" coords="236,198,399,225"/>
+<area shape="rect" id="node10" href="class_fibonacci_heap.html#ace7460151b2cc918debbd7c65920920b" title="the funciton provides capability to insert a node in the tree " alt="" coords="947,300,1095,326"/>
+<area shape="rect" id="node6" href="class_fibonacci_heap.html#a75aed47464f1fd3ac6f2779e8b450265" title="FibonacciHeap::RemoveMinMax" alt="" coords="447,173,655,200"/>
+<area shape="rect" id="node12" href="class_fibonacci_heap.html#ac1ee0019f2dea232dcae5dcd794af348" title="FibonacciHeap::ChildCut" alt="" coords="468,224,633,250"/>
+<area shape="rect" id="node7" href="class_fibonacci_heap.html#a7fafd2d33518ad204cc9f1f954da3ad5" title="FibonacciHeap::MeldNode" alt="" coords="933,148,1108,174"/>
+<area shape="rect" id="node9" href="class_fibonacci_heap.html#af5a274f58efe0a7bec42aee46d46f87b" title="The function when called repeatedly merges nodes of same degree till all the nodes left at the top le..." alt="" coords="703,198,885,225"/>
+<area shape="rect" id="node8" href="class_fibonacci_heap.html#abd7191cfca30a92c4267ad989343a5dd" title="FibonacciHeap::AddSibling\lToNode" alt="" coords="1156,238,1335,279"/>
+<area shape="rect" id="node11" href="class_fibo_heap_node.html#a72400f6fb8a3b2301ca02778d99f0fff" title="The function is useful in identifying the node type provided for any tree operation. As most node types have some common hiererchy it is reqired for verifying the node type in relevent tree operation. " alt="" coords="1159,304,1332,330"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_fibonacci_heap_a75ef3fcdd3bbe2527a316eabf829ea05_icgraph.png" border="0" usemap="#class_fibonacci_heap_a75ef3fcdd3bbe2527a316eabf829ea05_icgraph" alt=""/></div>
+<map name="class_fibonacci_heap_a75ef3fcdd3bbe2527a316eabf829ea05_icgraph" id="class_fibonacci_heap_a75ef3fcdd3bbe2527a316eabf829ea05_icgraph">
+<area shape="rect" id="node2" href="class_fibonacci_heap.html#a8017a5ca5f7e3dea7f1fbb4fbe96d033" title="FibonacciHeap::IncreaseKey" alt="" coords="239,5,427,32"/>
+<area shape="rect" id="node3" href="class_fibonacci_heap.html#a8ebe8b0dc062c240925a9b568829faa5" title="FibonacciHeap::DecreaseKey" alt="" coords="236,56,431,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac1ee0019f2dea232dcae5dcd794af348"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1ee0019f2dea232dcae5dcd794af348">&#9670;&nbsp;</a></span>ChildCut()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FibonacciHeap::ChildCut </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_fibo_heap_node.html">FiboHeapNode</a> *&#160;</td>
+          <td class="paramname"><em>pNode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_fibonacci_heap_ac1ee0019f2dea232dcae5dcd794af348_cgraph.png" border="0" usemap="#class_fibonacci_heap_ac1ee0019f2dea232dcae5dcd794af348_cgraph" alt=""/></div>
+<map name="class_fibonacci_heap_ac1ee0019f2dea232dcae5dcd794af348_cgraph" id="class_fibonacci_heap_ac1ee0019f2dea232dcae5dcd794af348_cgraph">
+<area shape="rect" id="node2" href="class_fibonacci_heap.html#a29c7487db1e9afb23008d6163dd75715" title="FibonacciHeap::Remove" alt="" coords="219,107,381,133"/>
+<area shape="rect" id="node9" href="class_fibonacci_heap.html#ace7460151b2cc918debbd7c65920920b" title="the funciton provides capability to insert a node in the tree " alt="" coords="929,157,1077,184"/>
+<area shape="rect" id="node3" href="class_fibonacci_heap.html#a75aed47464f1fd3ac6f2779e8b450265" title="FibonacciHeap::RemoveMinMax" alt="" coords="429,107,637,133"/>
+<area shape="rect" id="node4" href="class_fibonacci_heap.html#a7fafd2d33518ad204cc9f1f954da3ad5" title="FibonacciHeap::MeldNode" alt="" coords="916,5,1091,32"/>
+<area shape="rect" id="node8" href="class_fibonacci_heap.html#af5a274f58efe0a7bec42aee46d46f87b" title="The function when called repeatedly merges nodes of same degree till all the nodes left at the top le..." alt="" coords="685,107,868,133"/>
+<area shape="rect" id="node5" href="class_fibonacci_heap.html#abd7191cfca30a92c4267ad989343a5dd" title="FibonacciHeap::AddSibling\lToNode" alt="" coords="1139,99,1317,141"/>
+<area shape="rect" id="node6" href="class_heap.html#a4fe12ad279a88030a0f444a46d8f4693" title="The function compares the two nodes and based on the heap type (min/max) would return true if the 2nd..." alt="" coords="1147,48,1309,75"/>
+<area shape="rect" id="node7" href="class_heap.html#a5258caf94c98ed842bd7be0a3a7210a5" title="Heap::IsSecondKeyBtr" alt="" coords="1365,48,1520,75"/>
+<area shape="rect" id="node10" href="class_fibo_heap_node.html#a72400f6fb8a3b2301ca02778d99f0fff" title="The function is useful in identifying the node type provided for any tree operation. As most node types have some common hiererchy it is reqired for verifying the node type in relevent tree operation. " alt="" coords="1141,165,1315,192"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_fibonacci_heap_ac1ee0019f2dea232dcae5dcd794af348_icgraph.png" border="0" usemap="#class_fibonacci_heap_ac1ee0019f2dea232dcae5dcd794af348_icgraph" alt=""/></div>
+<map name="class_fibonacci_heap_ac1ee0019f2dea232dcae5dcd794af348_icgraph" id="class_fibonacci_heap_ac1ee0019f2dea232dcae5dcd794af348_icgraph">
+<area shape="rect" id="node2" href="class_fibonacci_heap.html#a29c7487db1e9afb23008d6163dd75715" title="FibonacciHeap::Remove" alt="" coords="219,31,381,57"/>
+<area shape="rect" id="node3" href="class_fibonacci_heap.html#a75ef3fcdd3bbe2527a316eabf829ea05" title="FibonacciHeap::ChangeKey" alt="" coords="429,31,612,57"/>
+<area shape="rect" id="node4" href="class_fibonacci_heap.html#a8017a5ca5f7e3dea7f1fbb4fbe96d033" title="FibonacciHeap::IncreaseKey" alt="" coords="663,5,851,32"/>
+<area shape="rect" id="node5" href="class_fibonacci_heap.html#a8ebe8b0dc062c240925a9b568829faa5" title="FibonacciHeap::DecreaseKey" alt="" coords="660,56,855,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8ebe8b0dc062c240925a9b568829faa5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ebe8b0dc062c240925a9b568829faa5">&#9670;&nbsp;</a></span>DecreaseKey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool FibonacciHeap::DecreaseKey </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_fibo_heap_node.html">FiboHeapNode</a> *&#160;</td>
+          <td class="paramname"><em>pNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pNewKey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>pSize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_fibonacci_heap_a8ebe8b0dc062c240925a9b568829faa5_cgraph.png" border="0" usemap="#class_fibonacci_heap_a8ebe8b0dc062c240925a9b568829faa5_cgraph" alt=""/></div>
+<map name="class_fibonacci_heap_a8ebe8b0dc062c240925a9b568829faa5_cgraph" id="class_fibonacci_heap_a8ebe8b0dc062c240925a9b568829faa5_cgraph">
+<area shape="rect" id="node2" href="class_heap.html#ad97571afc31e8717e5afe64006067c49" title="The function indentifies the min heap or max heap property of binomial heap. " alt="" coords="279,53,400,80"/>
+<area shape="rect" id="node3" href="class_fibonacci_heap.html#a75ef3fcdd3bbe2527a316eabf829ea05" title="FibonacciHeap::ChangeKey" alt="" coords="248,104,431,130"/>
+<area shape="rect" id="node4" href="class_heap.html#a5258caf94c98ed842bd7be0a3a7210a5" title="Heap::IsSecondKeyBtr" alt="" coords="1625,78,1780,105"/>
+<area shape="rect" id="node5" href="class_heap.html#a95327d2f451fe92847f26fd0443a7f61" title="Heap::GetKeyOffset" alt="" coords="491,53,629,80"/>
+<area shape="rect" id="node6" href="class_heap.html#a4fe12ad279a88030a0f444a46d8f4693" title="The function compares the two nodes and based on the heap type (min/max) would return true if the 2nd..." alt="" coords="1407,154,1569,181"/>
+<area shape="rect" id="node7" href="class_fibonacci_heap.html#a29c7487db1e9afb23008d6163dd75715" title="FibonacciHeap::Remove" alt="" coords="479,205,641,232"/>
+<area shape="rect" id="node12" href="class_fibonacci_heap.html#ace7460151b2cc918debbd7c65920920b" title="the funciton provides capability to insert a node in the tree " alt="" coords="1189,306,1337,333"/>
+<area shape="rect" id="node8" href="class_fibonacci_heap.html#a75aed47464f1fd3ac6f2779e8b450265" title="FibonacciHeap::RemoveMinMax" alt="" coords="689,180,897,206"/>
+<area shape="rect" id="node14" href="class_fibonacci_heap.html#ac1ee0019f2dea232dcae5dcd794af348" title="FibonacciHeap::ChildCut" alt="" coords="711,230,876,257"/>
+<area shape="rect" id="node9" href="class_fibonacci_heap.html#a7fafd2d33518ad204cc9f1f954da3ad5" title="FibonacciHeap::MeldNode" alt="" coords="1176,154,1351,181"/>
+<area shape="rect" id="node11" href="class_fibonacci_heap.html#af5a274f58efe0a7bec42aee46d46f87b" title="The function when called repeatedly merges nodes of same degree till all the nodes left at the top le..." alt="" coords="945,205,1128,232"/>
+<area shape="rect" id="node10" href="class_fibonacci_heap.html#abd7191cfca30a92c4267ad989343a5dd" title="FibonacciHeap::AddSibling\lToNode" alt="" coords="1399,244,1577,286"/>
+<area shape="rect" id="node13" href="class_fibo_heap_node.html#a72400f6fb8a3b2301ca02778d99f0fff" title="The function is useful in identifying the node type provided for any tree operation. As most node types have some common hiererchy it is reqired for verifying the node type in relevent tree operation. " alt="" coords="1401,310,1575,337"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="aef6edee06c4d627a799fe2435d4d3b33"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aef6edee06c4d627a799fe2435d4d3b33">&#9670;&nbsp;</a></span>Destroy()</h2>
 
@@ -225,6 +524,76 @@ Additional Inherited Members</h2></td></tr>
 <p>The function cleans up the entire heap by calling delete on every node on the heap but as Fibbonaci heap does not own any node so no destroy only the root and other associated properties are reset. </p>
 
 <p>Reimplemented from <a class="el" href="class_heap.html#ae6b65dcd056d6a73e82da0980ea55cd1">Heap</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_fibonacci_heap_aef6edee06c4d627a799fe2435d4d3b33_icgraph.png" border="0" usemap="#class_fibonacci_heap_aef6edee06c4d627a799fe2435d4d3b33_icgraph" alt=""/></div>
+<map name="class_fibonacci_heap_aef6edee06c4d627a799fe2435d4d3b33_icgraph" id="class_fibonacci_heap_aef6edee06c4d627a799fe2435d4d3b33_icgraph">
+<area shape="rect" id="node2" href="class_fibonacci_heap.html#ab9191a68a52e89c7c2883518c5a3a540" title="destructor for the fibonacci heap class " alt="" coords="215,5,425,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8017a5ca5f7e3dea7f1fbb4fbe96d033"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8017a5ca5f7e3dea7f1fbb4fbe96d033">&#9670;&nbsp;</a></span>IncreaseKey()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool FibonacciHeap::IncreaseKey </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_fibo_heap_node.html">FiboHeapNode</a> *&#160;</td>
+          <td class="paramname"><em>pNode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pNewKey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>pSize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_fibonacci_heap_a8017a5ca5f7e3dea7f1fbb4fbe96d033_cgraph.png" border="0" usemap="#class_fibonacci_heap_a8017a5ca5f7e3dea7f1fbb4fbe96d033_cgraph" alt=""/></div>
+<map name="class_fibonacci_heap_a8017a5ca5f7e3dea7f1fbb4fbe96d033_cgraph" id="class_fibonacci_heap_a8017a5ca5f7e3dea7f1fbb4fbe96d033_cgraph">
+<area shape="rect" id="node2" href="class_heap.html#ad97571afc31e8717e5afe64006067c49" title="The function indentifies the min heap or max heap property of binomial heap. " alt="" coords="272,53,393,80"/>
+<area shape="rect" id="node3" href="class_fibonacci_heap.html#a75ef3fcdd3bbe2527a316eabf829ea05" title="FibonacciHeap::ChangeKey" alt="" coords="241,104,424,130"/>
+<area shape="rect" id="node4" href="class_heap.html#a5258caf94c98ed842bd7be0a3a7210a5" title="Heap::IsSecondKeyBtr" alt="" coords="1619,78,1773,105"/>
+<area shape="rect" id="node5" href="class_heap.html#a95327d2f451fe92847f26fd0443a7f61" title="Heap::GetKeyOffset" alt="" coords="484,53,623,80"/>
+<area shape="rect" id="node6" href="class_heap.html#a4fe12ad279a88030a0f444a46d8f4693" title="The function compares the two nodes and based on the heap type (min/max) would return true if the 2nd..." alt="" coords="1401,154,1562,181"/>
+<area shape="rect" id="node7" href="class_fibonacci_heap.html#a29c7487db1e9afb23008d6163dd75715" title="FibonacciHeap::Remove" alt="" coords="472,205,635,232"/>
+<area shape="rect" id="node12" href="class_fibonacci_heap.html#ace7460151b2cc918debbd7c65920920b" title="the funciton provides capability to insert a node in the tree " alt="" coords="1183,306,1331,333"/>
+<area shape="rect" id="node8" href="class_fibonacci_heap.html#a75aed47464f1fd3ac6f2779e8b450265" title="FibonacciHeap::RemoveMinMax" alt="" coords="683,180,891,206"/>
+<area shape="rect" id="node14" href="class_fibonacci_heap.html#ac1ee0019f2dea232dcae5dcd794af348" title="FibonacciHeap::ChildCut" alt="" coords="704,230,869,257"/>
+<area shape="rect" id="node9" href="class_fibonacci_heap.html#a7fafd2d33518ad204cc9f1f954da3ad5" title="FibonacciHeap::MeldNode" alt="" coords="1169,154,1344,181"/>
+<area shape="rect" id="node11" href="class_fibonacci_heap.html#af5a274f58efe0a7bec42aee46d46f87b" title="The function when called repeatedly merges nodes of same degree till all the nodes left at the top le..." alt="" coords="939,205,1121,232"/>
+<area shape="rect" id="node10" href="class_fibonacci_heap.html#abd7191cfca30a92c4267ad989343a5dd" title="FibonacciHeap::AddSibling\lToNode" alt="" coords="1392,244,1571,286"/>
+<area shape="rect" id="node13" href="class_fibo_heap_node.html#a72400f6fb8a3b2301ca02778d99f0fff" title="The function is useful in identifying the node type provided for any tree operation. As most node types have some common hiererchy it is reqired for verifying the node type in relevent tree operation. " alt="" coords="1395,310,1568,337"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -256,16 +625,234 @@ Additional Inherited Members</h2></td></tr>
 <li>nullptr in case of insertion failure</li>
 </ul>
 </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>a node that is a part of any other heap will not be inserted and the function would return nullptr </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>a node that is a part of any other heap will not be inserted and the function would return nullptr or a node that is not of TNT_FIBO_HEAP type is tried to be inserted into it </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_fibonacci_heap_ace7460151b2cc918debbd7c65920920b_cgraph.png" border="0" usemap="#class_fibonacci_heap_ace7460151b2cc918debbd7c65920920b_cgraph" alt=""/></div>
+<map name="class_fibonacci_heap_ace7460151b2cc918debbd7c65920920b_cgraph" id="class_fibonacci_heap_ace7460151b2cc918debbd7c65920920b_cgraph">
+<area shape="rect" id="node2" href="class_fibo_heap_node.html#a72400f6fb8a3b2301ca02778d99f0fff" title="The function is useful in identifying the node type provided for any tree operation. As most node types have some common hiererchy it is reqired for verifying the node type in relevent tree operation. " alt="" coords="204,5,377,32"/>
+<area shape="rect" id="node3" href="class_fibonacci_heap.html#abd7191cfca30a92c4267ad989343a5dd" title="FibonacciHeap::AddSibling\lToNode" alt="" coords="201,57,380,98"/>
+<area shape="rect" id="node4" href="class_heap.html#a4fe12ad279a88030a0f444a46d8f4693" title="The function compares the two nodes and based on the heap type (min/max) would return true if the 2nd..." alt="" coords="210,123,371,149"/>
+<area shape="rect" id="node5" href="class_heap.html#a5258caf94c98ed842bd7be0a3a7210a5" title="Heap::IsSecondKeyBtr" alt="" coords="428,123,583,149"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_fibonacci_heap_ace7460151b2cc918debbd7c65920920b_icgraph.png" border="0" usemap="#class_fibonacci_heap_ace7460151b2cc918debbd7c65920920b_icgraph" alt=""/></div>
+<map name="class_fibonacci_heap_ace7460151b2cc918debbd7c65920920b_icgraph" id="class_fibonacci_heap_ace7460151b2cc918debbd7c65920920b_icgraph">
+<area shape="rect" id="node2" href="class_fibonacci_heap.html#af5a274f58efe0a7bec42aee46d46f87b" title="The function when called repeatedly merges nodes of same degree till all the nodes left at the top le..." alt="" coords="201,81,384,108"/>
+<area shape="rect" id="node5" href="class_fibonacci_heap.html#a75ef3fcdd3bbe2527a316eabf829ea05" title="FibonacciHeap::ChangeKey" alt="" coords="899,31,1081,57"/>
+<area shape="rect" id="node8" href="class_fibonacci_heap.html#ac1ee0019f2dea232dcae5dcd794af348" title="FibonacciHeap::ChildCut" alt="" coords="907,81,1073,108"/>
+<area shape="rect" id="node3" href="class_fibonacci_heap.html#a75aed47464f1fd3ac6f2779e8b450265" title="FibonacciHeap::RemoveMinMax" alt="" coords="432,81,640,108"/>
+<area shape="rect" id="node4" href="class_fibonacci_heap.html#a29c7487db1e9afb23008d6163dd75715" title="FibonacciHeap::Remove" alt="" coords="688,81,851,108"/>
+<area shape="rect" id="node6" href="class_fibonacci_heap.html#a8017a5ca5f7e3dea7f1fbb4fbe96d033" title="FibonacciHeap::IncreaseKey" alt="" coords="1133,5,1321,32"/>
+<area shape="rect" id="node7" href="class_fibonacci_heap.html#a8ebe8b0dc062c240925a9b568829faa5" title="FibonacciHeap::DecreaseKey" alt="" coords="1129,56,1324,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7fafd2d33518ad204cc9f1f954da3ad5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fafd2d33518ad204cc9f1f954da3ad5">&#9670;&nbsp;</a></span>MeldNode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FibonacciHeap::MeldNode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_fibo_heap_node.html">FiboHeapNode</a> *&#160;</td>
+          <td class="paramname"><em>pNode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_fibonacci_heap_a7fafd2d33518ad204cc9f1f954da3ad5_cgraph.png" border="0" usemap="#class_fibonacci_heap_a7fafd2d33518ad204cc9f1f954da3ad5_cgraph" alt=""/></div>
+<map name="class_fibonacci_heap_a7fafd2d33518ad204cc9f1f954da3ad5_cgraph" id="class_fibonacci_heap_a7fafd2d33518ad204cc9f1f954da3ad5_cgraph">
+<area shape="rect" id="node2" href="class_fibonacci_heap.html#abd7191cfca30a92c4267ad989343a5dd" title="FibonacciHeap::AddSibling\lToNode" alt="" coords="228,5,407,47"/>
+<area shape="rect" id="node3" href="class_heap.html#a4fe12ad279a88030a0f444a46d8f4693" title="The function compares the two nodes and based on the heap type (min/max) would return true if the 2nd..." alt="" coords="237,71,398,98"/>
+<area shape="rect" id="node4" href="class_heap.html#a5258caf94c98ed842bd7be0a3a7210a5" title="Heap::IsSecondKeyBtr" alt="" coords="455,71,609,98"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_fibonacci_heap_a7fafd2d33518ad204cc9f1f954da3ad5_icgraph.png" border="0" usemap="#class_fibonacci_heap_a7fafd2d33518ad204cc9f1f954da3ad5_icgraph" alt=""/></div>
+<map name="class_fibonacci_heap_a7fafd2d33518ad204cc9f1f954da3ad5_icgraph" id="class_fibonacci_heap_a7fafd2d33518ad204cc9f1f954da3ad5_icgraph">
+<area shape="rect" id="node2" href="class_fibonacci_heap.html#a75aed47464f1fd3ac6f2779e8b450265" title="FibonacciHeap::RemoveMinMax" alt="" coords="228,81,436,108"/>
+<area shape="rect" id="node3" href="class_fibonacci_heap.html#a29c7487db1e9afb23008d6163dd75715" title="FibonacciHeap::Remove" alt="" coords="484,81,647,108"/>
+<area shape="rect" id="node4" href="class_fibonacci_heap.html#a75ef3fcdd3bbe2527a316eabf829ea05" title="FibonacciHeap::ChangeKey" alt="" coords="695,31,877,57"/>
+<area shape="rect" id="node7" href="class_fibonacci_heap.html#ac1ee0019f2dea232dcae5dcd794af348" title="FibonacciHeap::ChildCut" alt="" coords="703,81,869,108"/>
+<area shape="rect" id="node5" href="class_fibonacci_heap.html#a8017a5ca5f7e3dea7f1fbb4fbe96d033" title="FibonacciHeap::IncreaseKey" alt="" coords="929,5,1117,32"/>
+<area shape="rect" id="node6" href="class_fibonacci_heap.html#a8ebe8b0dc062c240925a9b568829faa5" title="FibonacciHeap::DecreaseKey" alt="" coords="925,56,1120,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af5a274f58efe0a7bec42aee46d46f87b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5a274f58efe0a7bec42aee46d46f87b">&#9670;&nbsp;</a></span>MergeHeap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FibonacciHeap::MergeHeap </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The function when called repeatedly merges nodes of same degree till all the nodes left at the top level have unique degree. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_fibonacci_heap_af5a274f58efe0a7bec42aee46d46f87b_cgraph.png" border="0" usemap="#class_fibonacci_heap_af5a274f58efe0a7bec42aee46d46f87b_cgraph" alt=""/></div>
+<map name="class_fibonacci_heap_af5a274f58efe0a7bec42aee46d46f87b_cgraph" id="class_fibonacci_heap_af5a274f58efe0a7bec42aee46d46f87b_cgraph">
+<area shape="rect" id="node2" href="class_heap.html#a4fe12ad279a88030a0f444a46d8f4693" title="The function compares the two nodes and based on the heap type (min/max) would return true if the 2nd..." alt="" coords="441,5,602,32"/>
+<area shape="rect" id="node4" href="class_fibonacci_heap.html#abd7191cfca30a92c4267ad989343a5dd" title="FibonacciHeap::AddSibling\lToNode" alt="" coords="432,107,611,149"/>
+<area shape="rect" id="node5" href="class_fibonacci_heap.html#ace7460151b2cc918debbd7c65920920b" title="the funciton provides capability to insert a node in the tree " alt="" coords="236,56,384,83"/>
+<area shape="rect" id="node3" href="class_heap.html#a5258caf94c98ed842bd7be0a3a7210a5" title="Heap::IsSecondKeyBtr" alt="" coords="659,5,813,32"/>
+<area shape="rect" id="node6" href="class_fibo_heap_node.html#a72400f6fb8a3b2301ca02778d99f0fff" title="The function is useful in identifying the node type provided for any tree operation. As most node types have some common hiererchy it is reqired for verifying the node type in relevent tree operation. " alt="" coords="435,56,608,83"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_fibonacci_heap_af5a274f58efe0a7bec42aee46d46f87b_icgraph.png" border="0" usemap="#class_fibonacci_heap_af5a274f58efe0a7bec42aee46d46f87b_icgraph" alt=""/></div>
+<map name="class_fibonacci_heap_af5a274f58efe0a7bec42aee46d46f87b_icgraph" id="class_fibonacci_heap_af5a274f58efe0a7bec42aee46d46f87b_icgraph">
+<area shape="rect" id="node2" href="class_fibonacci_heap.html#a75aed47464f1fd3ac6f2779e8b450265" title="FibonacciHeap::RemoveMinMax" alt="" coords="236,81,444,108"/>
+<area shape="rect" id="node3" href="class_fibonacci_heap.html#a29c7487db1e9afb23008d6163dd75715" title="FibonacciHeap::Remove" alt="" coords="492,81,655,108"/>
+<area shape="rect" id="node4" href="class_fibonacci_heap.html#a75ef3fcdd3bbe2527a316eabf829ea05" title="FibonacciHeap::ChangeKey" alt="" coords="703,31,885,57"/>
+<area shape="rect" id="node7" href="class_fibonacci_heap.html#ac1ee0019f2dea232dcae5dcd794af348" title="FibonacciHeap::ChildCut" alt="" coords="711,81,877,108"/>
+<area shape="rect" id="node5" href="class_fibonacci_heap.html#a8017a5ca5f7e3dea7f1fbb4fbe96d033" title="FibonacciHeap::IncreaseKey" alt="" coords="937,5,1125,32"/>
+<area shape="rect" id="node6" href="class_fibonacci_heap.html#a8ebe8b0dc062c240925a9b568829faa5" title="FibonacciHeap::DecreaseKey" alt="" coords="933,56,1128,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a29c7487db1e9afb23008d6163dd75715"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29c7487db1e9afb23008d6163dd75715">&#9670;&nbsp;</a></span>Remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_fibo_heap_node.html">FiboHeapNode</a> * FibonacciHeap::Remove </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_fibo_heap_node.html">FiboHeapNode</a> *&#160;</td>
+          <td class="paramname"><em>pNode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_fibonacci_heap_a29c7487db1e9afb23008d6163dd75715_cgraph.png" border="0" usemap="#class_fibonacci_heap_a29c7487db1e9afb23008d6163dd75715_cgraph" alt=""/></div>
+<map name="class_fibonacci_heap_a29c7487db1e9afb23008d6163dd75715_cgraph" id="class_fibonacci_heap_a29c7487db1e9afb23008d6163dd75715_cgraph">
+<area shape="rect" id="node2" href="class_fibonacci_heap.html#a75aed47464f1fd3ac6f2779e8b450265" title="FibonacciHeap::RemoveMinMax" alt="" coords="216,107,424,133"/>
+<area shape="rect" id="node10" href="class_fibonacci_heap.html#ac1ee0019f2dea232dcae5dcd794af348" title="FibonacciHeap::ChildCut" alt="" coords="237,157,403,184"/>
+<area shape="rect" id="node3" href="class_fibonacci_heap.html#a7fafd2d33518ad204cc9f1f954da3ad5" title="FibonacciHeap::MeldNode" alt="" coords="703,5,877,32"/>
+<area shape="rect" id="node7" href="class_fibonacci_heap.html#af5a274f58efe0a7bec42aee46d46f87b" title="The function when called repeatedly merges nodes of same degree till all the nodes left at the top le..." alt="" coords="472,107,655,133"/>
+<area shape="rect" id="node4" href="class_fibonacci_heap.html#abd7191cfca30a92c4267ad989343a5dd" title="FibonacciHeap::AddSibling\lToNode" alt="" coords="925,99,1104,141"/>
+<area shape="rect" id="node5" href="class_heap.html#a4fe12ad279a88030a0f444a46d8f4693" title="The function compares the two nodes and based on the heap type (min/max) would return true if the 2nd..." alt="" coords="934,48,1095,75"/>
+<area shape="rect" id="node6" href="class_heap.html#a5258caf94c98ed842bd7be0a3a7210a5" title="Heap::IsSecondKeyBtr" alt="" coords="1152,48,1307,75"/>
+<area shape="rect" id="node8" href="class_fibonacci_heap.html#ace7460151b2cc918debbd7c65920920b" title="the funciton provides capability to insert a node in the tree " alt="" coords="716,157,864,184"/>
+<area shape="rect" id="node9" href="class_fibo_heap_node.html#a72400f6fb8a3b2301ca02778d99f0fff" title="The function is useful in identifying the node type provided for any tree operation. As most node types have some common hiererchy it is reqired for verifying the node type in relevent tree operation. " alt="" coords="928,165,1101,192"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_fibonacci_heap_a29c7487db1e9afb23008d6163dd75715_icgraph.png" border="0" usemap="#class_fibonacci_heap_a29c7487db1e9afb23008d6163dd75715_icgraph" alt=""/></div>
+<map name="class_fibonacci_heap_a29c7487db1e9afb23008d6163dd75715_icgraph" id="class_fibonacci_heap_a29c7487db1e9afb23008d6163dd75715_icgraph">
+<area shape="rect" id="node2" href="class_fibonacci_heap.html#a75ef3fcdd3bbe2527a316eabf829ea05" title="FibonacciHeap::ChangeKey" alt="" coords="216,31,399,57"/>
+<area shape="rect" id="node5" href="class_fibonacci_heap.html#ac1ee0019f2dea232dcae5dcd794af348" title="FibonacciHeap::ChildCut" alt="" coords="225,81,390,108"/>
+<area shape="rect" id="node3" href="class_fibonacci_heap.html#a8017a5ca5f7e3dea7f1fbb4fbe96d033" title="FibonacciHeap::IncreaseKey" alt="" coords="450,5,638,32"/>
+<area shape="rect" id="node4" href="class_fibonacci_heap.html#a8ebe8b0dc062c240925a9b568829faa5" title="FibonacciHeap::DecreaseKey" alt="" coords="447,56,641,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a75aed47464f1fd3ac6f2779e8b450265"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75aed47464f1fd3ac6f2779e8b450265">&#9670;&nbsp;</a></span>RemoveMinMax()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_fibo_heap_node.html">FiboHeapNode</a> * FibonacciHeap::RemoveMinMax </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_fibonacci_heap_a75aed47464f1fd3ac6f2779e8b450265_cgraph.png" border="0" usemap="#class_fibonacci_heap_a75aed47464f1fd3ac6f2779e8b450265_cgraph" alt=""/></div>
+<map name="class_fibonacci_heap_a75aed47464f1fd3ac6f2779e8b450265_cgraph" id="class_fibonacci_heap_a75aed47464f1fd3ac6f2779e8b450265_cgraph">
+<area shape="rect" id="node2" href="class_fibonacci_heap.html#a7fafd2d33518ad204cc9f1f954da3ad5" title="FibonacciHeap::MeldNode" alt="" coords="492,5,667,32"/>
+<area shape="rect" id="node6" href="class_fibonacci_heap.html#af5a274f58efe0a7bec42aee46d46f87b" title="The function when called repeatedly merges nodes of same degree till all the nodes left at the top le..." alt="" coords="261,95,444,121"/>
+<area shape="rect" id="node3" href="class_fibonacci_heap.html#abd7191cfca30a92c4267ad989343a5dd" title="FibonacciHeap::AddSibling\lToNode" alt="" coords="715,99,893,141"/>
+<area shape="rect" id="node4" href="class_heap.html#a4fe12ad279a88030a0f444a46d8f4693" title="The function compares the two nodes and based on the heap type (min/max) would return true if the 2nd..." alt="" coords="723,48,885,75"/>
+<area shape="rect" id="node5" href="class_heap.html#a5258caf94c98ed842bd7be0a3a7210a5" title="Heap::IsSecondKeyBtr" alt="" coords="941,48,1096,75"/>
+<area shape="rect" id="node7" href="class_fibonacci_heap.html#ace7460151b2cc918debbd7c65920920b" title="the funciton provides capability to insert a node in the tree " alt="" coords="505,107,653,133"/>
+<area shape="rect" id="node8" href="class_fibo_heap_node.html#a72400f6fb8a3b2301ca02778d99f0fff" title="The function is useful in identifying the node type provided for any tree operation. As most node types have some common hiererchy it is reqired for verifying the node type in relevent tree operation. " alt="" coords="717,165,891,192"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_fibonacci_heap_a75aed47464f1fd3ac6f2779e8b450265_icgraph.png" border="0" usemap="#class_fibonacci_heap_a75aed47464f1fd3ac6f2779e8b450265_icgraph" alt=""/></div>
+<map name="class_fibonacci_heap_a75aed47464f1fd3ac6f2779e8b450265_icgraph" id="class_fibonacci_heap_a75aed47464f1fd3ac6f2779e8b450265_icgraph">
+<area shape="rect" id="node2" href="class_fibonacci_heap.html#a29c7487db1e9afb23008d6163dd75715" title="FibonacciHeap::Remove" alt="" coords="261,81,424,108"/>
+<area shape="rect" id="node3" href="class_fibonacci_heap.html#a75ef3fcdd3bbe2527a316eabf829ea05" title="FibonacciHeap::ChangeKey" alt="" coords="472,31,655,57"/>
+<area shape="rect" id="node6" href="class_fibonacci_heap.html#ac1ee0019f2dea232dcae5dcd794af348" title="FibonacciHeap::ChildCut" alt="" coords="481,81,646,108"/>
+<area shape="rect" id="node4" href="class_fibonacci_heap.html#a8017a5ca5f7e3dea7f1fbb4fbe96d033" title="FibonacciHeap::IncreaseKey" alt="" coords="706,5,894,32"/>
+<area shape="rect" id="node5" href="class_fibonacci_heap.html#a8ebe8b0dc062c240925a9b568829faa5" title="FibonacciHeap::DecreaseKey" alt="" coords="703,56,897,83"/>
+</map>
+</div>
 
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.14
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_fibonacci_heap.html">FibonacciHeap</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
+  </ul>
+</div>
 </body>
 </html>

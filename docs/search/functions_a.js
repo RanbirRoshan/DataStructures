@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['sbtree',['SBTree',['../class_s_b_tree.html#ac9d6a0eafa2782968b129320fe2c7f9d',1,'SBTree']]],
-  ['searchapp',['SearchApp',['../class_search_app.html#ae060ecdab4a6d266bc137c27c8b2527e',1,'SearchApp']]]
+  ['nodetype',['NodeType',['../class_tree_node.html#a82467e62a1af77cf1abb28bd039670a3',1,'TreeNode::NodeType()'],['../class_binomial_heap_node.html#a2735792d379ea33559e49d921eae964f',1,'BinomialHeapNode::NodeType()'],['../class_fibo_heap_node.html#a72400f6fb8a3b2301ca02778d99f0fff',1,'FiboHeapNode::NodeType()'],['../class_heap_node.html#ae7932b91f893c475c3c252a71bd749b3',1,'HeapNode::NodeType()'],['../class_s_b_t_node.html#a4ad8ea43d39bb20ac202f8e337302731',1,'SBTNode::NodeType()']]]
 ];

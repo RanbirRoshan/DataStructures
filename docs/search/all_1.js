@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['destroy',['Destroy',['../class_binomial_heap.html#ab7da1595f48e2ddbc28bd91e092a6f11',1,'BinomialHeap::Destroy()'],['../class_fibonacci_heap.html#aef6edee06c4d627a799fe2435d4d3b33',1,'FibonacciHeap::Destroy()'],['../class_heap.html#ae6b65dcd056d6a73e82da0980ea55cd1',1,'Heap::Destroy()'],['../class_s_b_tree.html#a4e14faa674f9b459e4d4980b399ffd07',1,'SBTree::Destroy()']]],
-  ['datastructures',['DataStructures',['../md__r_e_a_d_m_e.html',1,'']]]
+  ['binomialheap',['BinomialHeap',['../class_binomial_heap.html',1,'BinomialHeap'],['../class_binomial_heap_node.html#adb3c0687f1af3f2b8d59c2ff7ec01807',1,'BinomialHeapNode::BinomialHeap()'],['../class_heap.html#adb3c0687f1af3f2b8d59c2ff7ec01807',1,'Heap::BinomialHeap()'],['../class_binomial_heap.html#abd9b76190bcb0c1a4a67e4785a857a6e',1,'BinomialHeap::BinomialHeap()']]],
+  ['binomialheapnode',['BinomialHeapNode',['../class_binomial_heap_node.html',1,'BinomialHeapNode'],['../class_binomial_heap_node.html#a5be5cfd7d2a25a65dfca68ef97eef812',1,'BinomialHeapNode::BinomialHeapNode()']]]
 ];
