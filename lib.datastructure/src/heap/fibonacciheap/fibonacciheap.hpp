@@ -79,7 +79,7 @@ private:
 static	void	AddSiblingToNode (FiboHeapNode *pNode, FiboHeapNode * pNewSibling);
 		bool	ChangeKey (FiboHeapNode * pNode, void * pNewKey, size_t pSize);
 		void	MeldNode (FiboHeapNode *pNode);
-		void	ChildCut (FiboHeapNode *pNode);
+		void	ChildCut (FiboHeapNode *pNode, __int64 pChildDegree);
 };
 
 #include "fibonacciheap.hxx"

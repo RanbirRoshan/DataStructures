@@ -96,7 +96,7 @@ FiboHeapNode * FibonacciHeap::Insert(FiboHeapNode * pNode)
 	if (pNode->vLeftSibling || pNode->vRightSibling || pNode->vParent || pNode->vChildCut || pNode->vInHeap)
 		return nullptr;
 
-	pNode->vInHeap = nullptr;
+	pNode->vInHeap = this;
 
 	// empty heap 
 	if (!vRoot)
@@ -173,6 +173,7 @@ void FibonacciHeap::MergeHeap ()
 					else
 						AddSiblingToNode (node->vChild, temp);
 
+					temp->vInHeap = this;
 					node->vDegree += temp->vDegree + 1;
 					temp->vParent = node;
 					temp = node;
@@ -183,12 +184,16 @@ void FibonacciHeap::MergeHeap ()
 						temp->vChild = node;
 					else
 						AddSiblingToNode(temp->vChild, node);
-					
+
+					node->vInHeap = this;
 					node->vParent = temp;
 					temp->vDegree += node->vDegree + 1;
 				}
 			}
 			else {
+				temp->vInHeap = nullptr;
+				temp->vParent = nullptr;
+				temp->vChildCut = false;
 				map.insert(std::pair<__int64, FiboHeapNode*>(temp->vDegree, temp));
 				temp = nullptr;
 			}
@@ -198,7 +203,6 @@ void FibonacciHeap::MergeHeap ()
 	// the heap is empty now and we insert all the nodes the root and lastsibling will be taken care by insert
 	while (!map.empty()) {
 		iter = map.begin();
-		iter->second->vParent = nullptr;
 		Insert(iter->second);
 		map.erase(iter);
 	}
@@ -336,8 +340,8 @@ FiboHeapNode* FibonacciHeap::RemoveMinMax()
 
 		node->vLeftSibling = nullptr;
 		node->vRightSibling = nullptr;
-	}
 
+	}
 	MeldNode (node->vChild);
 
 	MergeHeap ();
@@ -347,6 +351,7 @@ FiboHeapNode* FibonacciHeap::RemoveMinMax()
 	node->vDegree	= 0;
 	node->vParent   = nullptr;
 	node->vChild	= nullptr;
+	node->vInHeap   = nullptr;
 
 	return node;
 }
@@ -387,16 +392,19 @@ FiboHeapNode * FibonacciHeap::Remove(FiboHeapNode * pNode)
 
 	if (pNode->vParent) {
 		if(pNode->vParent->vChild == pNode)
-			pNode->vParent->vChild = pNode->vRightSibling; // will be nullptr
+			pNode->vParent->vChild = pNode->vRightSibling;
 
-		pNode->vParent->vDegree--;
-
-		ChildCut(pNode->vParent);
+		ChildCut(pNode->vParent, pNode->vDegree);
 	}
+
+	if (pNode->vChild)
+		MeldNode(pNode->vChild);
 
 	pNode->vParent		 = nullptr;
 	pNode->vRightSibling = nullptr;
+	pNode->vInHeap       = nullptr;
 	pNode->vLeftSibling  = nullptr;
+	pNode->vChild		 = nullptr;
 
 	return pNode;
 }
@@ -461,7 +469,7 @@ bool FibonacciHeap::ChangeKey(FiboHeapNode * pNode, void * pNewKey, size_t pSize
  *						has to be triggered
  *
  */
-void FibonacciHeap::ChildCut(FiboHeapNode *pNode)
+void FibonacciHeap::ChildCut(FiboHeapNode *pNode, __int64 pChildDegree)
 {
 	FiboHeapNode * parent;
 	FiboHeapNode * temp;
@@ -469,11 +477,21 @@ void FibonacciHeap::ChildCut(FiboHeapNode *pNode)
 	if (!pNode)
 		return;
 
+	temp = pNode;
+
+	do {
+
+		temp->vDegree = temp->vDegree - 1 - pChildDegree;
+
+		temp = temp->vParent;
+	} while (temp);
+
 	if (pNode->vChildCut) {
 		parent = pNode->vParent;
 		if (parent) {
 
 			// remove would have removed the node and called child cut on parent
+			pNode->vChildCut = false;
 			temp = Remove(pNode);
 			Insert(temp);
 		}

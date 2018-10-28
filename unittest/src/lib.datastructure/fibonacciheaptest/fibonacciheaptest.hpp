@@ -17,6 +17,17 @@ class FibonacciHeapTest : public CppUnit::TestCase
 	CPPUNIT_TEST(RemoveMinMaxThreeElementTest);
 	CPPUNIT_TEST(RemoveMinMaxMultiInsertMultiDelTest);
 	CPPUNIT_TEST(RandomInsertDelete);
+	CPPUNIT_TEST(RemoveTest);
+	CPPUNIT_TEST(RemoveNonRootTest);
+	CPPUNIT_TEST(RemoveTwoNonRootTest);
+	CPPUNIT_TEST(IncreaseKeyTest);
+	CPPUNIT_TEST(IncreaseKeyNonRootLessThanParentAndRootTest);
+	CPPUNIT_TEST(IncreaseKeyNonRootMoreThanRootTest);
+	CPPUNIT_TEST(IncreaseKeyTwoNonRootMoreThanRootTest);
+	CPPUNIT_TEST(DecreaseKeyTest);
+	CPPUNIT_TEST(DecreaseKeyNonRootMoreThanRootTest);
+	CPPUNIT_TEST(DecreaseKeyTwoNonRootMoreThanRootTest);
+	CPPUNIT_TEST(DecreaseKeyNonRootLessThanParentAndRootTest);
 	CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -25,6 +36,17 @@ public:
 
 protected:
 	void ConstructDistructTest ();
+	void RemoveTest();
+	void DecreaseKeyTest();
+	void DecreaseKeyNonRootMoreThanRootTest();
+	void DecreaseKeyTwoNonRootMoreThanRootTest();
+	void DecreaseKeyNonRootLessThanParentAndRootTest();
+	void IncreaseKeyTest();
+	void IncreaseKeyNonRootMoreThanRootTest();
+	void IncreaseKeyTwoNonRootMoreThanRootTest();
+	void IncreaseKeyNonRootLessThanParentAndRootTest();
+	void RemoveNonRootTest();
+	void RemoveTwoNonRootTest();
 	void InsertTest ();
 	void RemoveMinMaxSingleElementTest();
 	void RemoveMinMaxTwoElementTest();

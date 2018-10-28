@@ -19,14 +19,15 @@
 *
 * \return	The function would return the following:
 *			- True		if in case the change is successfull
-*			- False		change key fails as the newly provided key is smaller than
+*			- False		change key fails as the newly provided key is smaller than or equal to
 *						the existing key in case of max heap. if the API is accessed
 *						for a min heap it would still return false. If the node is not
-*						a part of current heap it would return false.
+*						a part of current heap it would return false. If no new key is provided 
+*						or its size is 0 it will return false;
 */
 bool FibonacciHeap::IncreaseKey(FiboHeapNode * pNode, void * pNewKey, size_t pSize)
 {
-	if (!vRoot || IsMinHeap() || pNode->vInHeap != this)
+	if (!vRoot || IsMinHeap() || !pNode || pNode->vInHeap != this || !pNewKey || !pSize)
 		return false;
 
 	return ChangeKey(pNode, pNewKey, pSize);
@@ -49,7 +50,7 @@ bool FibonacciHeap::IncreaseKey(FiboHeapNode * pNode, void * pNewKey, size_t pSi
 */
 bool FibonacciHeap::DecreaseKey(FiboHeapNode * pNode, void * pNewKey, size_t pSize)
 {
-	if (!vRoot || IsMinHeap() == false || pNode->vInHeap != this)
+	if (!vRoot || !IsMinHeap() || !pNode || pNode->vInHeap != this || !pNewKey || !pSize)
 		return false;
 
 	return ChangeKey(pNode, pNewKey, pSize);

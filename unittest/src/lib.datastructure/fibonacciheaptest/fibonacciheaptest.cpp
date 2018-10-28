@@ -797,3 +797,548 @@ void FibonacciHeapTest::RandomInsertDelete()
 		}
 	}
 }
+
+void FibonacciHeapTest::RemoveTest()
+{
+	FiboHeapTestIntNode        *node, *node2, *node3;
+
+	node = new FiboHeapTestIntNode();
+
+	node->uKey = 100;
+
+	CPPUNIT_ASSERT(node == testheapintmin->Insert(node));
+
+	CPPUNIT_ASSERT(node == testheapintmin->Remove(node));
+
+	CPPUNIT_ASSERT(nullptr == testheapintmin->PeekMinMax());
+
+	//next test
+
+	CPPUNIT_ASSERT(node == testheapintmin->Insert(node));
+
+	node2 = new FiboHeapTestIntNode();
+
+	node2->uKey = 200;
+
+	CPPUNIT_ASSERT(node2 == testheapintmin->Insert(node2));
+
+	CPPUNIT_ASSERT(node2 == testheapintmin->Remove(node2));
+
+	CPPUNIT_ASSERT(node == testheapintmin->PeekMinMax());
+
+	//next test
+
+	CPPUNIT_ASSERT(node2 == testheapintmin->Insert(node2));
+
+	CPPUNIT_ASSERT(node == testheapintmin->Remove(node));
+
+	CPPUNIT_ASSERT(node2 == testheapintmin->PeekMinMax());
+
+	//next test
+
+	CPPUNIT_ASSERT(node == testheapintmin->Insert(node));
+
+	node3 = new FiboHeapTestIntNode();
+
+	node3->uKey = 300;
+
+	CPPUNIT_ASSERT(node3 == testheapintmin->Insert(node3));
+
+	CPPUNIT_ASSERT(node3 == testheapintmin->Remove(node3));
+
+	CPPUNIT_ASSERT(node == testheapintmin->PeekMinMax());
+}
+
+void FibonacciHeapTest::RemoveNonRootTest()
+{
+	FiboHeapTestIntNode        *node[20];
+	FiboHeapTestIntNode        *temp;
+	int							count;
+	__int64						val;
+
+	for (int iter = 0; iter < 20; iter++)
+	{
+		node[iter] = new FiboHeapTestIntNode();
+		node[iter]->uKey = iter * 100;
+	}
+
+	for (int x = 0; x < 19; x++) {
+
+		count = 0;
+		val = 2000;
+
+		for (int iter = 0; iter < 20; iter++)
+			CPPUNIT_ASSERT(testheapintmax->Insert(node[iter]) == node[iter]);
+
+		CPPUNIT_ASSERT(node[19] == testheapintmax->RemoveMinMax());
+
+		CPPUNIT_ASSERT(node[x] == testheapintmax->Remove(node[x]));
+
+		if (x != 18)
+			CPPUNIT_ASSERT(node[18] == testheapintmax->PeekMinMax());
+		else
+			CPPUNIT_ASSERT(node[17] == testheapintmax->PeekMinMax());
+
+		while (testheapintmax->PeekMinMax())
+		{
+			count++;
+			temp = (FiboHeapTestIntNode*)testheapintmax->RemoveMinMax();
+
+			CPPUNIT_ASSERT(node[x] != temp);
+			CPPUNIT_ASSERT(temp->uKey < val);
+			val = temp->uKey;
+		}
+
+		CPPUNIT_ASSERT(count == 18);
+	}
+
+	for (int iter = 0; iter < 20; iter++)
+		delete node[iter];
+}
+
+void FibonacciHeapTest::RemoveTwoNonRootTest()
+{
+	FiboHeapTestIntNode        *node[20];
+	FiboHeapTestIntNode        *temp;
+	int							count;
+	__int64						val;
+
+	for (int iter = 0; iter < 20; iter++)
+	{
+		node[iter] = new FiboHeapTestIntNode();
+		node[iter]->uKey = iter * 100;
+	}
+
+	for (int x = 0; x < 19; x++) {
+
+		for (int y = 0; x < 19; x++) {
+
+			if (x == y)
+				continue;
+
+			count = 0;
+			val = 2000;
+
+			for (int iter = 0; iter < 20; iter++)
+				testheapintmax->Insert(node[iter]);
+
+			CPPUNIT_ASSERT(node[19] == testheapintmax->RemoveMinMax());
+			CPPUNIT_ASSERT(node[x] == testheapintmax->Remove(node[x]));
+			CPPUNIT_ASSERT(node[y] == testheapintmax->Remove(node[y]));
+
+			if (x != 18 && y != 18)
+				CPPUNIT_ASSERT(node[18] == testheapintmax->PeekMinMax());
+			else if (x == 18 || y == 18)
+				CPPUNIT_ASSERT(node[17] == testheapintmax->PeekMinMax());
+			else if ((x == 17 && y == 18)||(x == 18 && y == 17))
+				CPPUNIT_ASSERT(node[16] == testheapintmax->PeekMinMax());
+
+			while (testheapintmax->PeekMinMax())
+			{
+				count++;
+				temp = (FiboHeapTestIntNode*)testheapintmax->RemoveMinMax();
+
+				CPPUNIT_ASSERT(node[x] != temp);
+				CPPUNIT_ASSERT(node[y] != temp);
+				CPPUNIT_ASSERT(temp->uKey < val);
+				val = temp->uKey;
+			}
+			CPPUNIT_ASSERT(count == 17);
+		}
+	}
+
+	for (int iter = 0; iter < 20; iter++)
+		delete node[iter];
+}
+
+void FibonacciHeapTest::IncreaseKeyTest()
+{
+	FiboHeapTestIntNode  *	node[20];
+	__int64					newkey;
+
+	CPPUNIT_ASSERT(false == testheapintmin->IncreaseKey(nullptr, nullptr, 0));
+	CPPUNIT_ASSERT(false == testheapintmax->IncreaseKey(nullptr, nullptr, 0));
+
+	for (int iter = 0; iter < 20; iter++)
+	{
+		node[iter] = new FiboHeapTestIntNode();
+		node[iter]->uKey = iter * 100;
+	}
+
+	// increase key must fail on min heap in all scenario
+	CPPUNIT_ASSERT(node[0] == testheapintmin->Insert(node[0]));
+	CPPUNIT_ASSERT(false == testheapintmin->IncreaseKey(nullptr, nullptr, 0));
+	newkey = 10000;
+	CPPUNIT_ASSERT(false == testheapintmin->IncreaseKey(node[1], nullptr, 0));
+	CPPUNIT_ASSERT(false == testheapintmin->IncreaseKey(node[1], &newkey, 0));
+	CPPUNIT_ASSERT(false == testheapintmin->IncreaseKey(node[1], &newkey, sizeof (__int64)));
+	newkey = -10000;
+	CPPUNIT_ASSERT(false == testheapintmin->IncreaseKey(node[1], &newkey, 0));
+	CPPUNIT_ASSERT(false == testheapintmin->IncreaseKey(node[1], &newkey, sizeof(__int64)));
+	CPPUNIT_ASSERT(node[0] == testheapintmin->Remove(node[0]));
+
+	// max heap test invalid value
+	CPPUNIT_ASSERT(node[19] == testheapintmax->Insert(node[19]));
+	CPPUNIT_ASSERT(false == testheapintmax->IncreaseKey(nullptr, nullptr, 0));
+	newkey = 100;
+	CPPUNIT_ASSERT(false == testheapintmax->IncreaseKey(node[19], nullptr, 0));
+	CPPUNIT_ASSERT(false == testheapintmax->IncreaseKey(node[19], &newkey, 0));
+	CPPUNIT_ASSERT(false == testheapintmax->IncreaseKey(node[19], &newkey, sizeof(__int64)));
+	newkey = node[19]->uKey;
+	CPPUNIT_ASSERT(false == testheapintmax->IncreaseKey(node[19], &newkey, 0));
+	CPPUNIT_ASSERT(false == testheapintmax->IncreaseKey(node[19], &newkey, sizeof(__int64)));
+	newkey = node[19]->uKey+1;
+	CPPUNIT_ASSERT(true == testheapintmax->IncreaseKey(node[19], &newkey, sizeof(__int64)));
+	CPPUNIT_ASSERT(node[19] == testheapintmax->Remove(node[19]));
+
+	for (int iter = 0; iter < 20; iter++)
+		delete node[iter];	
+}
+
+void FibonacciHeapTest::DecreaseKeyTest()
+{
+	FiboHeapTestIntNode  *	node[20];
+	__int64					newkey;
+
+	CPPUNIT_ASSERT(false == testheapintmin->DecreaseKey(nullptr, nullptr, 0));
+	CPPUNIT_ASSERT(false == testheapintmax->DecreaseKey(nullptr, nullptr, 0));
+
+	for (int iter = 0; iter < 20; iter++)
+	{
+		node[iter] = new FiboHeapTestIntNode();
+		node[iter]->uKey = iter * 100;
+	}
+
+	// increase key must fail on max heap in all scenario
+	CPPUNIT_ASSERT(node[0] == testheapintmax->Insert(node[0]));
+	CPPUNIT_ASSERT(false == testheapintmax->DecreaseKey(nullptr, nullptr, 0));
+	newkey = 10000;
+	CPPUNIT_ASSERT(false == testheapintmax->DecreaseKey(node[1], nullptr, 0));
+	CPPUNIT_ASSERT(false == testheapintmax->DecreaseKey(node[1], &newkey, 0));
+	CPPUNIT_ASSERT(false == testheapintmax->DecreaseKey(node[1], &newkey, sizeof(__int64)));
+	newkey = -10000;
+	CPPUNIT_ASSERT(false == testheapintmax->DecreaseKey(node[1], &newkey, 0));
+	CPPUNIT_ASSERT(false == testheapintmax->DecreaseKey(node[1], &newkey, sizeof(__int64)));
+	CPPUNIT_ASSERT(node[0] == testheapintmax->Remove(node[0]));
+
+	// max heap test invalid value
+	CPPUNIT_ASSERT(node[19] == testheapintmin->Insert(node[19]));
+	CPPUNIT_ASSERT(false == testheapintmin->DecreaseKey(nullptr, nullptr, 0));
+	newkey = 1901;
+	CPPUNIT_ASSERT(false == testheapintmin->DecreaseKey(node[19], nullptr, 0));
+	CPPUNIT_ASSERT(false == testheapintmin->DecreaseKey(node[19], &newkey, 0));
+	CPPUNIT_ASSERT(false == testheapintmin->DecreaseKey(node[19], &newkey, sizeof(__int64)));
+	newkey = node[19]->uKey;
+	CPPUNIT_ASSERT(false == testheapintmin->DecreaseKey(node[19], &newkey, 0));
+	CPPUNIT_ASSERT(false == testheapintmin->DecreaseKey(node[19], &newkey, sizeof(__int64)));
+	newkey = node[19]->uKey - 1;
+	CPPUNIT_ASSERT(true == testheapintmin->DecreaseKey(node[19], &newkey, sizeof(__int64)));
+	CPPUNIT_ASSERT(node[19] == testheapintmin->Remove(node[19]));
+
+	for (int iter = 0; iter < 20; iter++)
+		delete node[iter];
+}
+
+void FibonacciHeapTest::IncreaseKeyNonRootLessThanParentAndRootTest()
+{
+	FiboHeapTestIntNode  *	node[20];
+	FiboHeapTestIntNode *	temp;
+	__int64					newkey;
+	__int64					val;
+	int						count = 0;
+
+	CPPUNIT_ASSERT(false == testheapintmin->IncreaseKey(nullptr, nullptr, 0));
+	CPPUNIT_ASSERT(false == testheapintmax->IncreaseKey(nullptr, nullptr, 0));
+
+	for (int iter = 0; iter < 20; iter++)
+	{
+		node[iter] = new FiboHeapTestIntNode();
+		node[iter]->uKey = iter * 100;
+	}
+
+	for (int x = 0; x < 19; x++) {
+
+		count = 0;
+		val = 2000;
+
+		for (int iter = 0; iter < 20; iter++)
+			CPPUNIT_ASSERT(testheapintmax->Insert(node[iter]) == node[iter]);
+
+		CPPUNIT_ASSERT(node[19] == testheapintmax->RemoveMinMax());
+
+		newkey = node[x]->uKey + 50;
+
+		CPPUNIT_ASSERT(true == testheapintmax->IncreaseKey(node[x], &newkey, sizeof (__int64)));
+
+		CPPUNIT_ASSERT(node[18] == testheapintmax->PeekMinMax());
+
+		while (testheapintmax->PeekMinMax())
+		{
+			count++;
+			temp = (FiboHeapTestIntNode*)testheapintmax->RemoveMinMax();
+
+			CPPUNIT_ASSERT(temp->uKey < val);
+			val = temp->uKey;
+		}
+
+		CPPUNIT_ASSERT(count == 19);
+	}
+
+	for (int iter = 0; iter < 20; iter++)
+		delete node[iter];
+}
+
+void FibonacciHeapTest::IncreaseKeyNonRootMoreThanRootTest()
+{
+	FiboHeapTestIntNode  *	node[20];
+	FiboHeapTestIntNode *	temp;
+	__int64					newkey;
+	__int64					val;
+	int						count = 0;
+
+	CPPUNIT_ASSERT(false == testheapintmin->IncreaseKey(nullptr, nullptr, 0));
+	CPPUNIT_ASSERT(false == testheapintmax->IncreaseKey(nullptr, nullptr, 0));
+
+
+	for (int x = 0; x < 19; x++) {
+
+		count = 0;
+		val = 2000;
+
+		for (int iter = 0; iter < 20; iter++)
+		{
+			node[iter] = new FiboHeapTestIntNode();
+			node[iter]->uKey = iter * 100;
+			CPPUNIT_ASSERT(testheapintmax->Insert(node[iter]) == node[iter]);
+		}
+
+		CPPUNIT_ASSERT(node[19] == testheapintmax->RemoveMinMax());
+
+		newkey = ((FiboHeapTestIntNode*)testheapintmax->PeekMinMax())->uKey + 50;
+
+		CPPUNIT_ASSERT(true == testheapintmax->IncreaseKey(node[x], &newkey, sizeof(__int64)));
+
+		CPPUNIT_ASSERT(node[x] == testheapintmax->PeekMinMax());
+
+		while (testheapintmax->PeekMinMax())
+		{
+			count++;
+			temp = (FiboHeapTestIntNode*)testheapintmax->RemoveMinMax();
+
+			CPPUNIT_ASSERT(temp->uKey < val);
+			val = temp->uKey;
+		}
+
+		CPPUNIT_ASSERT(count == 19);
+
+		for (int iter = 0; iter < 20; iter++)
+			delete node[iter];
+	}
+}
+
+
+void FibonacciHeapTest::DecreaseKeyNonRootMoreThanRootTest()
+{
+	FiboHeapTestIntNode  *	node[20];
+	FiboHeapTestIntNode *	temp;
+	__int64					newkey;
+	__int64					val;
+	int						count = 0;
+
+	for (int x = 1; x <= 19; x++) {
+
+		count = 0;
+		val = -2000;
+
+		for (int iter = 0; iter < 20; iter++)
+		{
+			node[iter] = new FiboHeapTestIntNode();
+			node[iter]->uKey = iter * 100;
+			CPPUNIT_ASSERT(testheapintmin->Insert(node[iter]) == node[iter]);
+		}
+
+		CPPUNIT_ASSERT(node[0] == testheapintmin->RemoveMinMax());
+
+		newkey = ((FiboHeapTestIntNode*)testheapintmin->PeekMinMax())->uKey - 50;
+
+		CPPUNIT_ASSERT(true == testheapintmin->DecreaseKey(node[x], &newkey, sizeof(__int64)));
+
+		CPPUNIT_ASSERT(node[x] == testheapintmin->PeekMinMax());
+
+		while (testheapintmin->PeekMinMax())
+		{
+			count++;
+			temp = (FiboHeapTestIntNode*)testheapintmin->RemoveMinMax();
+
+			CPPUNIT_ASSERT(temp->uKey > val);
+			val = temp->uKey;
+		}
+
+		CPPUNIT_ASSERT(count == 19);
+
+		for (int iter = 0; iter < 20; iter++)
+			delete node[iter];
+	}
+}
+
+void FibonacciHeapTest::IncreaseKeyTwoNonRootMoreThanRootTest()
+{
+	FiboHeapTestIntNode  *	node[20];
+	FiboHeapTestIntNode *	temp;
+	__int64					newkey;
+	__int64					val;
+	int						count = 0;
+
+	CPPUNIT_ASSERT(false == testheapintmin->IncreaseKey(nullptr, nullptr, 0));
+	CPPUNIT_ASSERT(false == testheapintmax->IncreaseKey(nullptr, nullptr, 0));
+
+
+	for (int x = 0; x < 19; x++) {
+
+		for (int y = 0; y < 19; y++) {
+
+			if (x == y)
+				continue;
+
+			for (int iter = 0; iter < 20; iter++)
+			{
+				node[iter] = new FiboHeapTestIntNode();
+				node[iter]->uKey = iter * 100;
+				CPPUNIT_ASSERT(testheapintmax->Insert(node[iter]) == node[iter]);
+			}
+
+			CPPUNIT_ASSERT(node[19] == testheapintmax->RemoveMinMax());
+
+			count = 0;
+			val = 2000;
+
+			newkey = ((FiboHeapTestIntNode*)testheapintmax->PeekMinMax())->uKey + 50;
+
+			CPPUNIT_ASSERT(true == testheapintmax->IncreaseKey(node[x], &newkey, sizeof(__int64)));
+
+			CPPUNIT_ASSERT(node[x] == testheapintmax->PeekMinMax());
+
+			newkey = ((FiboHeapTestIntNode*)testheapintmax->PeekMinMax())->uKey + 50;
+
+			CPPUNIT_ASSERT(true == testheapintmax->IncreaseKey(node[y], &newkey, sizeof(__int64)));
+
+			CPPUNIT_ASSERT(node[y] == testheapintmax->PeekMinMax());
+
+			while (testheapintmax->PeekMinMax())
+			{
+				count++;
+				temp = (FiboHeapTestIntNode*)testheapintmax->RemoveMinMax();
+
+				CPPUNIT_ASSERT(temp->uKey < val);
+				val = temp->uKey;
+			}
+
+			CPPUNIT_ASSERT(count == 19);
+
+			for (int iter = 0; iter < 20; iter++)
+				delete node[iter];
+		}
+	}
+}
+
+void FibonacciHeapTest::DecreaseKeyTwoNonRootMoreThanRootTest()
+{
+	FiboHeapTestIntNode  *	node[20];
+	FiboHeapTestIntNode *	temp;
+	__int64					newkey;
+	__int64					val;
+	int						count = 0;
+
+	for (int x = 1; x < 20; x++) {
+
+		for (int y = 1; y < 20; y++) {
+
+			if (x == y)
+				continue;
+
+			for (int iter = 0; iter < 20; iter++)
+			{
+				node[iter] = new FiboHeapTestIntNode();
+				node[iter]->uKey = iter * 100;
+				CPPUNIT_ASSERT(testheapintmin->Insert(node[iter]) == node[iter]);
+			}
+
+			CPPUNIT_ASSERT(node[0] == testheapintmin->RemoveMinMax());
+
+			count = 0;
+			val = -1000000;
+
+			newkey = ((FiboHeapTestIntNode*)testheapintmin->PeekMinMax())->uKey - 50;
+
+			CPPUNIT_ASSERT(true == testheapintmin->DecreaseKey(node[x], &newkey, sizeof(__int64)));
+
+			CPPUNIT_ASSERT(node[x] == testheapintmin->PeekMinMax());
+
+			newkey = ((FiboHeapTestIntNode*)testheapintmin->PeekMinMax())->uKey - 50;
+
+			CPPUNIT_ASSERT(true == testheapintmin->DecreaseKey(node[y], &newkey, sizeof(__int64)));
+
+			CPPUNIT_ASSERT(node[y] == testheapintmin->PeekMinMax());
+
+			while (testheapintmin->PeekMinMax())
+			{
+				count++;
+				temp = (FiboHeapTestIntNode*)testheapintmin->RemoveMinMax();
+
+				CPPUNIT_ASSERT(temp->uKey > val);
+				val = temp->uKey;
+			}
+
+			CPPUNIT_ASSERT(count == 19);
+
+			for (int iter = 0; iter < 20; iter++)
+				delete node[iter];
+		}
+	}
+}
+
+void FibonacciHeapTest::DecreaseKeyNonRootLessThanParentAndRootTest()
+{
+	FiboHeapTestIntNode  *	node[20];
+	FiboHeapTestIntNode *	temp;
+	__int64					newkey;
+	__int64					val;
+	int						count = 0;
+
+	for (int iter = 0; iter < 20; iter++)
+	{
+		node[iter] = new FiboHeapTestIntNode();
+		node[iter]->uKey = iter * 100;
+	}
+
+	for (int x = 1; x < 20; x++) {
+
+		count = 0;
+		val = -2000;
+
+		for (int iter = 0; iter < 20; iter++)
+			CPPUNIT_ASSERT(testheapintmin->Insert(node[iter]) == node[iter]);
+
+		CPPUNIT_ASSERT(node[0] == testheapintmin->RemoveMinMax());
+
+		newkey = node[x]->uKey - 50;
+
+		CPPUNIT_ASSERT(true == testheapintmin->DecreaseKey(node[x], &newkey, sizeof(__int64)));
+
+		CPPUNIT_ASSERT(node[1] == testheapintmin->PeekMinMax());
+
+		while (testheapintmin->PeekMinMax())
+		{
+			count++;
+			temp = (FiboHeapTestIntNode*)testheapintmin->RemoveMinMax();
+
+			CPPUNIT_ASSERT(temp->uKey > val);
+			val = temp->uKey;
+		}
+
+		CPPUNIT_ASSERT(count == 19);
+	}
+
+	for (int iter = 0; iter < 20; iter++)
+		delete node[iter];
+}
