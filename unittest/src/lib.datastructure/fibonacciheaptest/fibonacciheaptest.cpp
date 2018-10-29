@@ -35,7 +35,6 @@ static long long StrCmpFunc(const void * pCmpVal1, const void * pCmpVal2)
 	return *val1 - *val2;
 }
 
-
 class FiboHeapTestIntNode : public FiboHeapNode {
 	friend class FibonacciHeapTest;
 	__int64		uKey;

@@ -35,5 +35,8 @@
     <ClInclude Include="assignment.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\searchapplication\searchapp.hxx">
+      <Filter>Header Files\SearchApplication</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

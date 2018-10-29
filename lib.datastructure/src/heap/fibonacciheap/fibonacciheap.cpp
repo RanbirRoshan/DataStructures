@@ -151,6 +151,13 @@ void FibonacciHeap::MergeHeap ()
 		temp->vRightSibling = nullptr;
 		temp->vLeftSibling  = nullptr;
 
+#ifdef _DEBUG
+		if (temp->vParent || temp->vChildCut)
+		{
+			DebugBreak ();
+		}
+#endif
+
 		// repeateadly mearging to form a node with unique degree
 		while (temp) {
 
@@ -251,9 +258,27 @@ void FibonacciHeap::MeldNode(FiboHeapNode * pNode)
 	if (!pNode)
 		return;
 
+	temp = pNode;
+
+	temp->vParent = nullptr;
+	temp->vChildCut = 0;
+
+	temp = temp->vRightSibling;
+
+	while (temp && temp->vParent && temp != pNode)
+	{
+
+		temp->vParent = nullptr;
+		temp->vChildCut = 0;
+
+		temp = temp->vRightSibling;
+	}
+
 	if (!vRoot)
 	{
 		vRoot = pNode;
+		pNode->vParent = nullptr;
+		pNode->vChildCut = 0;
 		return;
 	}
 
@@ -285,8 +310,6 @@ void FibonacciHeap::MeldNode(FiboHeapNode * pNode)
 	if (IsSecondNodeBtr(vRoot, pNode))
 		vRoot = pNode;
 
-	pNode->vParent	 = nullptr;
-	pNode->vChildCut = 0;
 }
 
 /*

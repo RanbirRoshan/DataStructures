@@ -15,6 +15,24 @@
 #include <fstream>
 
 #include "libdatastruct.h"
+#include <unordered_map>
+#include <string>
+
+#define MAX_BUFFER_LENGTH 4096
+
+class SearchAppHeapNode : public FiboHeapNode {
+public:
+		SearchAppHeapNode(std::string *pKeyword, int pFrequency);
+	   ~SearchAppHeapNode();
+
+static	inline	int				GetKeyOffset();
+		inline	int				GetFrequency();
+		inline	std::string*	GetKeyword();
+
+private:
+	int				vFrequency;
+	std::string *	vKeyWord;
+};
 
 /*!
  * \brief	the actual search application code
@@ -33,7 +51,15 @@ public:
 	void Execute();
 private:
 
-	std::ifstream*	vInFile;		///< stream for reading input from file
+	bool ProcessNewEntry (char* pKeyword, int pFrequency);
+	bool PrintTopResult  (int pCount);
+
+	FibonacciHeap *		vHeap;
+	std::ifstream*		vInFile;		///< stream for reading input from file
+
+	std::unordered_map<std::string, SearchAppHeapNode*>   vKeywordMap;
 };
+
+#include "searchapp.hxx"
 
 #endif //SEARCH_APP

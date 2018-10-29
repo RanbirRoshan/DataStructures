@@ -26,20 +26,20 @@
 int main(int argc, char *argv[])
 {
 		SearchApp myApp;
-		char      ignore_warning;
+//		char      ignore_warning;
 
-	if (argc < 1)
+	if (argc < 2)
 		std::cout << ("\n\nPlease provide the input file name as command line argument.");
 	else {
 
-		if (myApp.Initialize (argv[0]))
+		if (myApp.Initialize (argv[1]))
 			myApp.Execute();	///< execute as initialization was successful
 
 	}
 
 	std::cout << ("\n\nPress enter key to end.");
 
-	ignore_warning = getchar();
+	//ignore_warning = getchar();
 
 	return 0;
 }
