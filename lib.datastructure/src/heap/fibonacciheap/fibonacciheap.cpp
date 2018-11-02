@@ -10,10 +10,9 @@
 */
 
 #include "../../../libdatastruct.h"
-#include <queue>
-#include <map>
 
-using namespace std;
+//definition of initial mearge array size
+#define FIBO_HEAP_INITIAL_MERGE_SIZE 8
 
 /*!
 * \brief	The function is useful in identifying the node type provided for
@@ -51,7 +50,7 @@ FiboHeapNode::FiboHeapNode()
  */
 FibonacciHeap::FibonacciHeap (Offset pKeyOffset, KeyCmpFunc pKeyCmpFunc, bool pIsMinHeap): Heap (pKeyOffset, pKeyCmpFunc, pIsMinHeap)
 {
-
+	vMergeSize = FIBO_HEAP_INITIAL_MERGE_SIZE;
 }
 
 /*!
@@ -98,7 +97,8 @@ FiboHeapNode * FibonacciHeap::Insert(FiboHeapNode * pNode)
 	if (pNode->vLeftSibling || pNode->vRightSibling || pNode->vParent || pNode->vChildCut || pNode->vInHeap)
 		return nullptr;
 
-	pNode->vInHeap = this;
+	pNode->vInHeap		= this;
+	pNode->vHeapParent	= this;	// direct child identification
 
 	// empty heap 
 	if (!vRoot)
@@ -132,15 +132,16 @@ FiboHeapNode * FibonacciHeap::Insert(FiboHeapNode * pNode)
  */
 void FibonacciHeap::MergeHeap ()
 {
-	std::map<__int64, FiboHeapNode*>			map;
-	std::map<__int64, FiboHeapNode*>::iterator	iter;
-
-	FiboHeapNode * node;
-	FiboHeapNode * temp;
+	FiboHeapNode ** degree_merge_map; // array of node pointer by degree
+	FiboHeapNode *	node;
+	FiboHeapNode *	temp;
+	int				size;
 
 	// no element or a single element
 	if (!vRoot || !((FiboHeapNode*)vRoot)->vRightSibling)
 		return;
+
+	degree_merge_map = (FiboHeapNode**) calloc (vMergeSize, sizeof(FiboHeapNode*));
 
 	//breaking the circular linked list
 	((FiboHeapNode*)vRoot)->vLeftSibling->vRightSibling = nullptr;
@@ -148,34 +149,45 @@ void FibonacciHeap::MergeHeap ()
 	while (vRoot) {
 
 		temp  = (FiboHeapNode*)vRoot;
+
 		vRoot = ((FiboHeapNode*)vRoot)->vRightSibling;
 
 		// loosing the link from individual nodes
 		temp->vRightSibling = nullptr;
 		temp->vLeftSibling  = nullptr;
 
-#ifdef _DEBUG
-		if (temp->vParent || temp->vChildCut)
-		{
-			DebugBreak ();
-		}
-#endif
-
 		// repeateadly mearging to form a node with unique degree
 		while (temp) {
 
-			iter = map.find(temp->vDegree);
+			// array size insufficient so grow
+			if (vMergeSize <= temp->vDegree) {
 
-			if (iter == map.end())
-				node = nullptr;
+				FiboHeapNode**	temparr;
+				
+				size = vMergeSize;
+
+				//atleast double the size as per old
+				while (vMergeSize <= temp->vDegree)
+					vMergeSize = vMergeSize << 1;
+
+				temparr = (FiboHeapNode**)calloc(vMergeSize, sizeof(FiboHeapNode*));
+				memcpy(temparr, degree_merge_map, sizeof(FiboHeapNode*)*size);
+				free (degree_merge_map);
+				degree_merge_map = temparr;
+			}
+
+			//checking for same degree conflict
+			if (degree_merge_map[temp->vDegree])
+				node = degree_merge_map[temp->vDegree];
 			else
-				node = iter->second;
+				node = nullptr;
 
-			// merge is needed
+			// two nodes of same degree found so merge is needed
 			if (node) {
 
-				map.erase(iter);
+				degree_merge_map[temp->vDegree] = nullptr;
 
+				// choosing the root
 				if (IsSecondNodeBtr(temp, node)) {
 
 					if (!node->vChild)
@@ -184,7 +196,7 @@ void FibonacciHeap::MergeHeap ()
 						AddSiblingToNode (node->vChild, temp);
 
 					temp->vInHeap = this;
-					node->vDegree += temp->vDegree + 1;
+					node->vDegree += 1;
 					temp->vParent = node;
 					temp = node;
 				}
@@ -197,25 +209,34 @@ void FibonacciHeap::MergeHeap ()
 
 					node->vInHeap = this;
 					node->vParent = temp;
-					temp->vDegree += node->vDegree + 1;
+					temp->vDegree += 1;
 				}
 			}
 			else {
 				temp->vInHeap = nullptr;
 				temp->vParent = nullptr;
 				temp->vChildCut = false;
-				map.insert(std::pair<__int64, FiboHeapNode*>(temp->vDegree, temp));
+				degree_merge_map[temp->vDegree] = temp;
 				temp = nullptr;
 			}
 		}
 	}
 
-	// the heap is empty now and we insert all the nodes the root and lastsibling will be taken care by insert
-	while (!map.empty()) {
-		iter = map.begin();
-		Insert(iter->second);
-		map.erase(iter);
+	size = 0;
+
+	//adding nodes back to heap
+	for (int iter = 0; iter < vMergeSize; iter++) {
+		if (degree_merge_map[iter]) {
+			Insert(degree_merge_map[iter]);
+			size = iter;
+		}
 	}
+
+	// in case the size has decreased after merge due to any reason
+	while (size < vMergeSize>>1 && vMergeSize > FIBO_HEAP_INITIAL_MERGE_SIZE)
+		vMergeSize = vMergeSize >> 1;
+
+	free (degree_merge_map);
 }
 
 /*!
@@ -228,6 +249,14 @@ void FibonacciHeap::MergeHeap ()
  */
 void FibonacciHeap::AddSiblingToNode (FiboHeapNode *pNode, FiboHeapNode * pNewSibling)
 {
+
+// help developer if in case the assumption is broken
+#ifdef _DEBUG
+	if (pNewSibling->vRightSibling || !pNode)
+		DebugBreak();
+#endif
+
+	// pNode has no sibling
 	if (!pNode->vRightSibling) {
 
 		pNode->vRightSibling = pNewSibling;
@@ -273,24 +302,14 @@ void FibonacciHeap::MeldNode(FiboHeapNode * pNode)
 
 	temp = pNode;
 
-	temp->vParent = nullptr;
+	pNode->vHeapParent = this;
 	temp->vChildCut = 0;
 
 	temp = temp->vRightSibling;
 
-	while (temp && temp->vParent && temp != pNode)
-	{
-
-		temp->vParent = nullptr;
-		temp->vChildCut = 0;
-
-		temp = temp->vRightSibling;
-	}
-
 	if (!vRoot)
 	{
 		vRoot = pNode;
-		pNode->vParent = nullptr;
 		pNode->vChildCut = 0;
 		return;
 	}
@@ -424,12 +443,11 @@ FiboHeapNode * FibonacciHeap::Remove(FiboHeapNode * pNode)
 		}
 	}
 
-
-	if (pNode->vParent) {
+	if (pNode->vParent && pNode->vHeapParent != this) {
 		if(pNode->vParent->vChild == pNode)
 			pNode->vParent->vChild = pNode->vRightSibling;
 
-		ChildCut(pNode->vParent, pNode->vDegree);
+		ChildCut(pNode->vParent);
 	}
 
 	if (pNode->vChild)
@@ -470,7 +488,7 @@ bool FibonacciHeap::ChangeKey(FiboHeapNode * pNode, void * pNewKey, size_t pSize
 	memcpy((byte*)pNode + GetKeyOffset(), pNewKey, pSize);
 
 	//check if the node is now better than the parent
-	if (pNode->vParent) {
+	if (pNode->vParent && pNode->vHeapParent != this) {
 		if (IsSecondNodeBtr(pNode->vParent, pNode))
 		{
 			parent = pNode->vParent;
@@ -493,18 +511,18 @@ bool FibonacciHeap::ChangeKey(FiboHeapNode * pNode, void * pNewKey, size_t pSize
 	return true;
 }
 
-/*
- * \brief	the function manages the child cut behavior of the node
+/*!
+ * \brief	The function manages the child cut behavior of the node
  *			if the child cut is attempted for the second time the node
  *			moves to the first level resulting in a call for child cut 
  *			on the parent. For nodes on first level the property is not
  *			applicable and is so no called
  *
- * \param[in] pNode		the pointer to the node for which the child cut
+ * \param[in] pNode		The pointer to the node for which the child cut
  *						has to be triggered
  *
  */
-void FibonacciHeap::ChildCut(FiboHeapNode *pNode, __int64 pChildDegree)
+void FibonacciHeap::ChildCut(FiboHeapNode *pNode)
 {
 	FiboHeapNode * parent;
 	FiboHeapNode * temp;
@@ -512,14 +530,7 @@ void FibonacciHeap::ChildCut(FiboHeapNode *pNode, __int64 pChildDegree)
 	if (!pNode)
 		return;
 
-	temp = pNode;
-
-	do {
-
-		temp->vDegree = temp->vDegree - 1 - pChildDegree;
-
-		temp = temp->vParent;
-	} while (temp);
+	pNode->vDegree -= 1;
 
 	if (pNode->vChildCut) {
 		parent = pNode->vParent;
@@ -532,6 +543,7 @@ void FibonacciHeap::ChildCut(FiboHeapNode *pNode, __int64 pChildDegree)
 		}
 	}
 	else {
-		pNode->vChildCut = true;
+		if (pNode->vParent)
+			pNode->vChildCut = true;
 	}
 }

@@ -37,7 +37,10 @@ private:
 
 	__int64				vDegree;			///< the number of  child to the current node
 	FiboHeapNode *      vChild;				///< pointer to one of the element in the child cicular link list 
-	FiboHeapNode *		vParent;			///< pointer to the parent of the current node
+	union {
+		FiboHeapNode *		vParent;		///< pointer to the parent of the current node
+		FibonacciHeap *     vHeapParent;    ///< indentifer for top node that they belong to the heap as next parent
+	};
 	FiboHeapNode *		vRightSibling;		///< next itme in circular link list
 	FiboHeapNode *		vLeftSibling;		///< previous item in circular link list
 	bool				vChildCut;			///< flag to show if a child was lost since it was added to its parent
@@ -73,11 +76,15 @@ inline	bool	DecreaseKey (FiboHeapNode * pNode, void * pNewKey, size_t pSize);
 virtual void	Destroy();
 
 private:
-		void	MergeHeap ();
+
 static	void	AddSiblingToNode (FiboHeapNode *pNode, FiboHeapNode * pNewSibling);
+
+		void	MergeHeap ();
 		bool	ChangeKey (FiboHeapNode * pNode, void * pNewKey, size_t pSize);
-		void	MeldNode (FiboHeapNode *pNode);
-		void	ChildCut (FiboHeapNode *pNode, __int64 pChildDegree);
+		void	MeldNode  (FiboHeapNode * pNode);
+		void	ChildCut  (FiboHeapNode * pNode);
+
+		int		vMergeSize;		///< Stores the last merge array size to avoid un-necesaary expansion every time the merge occurs
 };
 
 #include "fibonacciheap.hxx"

@@ -64,6 +64,8 @@ SearchApp::SearchApp()
  */
 SearchApp::~SearchApp()
 {
+	std::unordered_map<std::string, SearchAppHeapNode*>::iterator iter;
+
 	// close the file if open and free memory if aquired
 	if (vInFile) {
 		if (vInFile->is_open())
@@ -72,11 +74,17 @@ SearchApp::~SearchApp()
 		delete vInFile;
 	}
 
+	//we need to release the memory taken for nodes
+	while (vKeywordMap.empty () == false){
+		iter = vKeywordMap.begin();
+		delete iter->second;
+		vKeywordMap.erase(iter);
+	}
+
 	delete vHeap;
 }
 
 /*!
- *
  * \brief	The function initializes the application class so that the execution
  *			pre-requisites are met.
  * 
@@ -187,20 +195,25 @@ void SearchApp::Execute()
  */
 bool SearchApp::PrintTopResult(int pCount)
 {
-	std::stack<SearchAppHeapNode*>  stack;
-	SearchAppHeapNode *				node;
+	SearchAppHeapNode **	popped_list;
+	SearchAppHeapNode *		node;
+	int						size = 0;
+
+	popped_list = (SearchAppHeapNode **) calloc (pCount, sizeof(SearchAppHeapNode *));
 
 	while (pCount && vHeap->PeekMinMax()) {
 		node = (SearchAppHeapNode*) vHeap->RemoveMinMax();
 		cout << *node->GetKeyword() << "\n";
-		stack.push(node);
+#pragma warning(suppress: 6011)
+		popped_list[size++] = node;
 		pCount--;
 	}
 
-	while (!stack.empty()) {
-		vHeap->Insert(stack.top());
-		stack.pop();
-	}
+	while (size)
+#pragma warning(suppress: 6385)
+		vHeap->Insert(popped_list[--size]);
+
+	free (popped_list);
 
 	return true;
 }
