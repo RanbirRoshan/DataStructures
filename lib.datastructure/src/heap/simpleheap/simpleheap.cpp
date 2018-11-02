@@ -20,6 +20,9 @@ Heap::Heap(Offset pKeyOffset, KeyCmpFunc pKeyCmpFunc, bool pMinHeap)
 	vIsMinHeap	= pMinHeap;
 }
 
+/*!
+ * \brief	Destructor for class Heap
+ */
 Heap::~Heap()
 {
 	if (vRoot) {
@@ -29,6 +32,16 @@ Heap::~Heap()
 	}
 }
 
+/*!
+* \brief	The function compares the two keys and based on the heap type (min/max) would return
+*			true if the 2nd node is better as per the heap type
+*
+* \param[in] pKey1	First comparison key
+* \param[in] pKey2	Second comparison key
+*
+* \return		true if the second key has less value and heap is min heap or second value is
+*				greater and the heap is	a max heap. Else it would return false.
+*/
 bool Heap::IsSecondKeyBtr(void * pKey1, void * pKey2)
 {
 
@@ -80,6 +93,9 @@ void Heap::Destroy()
 	}
 }
 
+/*!
+ * \brief	The public API to return the min/max node depending of heap type
+ */
 HeapNode * Heap::RemoveMinMax()
 {
 	return nullptr;

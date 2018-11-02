@@ -18,7 +18,7 @@
 /*!
 * \class	HeapNode
 *
-* \brief	this is the node class that is to be extended by anyone who intents to use
+* \brief	This is the node class that is to be extended by anyone who intents to use
 *			a "heap"
 *
 * \note		Extend this node class to work with the following data structure
@@ -32,7 +32,7 @@ public:
 /*!
 * \class	Heap
 *
-* \brief	the class provides heap. Both min and max heap are supported by this class. Subjected to
+* \brief	The class provides heap. Both min and max heap are supported by this class. Subjected to
 			intialization only one of them can be used in an object.
 *
 * \todo		Heap class implementation
@@ -49,10 +49,10 @@ virtual	~Heap();
 	// heap operation API
 	inline	HeapNode * const	PeekMinMax();
 	virtual void				Destroy(); 
-	HeapNode *					RemoveMinMax();
+	virtual HeapNode *			RemoveMinMax();
 
 protected:
-	HeapNode *			vRoot;
+	HeapNode *			vRoot;				///< Pointer to the root of the heap
 
 inline	bool	IsSecondNodeBtr (HeapNode * pNode1, HeapNode * pNode2);
 		bool	IsSecondKeyBtr  (void * pKey1, void * pKey2);
@@ -61,7 +61,7 @@ inline 	int     GetKeyOffset    ();
 private:
 	friend class BinomialHeap;
 
-	bool 				vIsMinHeap; // 1;		///< 0 implies min heap and 1 implies max heap
+	bool 				vIsMinHeap; 		///< 0 implies min heap and 1 implies max heap
 	KeyCmpFunc  		vKeyCmpFunc;		///< function to compare keys for decision making
 	Offset				vKeyOffset;			///< offset of the key in the node of the tree
 

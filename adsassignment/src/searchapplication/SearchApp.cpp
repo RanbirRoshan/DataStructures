@@ -6,7 +6,7 @@
  *
  * @date	19/10/2018
  *
- * @last-modified 19/10/2018
+ * @last-modified 01/11/2018
  */
 
 #include <iostream>
@@ -16,6 +16,9 @@
 
 using namespace std;
 
+/*
+ * \brief	the key comparison function for use in node
+ */
 static long long IntCmpFunc(const void * pCmpVal1, const void * pCmpVal2)
 {
 	int *val1 = (int *)pCmpVal1;
@@ -30,19 +33,25 @@ static long long IntCmpFunc(const void * pCmpVal1, const void * pCmpVal2)
 	return 0;
 }
 
+/*!
+* \brief	constructor for the class
+*/
 SearchAppHeapNode::SearchAppHeapNode(std::string *pKeyword, int pFrequency)
 {
 	vKeyWord    = pKeyword;
 	vFrequency	= pFrequency;
 }
 
+/*!
+* \brief	destructor for the class
+*/
 SearchAppHeapNode::~SearchAppHeapNode()
 {
 	delete vKeyWord;
 }
 
 /*!
- * \brief	constructor of the class
+ * \brief	constructor for the class
  */
 SearchApp::SearchApp()
 {
@@ -51,7 +60,7 @@ SearchApp::SearchApp()
 }
 
 /*!
- * \brief	destructor of the class 
+ * \brief	destructor for the class 
  */
 SearchApp::~SearchApp()
 {
@@ -106,21 +115,31 @@ public:
 	__int64		uKey;
 };
 
-int ParseFrequency(char * pStrBuf, int len = MAX_BUFFER_LENGTH)
+/*
+ * \brief	The function acts as a utility function to parse the
+ *			input.
+ * \param[in][out] pStrBuf	char buffer containing space seperated
+ *							keyword and frequency. The buffer is trimmed
+ *							to contain only keyword.
+ * \param[in]	   pLen		Length of the input buffer
+ *
+ * \return	The frequency for the keyword
+ */
+int ParseFrequency(char * pStrBuf, int pLen = MAX_BUFFER_LENGTH)
 {
 	int pos = 0;
 
-	while (pStrBuf[pos] != ' ') {
+	while (pStrBuf[pos] != ' ')
 		pos++;
-	}
 
 	pStrBuf[pos] = '\0';
 
 	return atoi(pStrBuf + pos + 1);
 }
 
+void TestCode();
+
 /*!
- * 
  * \brief	execution of the application starts from here
  */
 void SearchApp::Execute()
@@ -151,9 +170,21 @@ void SearchApp::Execute()
 			break;
 		}
 	}
+	//TestCode();
 	return;
 }
 
+/*!
+ * \brief	The function prints the top keywords as per the request.
+ *
+ * \param[in]	pCount	The number of keywords that is requested to 
+ *						for print
+ *
+ * \note	In case where the number of keyword available is less than
+ *			the requested number only the available keywords would be
+ *			printed and the executaion would return without trigerring 
+ *			any error
+ */
 bool SearchApp::PrintTopResult(int pCount)
 {
 	std::stack<SearchAppHeapNode*>  stack;
@@ -174,6 +205,17 @@ bool SearchApp::PrintTopResult(int pCount)
 	return true;
 }
 
+/*!
+ * \brief	The funcion process a keyword and frequency registration
+ *			If the keyword exists the frequency gets added else a new
+ *			entry for the keyword is made.
+ *
+ * \param[in]	pKeyword	Char array containing the keyword to be used
+ * \param[in]   pFrequency	The frequency associated to the keyword
+ *
+ * \return	The function returns true on sucessfull operation else false.
+ *			One potential reason for false return could be negative freq.
+ */
 bool SearchApp::ProcessNewEntry(char * pKeyword, int pFrequency) 
 {
 	std::unordered_map<std::string, SearchAppHeapNode*>::iterator iter;
@@ -185,6 +227,7 @@ bool SearchApp::ProcessNewEntry(char * pKeyword, int pFrequency)
 
 	iter = vKeywordMap.find(*keyword);
 
+	//register keyword if not already avaibale
 	if (iter == vKeywordMap.end()) {
 		node = new SearchAppHeapNode(keyword, pFrequency);
 
@@ -195,14 +238,15 @@ bool SearchApp::ProcessNewEntry(char * pKeyword, int pFrequency)
 			return false;
 	}
 
-	frequency = iter->second->GetFrequency() + pFrequency;
+	// get the new updaed frequency
+	frequency = ((SearchAppHeapNode*)iter->second)->GetFrequency() + pFrequency;
 	
 	return vHeap->IncreaseKey(iter->second, &frequency, sizeof(int));;
 }
 
 void TestCode()
 {
-	/*
+	
 	FiboHeapTestIntNode *node, *nodes[50];
 	int					 iter;
 	__int64     val;
@@ -265,5 +309,5 @@ void TestCode()
 	}
 	}
 
-	delete testheapintmax;*/
+	delete testheapintmax;
 }

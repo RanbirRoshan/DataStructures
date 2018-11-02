@@ -6,7 +6,7 @@
 *
 * @date		20/10/2018
 *
-* lastmodified 25/10/2018
+* lastmodified 01/11/2018
 */
 
 #include "../../../libdatastruct.h"
@@ -28,7 +28,7 @@ eTreeNodeType FiboHeapNode::NodeType()
 }
 
 /*!
- * \brief	cunstructor for the fibonacci heap node
+ * \brief	Constructor for the fibonacci heap node
  * 
  */
 FiboHeapNode::FiboHeapNode()
@@ -43,11 +43,11 @@ FiboHeapNode::FiboHeapNode()
 }
 
 /*!
- * \brief constructor for Fibonacci Heap class
+ * \brief		Constructor for FibonacciHeap class
   * 
-  * \param[in] pKeyOffset	Offset of key in the node. Use offsetof to find the same.
+  * \param[in] pKeyOffset	Offset of key in the node class. Use "offsetof" to find the same.
   * \param[in] pKeyCmpFunc  Key comparison function
-  *	\param[in] pIsMinHeap   True if the heap is supposed to behave as min heap else false
+  *	\param[in] pIsMinHeap   True if the heap is supposed to behave as min heap else false for max heap
  */
 FibonacciHeap::FibonacciHeap (Offset pKeyOffset, KeyCmpFunc pKeyCmpFunc, bool pIsMinHeap): Heap (pKeyOffset, pKeyCmpFunc, pIsMinHeap)
 {
@@ -55,7 +55,7 @@ FibonacciHeap::FibonacciHeap (Offset pKeyOffset, KeyCmpFunc pKeyCmpFunc, bool pI
 }
 
 /*!
- * \brief	destructor for the fibonacci heap class
+ * \brief	Destructor for the FibonacciHeap class
  * 
  */
 FibonacciHeap::~FibonacciHeap()
@@ -65,9 +65,9 @@ FibonacciHeap::~FibonacciHeap()
 }
 
 /*!
- * \brief	The function cleans up the entire heap by calling delete on every node on the heap
- *			but as Fibbonaci heap does not own any node so no destroy only the root and other associated
- *			properties are reset
+ * \brief	The function is expected to cleans up the entire heap by calling delete on every node on the heap
+ *			but as Fibbonaci heap does not own any node so no destroy of nodes happen only the
+ *			root and other associated properties are reset. <strong>The nodes are not deleted</strong>.
  * 
  */
 void FibonacciHeap::Destroy()
@@ -76,15 +76,16 @@ void FibonacciHeap::Destroy()
 }
 
 /*!
- * \brief		the funciton provides capability to insert a node in the tree
+ * \brief		The funciton provides capability to insert a node in the heap
  * 
- * \param[in] pNode	the pointer to the node being inserted
+ * \param[in]	pNode	the pointer to the node being inserted. The node must point to an
+ *						an object that is derived from FiboHeapNode class
  * 
  * \return	the function would return 
  *			- pNode			in case of sucessful insertion
  *			- nullptr		in case of insertion failure
  * 
- * \note	a node that is a part of any other heap will not be inserted and 
+ * \note	A node that is a part of any other heap will not be inserted and 
  *			the function would return nullptr or a node that is not of TNT_FIBO_HEAP
  *			type is tried to be inserted into it
  */
@@ -93,6 +94,7 @@ FiboHeapNode * FibonacciHeap::Insert(FiboHeapNode * pNode)
 	if (!pNode || pNode->NodeType () != TNT_FIBO_HEAP)
 		return nullptr;
 
+	// this can be relaxed but is coded so that proper node sanity is maintained in code
 	if (pNode->vLeftSibling || pNode->vRightSibling || pNode->vParent || pNode->vChildCut || pNode->vInHeap)
 		return nullptr;
 
@@ -104,6 +106,7 @@ FiboHeapNode * FibonacciHeap::Insert(FiboHeapNode * pNode)
 		vRoot = pNode;
 		return pNode;
 	}
+	// heap with a single element
 	else if (!((FiboHeapNode*)vRoot)->vRightSibling)
 	{
 		((FiboHeapNode*)vRoot)->vRightSibling = pNode;
@@ -115,7 +118,7 @@ FiboHeapNode * FibonacciHeap::Insert(FiboHeapNode * pNode)
 	else 
 		AddSiblingToNode ((FiboHeapNode*)vRoot, pNode);
 
-	// now we need to adjust the root
+	// the new node that is being inserted is a potential candidate for being root so test it
 	if (IsSecondNodeBtr(vRoot, pNode))
 		vRoot = pNode;
 
@@ -215,6 +218,14 @@ void FibonacciHeap::MergeHeap ()
 	}
 }
 
+/*!
+ *	\brief		The function adds the second node parameter to the sibling list of the 
+ *				first node
+ *
+ *	\param[in]	pNode			The node to which the sibling is to be added
+ *	\param[in]  pNewSibling		The new sibling node must be a single node not a list
+ *
+ */
 void FibonacciHeap::AddSiblingToNode (FiboHeapNode *pNode, FiboHeapNode * pNewSibling)
 {
 	if (!pNode->vRightSibling) {
@@ -235,8 +246,10 @@ void FibonacciHeap::AddSiblingToNode (FiboHeapNode *pNode, FiboHeapNode * pNewSi
 	}
 }
 
-/*
+/*!
  * \brief	The MeldNode function is used to meld a circular linked node to the root node
+ *
+ * \param[in]	pNode	The node to be melded into heap can be a list of node as well
  *
  * \note	The MeldNode would be called in the following two scenario
  *			-	A node is removed and the child nodes are being melded
@@ -309,16 +322,15 @@ void FibonacciHeap::MeldNode(FiboHeapNode * pNode)
 	// contest of root
 	if (IsSecondNodeBtr(vRoot, pNode))
 		vRoot = pNode;
-
 }
 
-/*
- * \breif	the function would remove and return the min node in case of a
- *			min heap and the max node in case of max heap
+/*!
+ * \breif	The function would remove and return the min node in case of a
+ *			min heap and the max node in case of max heap.
  *
  * \return	The function would return the following:
- *			- nullptr	     -	in case the heap is empty 
- *			- FiboHeapNode * -	otherwise as per the heap's min/max property
+ *			- nullptr	     -	In case the heap is empty 
+ *			- FiboHeapNode * -	Node as per the heap's min/max property
  */
 FiboHeapNode* FibonacciHeap::RemoveMinMax()
 {
@@ -379,7 +391,7 @@ FiboHeapNode* FibonacciHeap::RemoveMinMax()
 	return node;
 }
 
-/*
+/*!
  * \brief	The function attempts to remove the node from the Fiboncci Heap.
  *
  * \param[in]	pNode	The node that is to be removed.
@@ -432,18 +444,18 @@ FiboHeapNode * FibonacciHeap::Remove(FiboHeapNode * pNode)
 	return pNode;
 }
 
-/*
- * \brief	the function changes the key of the node to the specified key only if 
+/*!
+ * \brief	The function changes the key of the node to the specified key only if 
  *			the key is greater than the current key for a max heap and less than 
  *			the current key for a min heap
  *
- * \param[in] pNode		the node for which the key has to be changed
- * \param[in] pNewKey	the new value of the key that is to be set
- * \param[in] pSize		the size of key in bytes
+ * \param[in] pNode		The node for which the key has to be changed
+ * \param[in] pNewKey	The new value of the key that is to be set
+ * \param[in] pSize		The size of key in bytes
  *
  * \return	The function would return the following:
- *			- True		if in case the change is successfull
- *			- False		change key fails as the newly provided key is smaller than
+ *			- True		If in case the change is successfull
+ *			- False		Change key fails as the newly provided key is smaller than
  *						the existing key in case of max heap or is bigger than the
  *						existing key in case of the max heap
  */

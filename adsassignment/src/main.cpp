@@ -1,12 +1,12 @@
 /*
  * @brief	this file contains only the main function 
  *			that calls and execute the application code
-*
-* @author	Ranbir Roshan
-*
-* @date		19/10/2018
-*
-* @last-modified 19/10/2018
+ *
+ * @author	Ranbir Roshan
+ *
+ * @date		19/10/2018
+ *
+ * @last-modified 19/10/2018
  */
 
 #include "..\assignment.h"
@@ -26,7 +26,6 @@
 int main(int argc, char *argv[])
 {
 		SearchApp myApp;
-//		char      ignore_warning;
 
 	if (argc < 2)
 		std::cout << ("\n\nPlease provide the input file name as command line argument.");
@@ -34,10 +33,11 @@ int main(int argc, char *argv[])
 
 		if (myApp.Initialize (argv[1]))
 			myApp.Execute();	///< execute as initialization was successful
-
+		else
+			std::cout << ("\n\nProblem in operating the inlput file. The file provided is:") << argv[1];
 	}
 
-	std::cout << ("\n\nPress enter key to end.");
+	//std::cout << ("\n\nPress enter key to end.");
 
 	//ignore_warning = getchar();
 

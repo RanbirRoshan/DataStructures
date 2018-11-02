@@ -41,22 +41,6 @@ HeapNode* const Heap::PeekMinMax()
 bool Heap::IsSecondNodeBtr(HeapNode * pNode1, HeapNode * pNode2)
 {
 	return IsSecondKeyBtr(((char*)pNode1) + vKeyOffset, ((char*)pNode2) + vKeyOffset);
-	/*
-	// see if the current node should be the new node
-	switch (vIsMinHeap) {
-
-	case 1:	// Min Binomial Heap
-	if (vKeyCmpFunc(((char*)pNode1) + vKeyOffset, ((char*)pNode2) + vKeyOffset) > 0)
-	return true;
-	break;
-
-	case 0: // Max Binomial Heap
-	if (vKeyCmpFunc(((char*)pNode1) + vKeyOffset, ((char*)pNode2) + vKeyOffset) < 0)
-	return true;
-	break;
-	}
-
-	return false;*/
 }
 
 /*
