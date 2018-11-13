@@ -14,6 +14,16 @@
 #define FIBONACCI_HEAP_HPP
 
 class FibonacciHeap;
+class FiboHeapNode;
+
+/*
+ * \brief	The structure is for storing parent identity at each level
+ */
+struct FHNodeParrentDet
+{
+	int				uUseCount;
+	FiboHeapNode *	uParent;
+};
 
 /*!
 * \class	FiboHeapNode
@@ -37,10 +47,7 @@ private:
 
 	__int64				vDegree;			///< the number of  child to the current node
 	FiboHeapNode *      vChild;				///< pointer to one of the element in the child cicular link list 
-	union {
-		FiboHeapNode *		vParent;		///< pointer to the parent of the current node
-		FibonacciHeap *     vHeapParent;    ///< indentifer for top node that they belong to the heap as next parent
-	};
+	FHNodeParrentDet *	vParentDet;		///< pointer to the parent of the current node
 	FiboHeapNode *		vRightSibling;		///< next itme in circular link list
 	FiboHeapNode *		vLeftSibling;		///< previous item in circular link list
 	bool				vChildCut;			///< flag to show if a child was lost since it was added to its parent

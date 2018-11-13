@@ -34,7 +34,7 @@ FiboHeapNode::FiboHeapNode()
 {
 	vChild			= nullptr;
 	vInHeap         = nullptr;
-	vParent			= nullptr;
+	vParentDet		= nullptr;
 	vRightSibling	= nullptr;
 	vRightSibling	= nullptr;
 	vDegree			= 0;
@@ -94,15 +94,16 @@ FiboHeapNode * FibonacciHeap::Insert(FiboHeapNode * pNode)
 		return nullptr;
 
 	// this can be relaxed but is coded so that proper node sanity is maintained in code
-	if (pNode->vLeftSibling || pNode->vRightSibling || pNode->vParent || pNode->vChildCut || pNode->vInHeap)
+	if (pNode->vLeftSibling || pNode->vRightSibling || pNode->vParentDet || pNode->vChildCut || pNode->vInHeap)
 		return nullptr;
 
 	pNode->vInHeap		= this;
-	pNode->vHeapParent	= this;	// direct child identification
 
 	// empty heap 
 	if (!vRoot)
 	{
+		pNode->vParentDet = (FHNodeParrentDet*)calloc(1, sizeof(FHNodeParrentDet));
+		pNode->vParentDet->uUseCount = 1;
 		vRoot = pNode;
 		return pNode;
 	}
@@ -117,6 +118,9 @@ FiboHeapNode * FibonacciHeap::Insert(FiboHeapNode * pNode)
 	} 
 	else 
 		AddSiblingToNode ((FiboHeapNode*)vRoot, pNode);
+
+	pNode->vParentDet = ((FiboHeapNode*)vRoot)->vParentDet;
+	pNode->vParentDet->uUseCount++;
 
 	// the new node that is being inserted is a potential candidate for being root so test it
 	if (IsSecondNodeBtr(vRoot, pNode))
@@ -151,11 +155,7 @@ void FibonacciHeap::MergeHeap ()
 		temp  = (FiboHeapNode*)vRoot;
 
 		vRoot = ((FiboHeapNode*)vRoot)->vRightSibling;
-
-		// loosing the link from individual nodes
-		temp->vRightSibling = nullptr;
-		temp->vLeftSibling  = nullptr;
-
+		
 		// repeateadly mearging to form a node with unique degree
 		while (temp) {
 
@@ -185,37 +185,60 @@ void FibonacciHeap::MergeHeap ()
 			// two nodes of same degree found so merge is needed
 			if (node) {
 
+				// loosing the link from individual nodes
+				temp->vRightSibling = nullptr;
+				temp->vLeftSibling  = nullptr;
+
 				degree_merge_map[temp->vDegree] = nullptr;
 
 				// choosing the root
 				if (IsSecondNodeBtr(temp, node)) {
 
-					if (!node->vChild)
+					if (!node->vChild) {
 						node->vChild = temp;
-					else
-						AddSiblingToNode (node->vChild, temp);
-
+						temp->vParentDet = (FHNodeParrentDet*)calloc(1, sizeof(FHNodeParrentDet));
+						temp->vParentDet->uParent = node;
+						temp->vParentDet->uUseCount = 1;
+					}
+					else {
+						AddSiblingToNode(node->vChild, temp);
+						temp->vParentDet = node->vChild->vParentDet;
+						temp->vParentDet->uUseCount++;
+					}
 					temp->vInHeap = this;
 					node->vDegree += 1;
-					temp->vParent = node;
 					temp = node;
 				}
 				else {
 
-					if (!temp->vChild)
+					if (!temp->vChild) {
 						temp->vChild = node;
-					else
+						node->vParentDet = (FHNodeParrentDet*)malloc(sizeof(FHNodeParrentDet));
+						node->vParentDet->uParent = temp;
+						node->vParentDet->uUseCount = 1;
+					}
+					else {
 						AddSiblingToNode(temp->vChild, node);
+						node->vParentDet = temp->vChild->vParentDet;
+						node->vParentDet->uUseCount++;
+					}
 
 					node->vInHeap = this;
-					node->vParent = temp;
 					temp->vDegree += 1;
 				}
 			}
 			else {
+	
 				temp->vInHeap = nullptr;
-				temp->vParent = nullptr;
+				if (temp->vParentDet)
+					if (temp->vParentDet->uUseCount == 1)
+						free(temp->vParentDet);
+					else
+						temp->vParentDet->uUseCount--;
+				temp->vParentDet = nullptr;
 				temp->vChildCut = false;
+				temp->vRightSibling = nullptr;
+				temp->vLeftSibling = nullptr;
 				degree_merge_map[temp->vDegree] = temp;
 				temp = nullptr;
 			}
@@ -302,7 +325,7 @@ void FibonacciHeap::MeldNode(FiboHeapNode * pNode)
 
 	temp = pNode;
 
-	pNode->vHeapParent = this;
+	//pNode->vHeapParent = this;
 	temp->vChildCut = 0;
 
 	temp = temp->vRightSibling;
@@ -310,8 +333,12 @@ void FibonacciHeap::MeldNode(FiboHeapNode * pNode)
 	if (!vRoot)
 	{
 		vRoot = pNode;
+		pNode->vParentDet->uParent = nullptr;
 		pNode->vChildCut = 0;
 		return;
+	}
+	else {
+		pNode->vParentDet->uParent = nullptr;
 	}
 
 	// root is a single element
@@ -363,7 +390,7 @@ FiboHeapNode* FibonacciHeap::RemoveMinMax()
 	if (!((FiboHeapNode*)vRoot)->vRightSibling) {
 
 #ifdef _DEBUG
-		if (((FiboHeapNode*)vRoot)->vRightSibling)
+		if (((FiboHeapNode*)vRoot)->vLeftSibling)
 			DebugBreak();
 #endif
 		node  = (FiboHeapNode*)vRoot;
@@ -377,9 +404,6 @@ FiboHeapNode* FibonacciHeap::RemoveMinMax()
 		vRoot = node->vRightSibling;
 		((FiboHeapNode*)vRoot)->vLeftSibling  = nullptr;
 		((FiboHeapNode*)vRoot)->vRightSibling = nullptr;
-
-		node->vLeftSibling  = nullptr;
-		node->vRightSibling = nullptr;
 	}
 	// more than 2 element
 	else
@@ -391,19 +415,26 @@ FiboHeapNode* FibonacciHeap::RemoveMinMax()
 		node->vLeftSibling->vRightSibling = (FiboHeapNode*)vRoot;
 
 		((FiboHeapNode*)vRoot)->vLeftSibling = node->vLeftSibling;
-
-		node->vLeftSibling = nullptr;
-		node->vRightSibling = nullptr;
-
 	}
+
+	if (!vRoot)
+		free (node->vParentDet);
+
 	MeldNode (node->vChild);
 
 	MergeHeap ();
 
+	if (node->vParentDet->uUseCount == 1)
+		free(node->vParentDet);
+	else
+		node->vParentDet->uUseCount--;
+
 	// reset the values so that the node remains usable for next insert parent for these node is not possible
 	node->vChildCut = 0;
+	node->vLeftSibling = nullptr;
+	node->vRightSibling = nullptr;
 	node->vDegree	= 0;
-	node->vParent   = nullptr;
+	node->vParentDet= nullptr;
 	node->vChild	= nullptr;
 	node->vInHeap   = nullptr;
 
@@ -443,17 +474,23 @@ FiboHeapNode * FibonacciHeap::Remove(FiboHeapNode * pNode)
 		}
 	}
 
-	if (pNode->vParent && pNode->vHeapParent != this) {
-		if(pNode->vParent->vChild == pNode)
-			pNode->vParent->vChild = pNode->vRightSibling;
+	if (pNode->vParentDet->uParent) {
 
-		ChildCut(pNode->vParent);
+		if((pNode->vParentDet->uParent)->vChild == pNode)
+			(pNode->vParentDet->uParent)->vChild = pNode->vRightSibling;
+
+		ChildCut(pNode->vParentDet->uParent);
 	}
 
 	if (pNode->vChild)
 		MeldNode(pNode->vChild);
 
-	pNode->vParent		 = nullptr;
+	if (pNode->vParentDet->uUseCount == 1)
+		free (pNode->vParentDet);
+	else
+		pNode->vParentDet->uUseCount--;
+
+	pNode->vParentDet	 = nullptr;
 	pNode->vRightSibling = nullptr;
 	pNode->vInHeap       = nullptr;
 	pNode->vLeftSibling  = nullptr;
@@ -480,7 +517,6 @@ FiboHeapNode * FibonacciHeap::Remove(FiboHeapNode * pNode)
 bool FibonacciHeap::ChangeKey(FiboHeapNode * pNode, void * pNewKey, size_t pSize)
 {
 	FiboHeapNode * temp;
-	FiboHeapNode * parent;
 
 	if (!IsSecondKeyBtr(((byte*)pNode) + GetKeyOffset(), pNewKey))
 		return false;
@@ -488,11 +524,9 @@ bool FibonacciHeap::ChangeKey(FiboHeapNode * pNode, void * pNewKey, size_t pSize
 	memcpy((byte*)pNode + GetKeyOffset(), pNewKey, pSize);
 
 	//check if the node is now better than the parent
-	if (pNode->vParent && pNode->vHeapParent != this) {
-		if (IsSecondNodeBtr(pNode->vParent, pNode))
+	if (pNode->vParentDet->uParent) {
+		if (IsSecondNodeBtr(pNode->vParentDet->uParent, pNode))
 		{
-			parent = pNode->vParent;
-
 			// call remove it will manage the child cut property of the nodes
 			temp = Remove(pNode);
 			pNode->vChildCut = false;
@@ -533,7 +567,7 @@ void FibonacciHeap::ChildCut(FiboHeapNode *pNode)
 	pNode->vDegree -= 1;
 
 	if (pNode->vChildCut) {
-		parent = pNode->vParent;
+		parent = pNode->vParentDet->uParent;
 		if (parent) {
 
 			// remove would have removed the node and called child cut on parent
@@ -543,7 +577,7 @@ void FibonacciHeap::ChildCut(FiboHeapNode *pNode)
 		}
 	}
 	else {
-		if (pNode->vParent)
+		if (pNode->vParentDet->uParent)
 			pNode->vChildCut = true;
 	}
 }

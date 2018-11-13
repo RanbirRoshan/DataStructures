@@ -35,6 +35,9 @@ static long long IntCmpFunc(const void * pCmpVal1, const void * pCmpVal2)
 
 /*!
 * \brief	constructor for the class
+*
+* \param[in]	std::string *	The keyword for the node
+* \param[in]	int				The frequency for the keyword
 */
 SearchAppHeapNode::SearchAppHeapNode(std::string *pKeyword, int pFrequency)
 {
@@ -74,6 +77,14 @@ SearchApp::~SearchApp()
 		delete vInFile;
 	}
 
+	// close the file if open and free memory if aquired
+	if (vOutFile) {
+		if (vOutFile->is_open())
+			vOutFile->close();
+
+		delete vOutFile;
+	}
+
 	//we need to release the memory taken for nodes
 	while (vKeywordMap.empty () == false){
 		iter = vKeywordMap.begin();
@@ -92,6 +103,10 @@ SearchApp::~SearchApp()
  *								of input file can be found in the project file persent in
  *								the reposiotry.
  * 
+ * \param[in] pOutFileName		The path of the output file. The details about the format
+ *								of input file can be found in the project file persent in
+ *								the reposiotry.
+ * 
  * \return	True if the initialization is sucessfull else false.
  * 
  * \note	The function returns false only if the file cannot be opened or no or empty name provided.
@@ -99,9 +114,9 @@ SearchApp::~SearchApp()
  * \warning	The user is expected to call Initialize after construct and before calling any other public APIs
  *			else the behavior of program is undefined.
  */
-bool SearchApp::Initialize(const char * pInputFileName)
+bool SearchApp::Initialize(const char * pInputFileName, const char * pOutFileName)
 {
-	if (pInputFileName == NULL || *pInputFileName == EOS)
+	if (pInputFileName == NULL || *pInputFileName == EOS || pOutFileName == NULL || *pOutFileName == EOS)
 	{
 		cout << "\nThe input file name cannot be empty. \
 					 Please provide a input file name as first command line argument and try again.";
@@ -110,8 +125,15 @@ bool SearchApp::Initialize(const char * pInputFileName)
 
 	vInFile = new ifstream(pInputFileName, std::ifstream::in);
 
+	vOutFile = new ofstream(pOutFileName, std::ifstream::out);
+
 	if (!vInFile->is_open()) {
-		cout << "\nFailed to open the file.";
+		cout << "\nFailed to open the input file.";
+		return false;
+	}
+
+	if (!vOutFile->is_open()) {
+		cout << "\nFailed to open the outfile file.";
 		return false;
 	}
 
@@ -196,17 +218,38 @@ void SearchApp::Execute()
 bool SearchApp::PrintTopResult(int pCount)
 {
 	SearchAppHeapNode **	popped_list;
+	SearchAppHeapNode **	temp_list;
 	SearchAppHeapNode *		node;
 	int						size = 0;
+	int						capacity = pCount << 1;
+	int						prev_freuency = -1;
 
-	popped_list = (SearchAppHeapNode **) calloc (pCount, sizeof(SearchAppHeapNode *));
+	popped_list = (SearchAppHeapNode **) calloc (capacity, sizeof(SearchAppHeapNode *));
 
-	while (pCount && vHeap->PeekMinMax()) {
+	while (vHeap->PeekMinMax() && (pCount || ((SearchAppHeapNode*)vHeap->PeekMinMax())->GetFrequency () == prev_freuency)) {
 		node = (SearchAppHeapNode*) vHeap->RemoveMinMax();
-		cout << *node->GetKeyword() << "\n";
+
+		if (prev_freuency != -1)
+			vOutFile->write (",", 1);
+
+		vOutFile->write (node->GetKeyword()->c_str(), node->GetKeyword()->size());
+
+		if (capacity == size) {
+			capacity = capacity << 1;
+			temp_list = (SearchAppHeapNode **)calloc(capacity, sizeof(SearchAppHeapNode *));
+			memcpy(temp_list, popped_list, sizeof(SearchAppHeapNode *) * size);
+			free(popped_list);
+			popped_list = temp_list;
+		}
+
+
 #pragma warning(suppress: 6011)
 		popped_list[size++] = node;
-		pCount--;
+
+		if (prev_freuency != node->GetFrequency()) {
+			pCount--;
+			prev_freuency = node->GetFrequency();
+		}
 	}
 
 	while (size)
@@ -214,6 +257,8 @@ bool SearchApp::PrintTopResult(int pCount)
 		vHeap->Insert(popped_list[--size]);
 
 	free (popped_list);
+
+	vOutFile->write ("\n", 1);
 
 	return true;
 }
@@ -266,12 +311,53 @@ void TestCode()
 
 	FibonacciHeap *testheapintmax = new FibonacciHeap(offsetof(FiboHeapTestIntNode, uKey), IntCmpFunc, false);
 
-	for (iter = 0; iter < 50; iter++)
-	{
-	nodes[iter] = new FiboHeapTestIntNode();
-	nodes[iter]->uKey = std::rand() * 10000000000;
-	nodes[iter]->uKey *= (nodes[iter]->uKey % 8) ? 1 : -1;
-	testheapintmax->Insert(nodes[iter]);
+	for (int x = 0; x < 50; x++) {
+		for (int y = 0; y < 50; y++) {
+			if (x == y)
+				continue;
+			for (int z = 0; z < 50; z++) {
+
+					__int64 uKey;
+
+				if (x == z || y == z)
+					continue;
+
+				for (iter = 0; iter < 50; iter++)
+				{
+					nodes[iter] = new FiboHeapTestIntNode();
+					nodes[iter]->uKey = std::rand() * 10000000000;
+					nodes[iter]->uKey *= (nodes[iter]->uKey % 8) ? 1 : -1;
+					testheapintmax->Insert(nodes[iter]);
+				}
+
+				testheapintmax->Insert(testheapintmax->RemoveMinMax());
+
+				uKey = ((FiboHeapTestIntNode*)testheapintmax->PeekMinMax())->uKey + 20;
+
+				testheapintmax->IncreaseKey(nodes[x], &uKey, sizeof(__int64));
+
+				uKey = uKey + 20;
+
+				testheapintmax->IncreaseKey(nodes[y], &uKey, sizeof(__int64));
+
+				uKey = uKey + 20;
+
+				testheapintmax->IncreaseKey(nodes[z], &uKey, sizeof(__int64));
+
+				for (iter = 0; iter < 50; iter++)
+				{
+					if (z&1)
+						testheapintmax->RemoveMinMax();
+					else
+						testheapintmax->Remove(nodes[iter]);
+				}
+
+				for (iter = 0; iter < 50; iter++)
+				{
+					delete nodes[iter];
+				}
+			}
+		}
 	}
 
 	for (iter = 0; iter < 50; iter++)

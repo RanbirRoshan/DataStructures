@@ -67,7 +67,7 @@ public:
    ~SearchApp ();
 
 	// the application management APIs
-	bool Initialize (const char * pInputFileName);
+	bool Initialize (const char * pInputFileName, const char * pOutFileName);
 	void Execute ();
 private:
 
@@ -76,6 +76,7 @@ private:
 
 	FibonacciHeap *		vHeap;			///< The datastructure to store the keyword sorted by frequency
 	std::ifstream*		vInFile;		///< stream for reading input from file
+	std::ofstream*		vOutFile;		///< stream of writing output
 
 	std::unordered_map<std::string, SearchAppHeapNode*>   vKeywordMap;	///< a map for keyword to node to find node
 };

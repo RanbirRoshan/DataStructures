@@ -27,6 +27,9 @@
     <ClInclude Include="src\searchapplication\searchapp.hpp" />
     <ClInclude Include="src\searchapplication\searchapp.hxx" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9585988F-843E-46BC-BBC2-BA10FFEA473D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>

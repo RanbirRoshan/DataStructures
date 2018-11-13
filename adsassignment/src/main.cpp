@@ -31,15 +31,11 @@ int main(int argc, char *argv[])
 		std::cout << ("\n\nPlease provide the input file name as command line argument.");
 	else {
 
-		if (myApp.Initialize (argv[1]))
+		if (myApp.Initialize (argv[1], "output_file.txt"))
 			myApp.Execute();	///< execute as initialization was successful
 		else
 			std::cout << ("\n\nProblem in operating the inlput file. The file provided is:") << argv[1];
 	}
-
-	//std::cout << ("\n\nPress enter key to end.");
-
-	//ignore_warning = getchar();
 
 	return 0;
 }
