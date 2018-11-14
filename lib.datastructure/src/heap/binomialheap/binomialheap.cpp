@@ -8,7 +8,7 @@
 * @last-modified 20/10/2018
 */
 
-#include "..\..\..\libdatastruct.h"
+#include "../../../libdatastruct.h"
 #include <assert.h>
 #include <queue>
 #include <map>

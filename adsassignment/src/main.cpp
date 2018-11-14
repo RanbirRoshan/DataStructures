@@ -9,7 +9,7 @@
  * @last-modified 19/10/2018
  */
 
-#include "..\assignment.h"
+#include "../assignment.h"
 #include <iostream>
 
 /*!

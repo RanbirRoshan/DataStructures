@@ -13,6 +13,11 @@
 
 #define FIBONACCI_HEAP_HPP
 
+//#include "../../common/environ.h"
+#ifdef __linux__
+typedef __int64_t __int64;
+#endif
+
 class FibonacciHeap;
 class FiboHeapNode;
 

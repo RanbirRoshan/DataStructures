@@ -17,23 +17,43 @@
 #endif
 
 // Check GCC
-#if __GNUC__
+#ifdef  __linux__
+
 #if __x86_64__ || __ppc64__
 #define ENVIRONMENT64
 #else
 #define ENVIRONMENT32
 #endif
+
+#include <cstdlib>
+#include <cstring>
+
+typedef __int64_t __int64;
+typedef __int32_t __int32;
+typedef char byte;
+
+using namespace std;
 #endif
 
 #ifdef ENVIRONMENT64
 
-#define Offset __int64
+#ifdef __linux__
+typedef __int64_t Offset;
+#else
+typedef __int64 Offset;
+#endif
+//#define Offset __int64
 
 #endif
 
 #ifdef ENVIRONMENT32
 
-#define Offset __int32
+#ifdef __linux__
+typedef __int32_t  Offset;
+#else
+typedef __int32 Offset;
+#endif
+//#define Offset __int32
 
 #endif
 

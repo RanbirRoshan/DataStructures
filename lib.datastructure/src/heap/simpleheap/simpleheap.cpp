@@ -1,4 +1,4 @@
-#include "..\..\..\libdatastruct.h"
+#include "../../../libdatastruct.h"
 
 /*!
 * \brief	constructor for the class Heap

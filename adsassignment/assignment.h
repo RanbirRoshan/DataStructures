@@ -3,6 +3,6 @@
 
 #define ASSIGNMENT_H
 
-#include ".\src\searchapplication\searchapp.hpp"
+#include "./src/searchapplication/searchapp.hpp"
 
 #endif //ASSIGNMENT_H

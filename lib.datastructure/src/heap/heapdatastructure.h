@@ -5,12 +5,12 @@
 #define HEAP_H
 
 //simple heap
-#include "simpleheap\simpleheap.hpp"
+#include "simpleheap/simpleheap.hpp"
 
 //binomial heap
-#include "binomialheap\binomialheap.hpp"
+#include "binomialheap/binomialheap.hpp"
 
 //fibonacci heap 
-#include "fibonacciheap\fibonacciheap.hpp"
+#include "fibonacciheap/fibonacciheap.hpp"
 
 #endif // !HEAP_HPP

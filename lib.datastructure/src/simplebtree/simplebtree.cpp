@@ -8,7 +8,7 @@
 * @last-modified 20/10/2018
 */
 
-#include "..\..\libdatastruct.h"
+#include "../../libdatastruct.h"
 
 /*!
 * \brief	The function is useful in identifying the node type provided for

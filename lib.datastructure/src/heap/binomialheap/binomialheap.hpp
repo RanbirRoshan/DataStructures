@@ -13,6 +13,15 @@
 
 #define BINOMIAL_HEAP_HPP
 
+#include "../../../libdatastruct.h" 
+
+#ifdef __linux__
+typedef __int64_t __int64;
+typedef __int32_t __int32;
+#endif
+
+class BinomialHeap;
+
 /*!
 * \class	BinomialHeapNode
 * 

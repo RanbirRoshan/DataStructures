@@ -36,7 +36,7 @@ FiboHeapNode::FiboHeapNode()
 	vInHeap         = nullptr;
 	vParentDet		= nullptr;
 	vRightSibling	= nullptr;
-	vRightSibling	= nullptr;
+	vLeftSibling	= nullptr;
 	vDegree			= 0;
 	vChildCut		= 0;
 }
@@ -218,6 +218,7 @@ void FibonacciHeap::MergeHeap ()
 
 					if (!node->vParentDet || node->vParentDet->uUseCount == 1)
 						free(node->vParentDet);
+
 					else
 						node->vParentDet->uUseCount--;
 

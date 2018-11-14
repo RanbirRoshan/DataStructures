@@ -19,7 +19,7 @@ using namespace std;
 /*
  * \brief	the key comparison function for use in node
  */
-static long long IntCmpFunc(const void * pCmpVal1, const void * pCmpVal2)
+static __int64 IntCmpFunc(const void * pCmpVal1, const void * pCmpVal2)
 {
 	int *val1 = (int *)pCmpVal1;
 	int *val2 = (int *)pCmpVal2;
