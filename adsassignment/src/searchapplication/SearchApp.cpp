@@ -88,6 +88,7 @@ SearchApp::~SearchApp()
 	//we need to release the memory taken for nodes
 	while (vKeywordMap.empty () == false){
 		iter = vKeywordMap.begin();
+		vHeap->Remove(iter->second);
 		delete iter->second;
 		vKeywordMap.erase(iter);
 	}
@@ -176,7 +177,9 @@ void SearchApp::Execute()
 {
 	char		linebuf[MAX_BUFFER_LENGTH];
 	int			frequency;
-	
+
+	//TestCode();
+
 	while (!vInFile->eof()) {
 
 		switch (vInFile->peek()) {
@@ -200,7 +203,6 @@ void SearchApp::Execute()
 			break;
 		}
 	}
-	//TestCode();
 	return;
 }
 
@@ -296,6 +298,8 @@ bool SearchApp::ProcessNewEntry(char * pKeyword, int pFrequency)
 			return false;
 	}
 
+	delete keyword;
+
 	// get the new updaed frequency
 	frequency = ((SearchAppHeapNode*)iter->second)->GetFrequency() + pFrequency;
 	
@@ -358,6 +362,14 @@ void TestCode()
 				}
 			}
 		}
+	}
+
+	for (iter = 0; iter < 50; iter++)
+	{
+		nodes[iter] = new FiboHeapTestIntNode();
+		nodes[iter]->uKey = std::rand() * 10000000000;
+		nodes[iter]->uKey *= (nodes[iter]->uKey % 8) ? 1 : -1;
+		testheapintmax->Insert(nodes[iter]);
 	}
 
 	for (iter = 0; iter < 50; iter++)

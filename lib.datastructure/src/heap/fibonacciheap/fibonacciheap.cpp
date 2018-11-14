@@ -103,7 +103,7 @@ FiboHeapNode * FibonacciHeap::Insert(FiboHeapNode * pNode)
 	if (!vRoot)
 	{
 		pNode->vParentDet = (FHNodeParrentDet*)calloc(1, sizeof(FHNodeParrentDet));
-		pNode->vParentDet->uUseCount = 1;
+		pNode->vParentDet->uUseCount++;
 		vRoot = pNode;
 		return pNode;
 	}
@@ -194,6 +194,11 @@ void FibonacciHeap::MergeHeap ()
 				// choosing the root
 				if (IsSecondNodeBtr(temp, node)) {
 
+					if (!temp->vParentDet || temp->vParentDet->uUseCount == 1)
+						free(temp->vParentDet);
+					else
+						temp->vParentDet->uUseCount--;
+
 					if (!node->vChild) {
 						node->vChild = temp;
 						temp->vParentDet = (FHNodeParrentDet*)calloc(1, sizeof(FHNodeParrentDet));
@@ -211,9 +216,14 @@ void FibonacciHeap::MergeHeap ()
 				}
 				else {
 
+					if (!node->vParentDet || node->vParentDet->uUseCount == 1)
+						free(node->vParentDet);
+					else
+						node->vParentDet->uUseCount--;
+
 					if (!temp->vChild) {
 						temp->vChild = node;
-						node->vParentDet = (FHNodeParrentDet*)malloc(sizeof(FHNodeParrentDet));
+						node->vParentDet = (FHNodeParrentDet*)calloc(1, sizeof(FHNodeParrentDet));
 						node->vParentDet->uParent = temp;
 						node->vParentDet->uUseCount = 1;
 					}
@@ -235,6 +245,7 @@ void FibonacciHeap::MergeHeap ()
 						free(temp->vParentDet);
 					else
 						temp->vParentDet->uUseCount--;
+
 				temp->vParentDet = nullptr;
 				temp->vChildCut = false;
 				temp->vRightSibling = nullptr;
@@ -330,15 +341,13 @@ void FibonacciHeap::MeldNode(FiboHeapNode * pNode)
 
 	temp = temp->vRightSibling;
 
+	pNode->vParentDet->uParent = nullptr;
+	pNode->vChildCut = 0;
+
 	if (!vRoot)
 	{
 		vRoot = pNode;
-		pNode->vParentDet->uParent = nullptr;
-		pNode->vChildCut = 0;
 		return;
-	}
-	else {
-		pNode->vParentDet->uParent = nullptr;
 	}
 
 	// root is a single element
@@ -416,9 +425,6 @@ FiboHeapNode* FibonacciHeap::RemoveMinMax()
 
 		((FiboHeapNode*)vRoot)->vLeftSibling = node->vLeftSibling;
 	}
-
-	if (!vRoot)
-		free (node->vParentDet);
 
 	MeldNode (node->vChild);
 

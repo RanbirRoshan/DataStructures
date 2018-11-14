@@ -38,6 +38,11 @@ SBTree::SBTree(int pKeyOffset, KeyCmpFunc *pKeyCmpFunc, SBTreeDestroyFunc *pDest
 	vDestroyFunc	= pDestroyFunc;
 }
 
+void SBTree::Destroy(SBTreeDestroyFunc *pDestroyFunc)
+{
+
+}
+
 SBTree::~SBTree()
 {
 	if (vDestroyFunc)

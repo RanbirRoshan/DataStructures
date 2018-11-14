@@ -38,6 +38,6 @@
 #endif
 
 
-#include <TCHAR.H>
+//#include <TCHAR.H>
 
 #endif // !ENVIRONMENT_HPP

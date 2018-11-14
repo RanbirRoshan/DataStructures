@@ -11,7 +11,7 @@
 
 
 #if defined( CPPUNIT_NO_STREAM )
-
+#include "stdafx.h"
 #include <string>
 #include <stdio.h>
 #include <string.h>

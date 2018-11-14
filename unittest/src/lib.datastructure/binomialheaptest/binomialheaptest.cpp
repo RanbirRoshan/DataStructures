@@ -1,5 +1,7 @@
 #include "binomialheaptest.h"
+#include "stdafx.h"
 #include <cstdlib>
+#include <string.h>
 #include <climits>
 
 CPPUNIT_TEST_SUITE_NAMED_REGISTRATION(BinomialHeapTest, "Binomial Heap");
@@ -113,7 +115,7 @@ void BinomialHeapTest::InsertTest()
 
 	CPPUNIT_ASSERT(strnodemin == testheapstrmin->PeekMinMax());
 	tempstr = (BinomialHeapTestStrNode*)testheapstrmin->RemoveMinMax();
-	CPPUNIT_ASSERT(_tcscmp (tempstr->uKey, strnodemin->uKey) == 0);
+	CPPUNIT_ASSERT(wcscmp (tempstr->uKey, strnodemin->uKey) == 0);
 	CPPUNIT_ASSERT(tempstr->uKey == strnodemin->uKey);
 	CPPUNIT_ASSERT(nullptr == testheapstrmin->PeekMinMax());
 	CPPUNIT_ASSERT(nullptr == testheapstrmin->RemoveMinMax());
