@@ -46,7 +46,7 @@ bool Heap::IsSecondNodeBtr(HeapNode * pNode1, HeapNode * pNode2)
 /*
  * \brief	Helper function for child class to acess key offset value with respect to node
  */
-int  Heap::GetKeyOffset()
+Offset  Heap::GetKeyOffset()
 {
 	return vKeyOffset;
 }

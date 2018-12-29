@@ -68,9 +68,9 @@ bool Heap::IsSecondKeyBtr(void * pKey1, void * pKey2)
 *
 * \return the node type of the current tree node
 */
-eTreeNodeType HeapNode::NodeType()
+eNodeType HeapNode::NodeType()
 {
-	return TNT_HEAP_NODE;
+	return NT_HEAP_NODE;
 }
 
 /*!
@@ -82,7 +82,7 @@ void Heap::Destroy()
 	HeapNode *node;
 
 #ifdef _DEBUG
-	if (vRoot->NodeType() != TNT_HEAP_NODE)
+	if (vRoot->NodeType() != NT_HEAP_NODE)
 		DebugBreak();
 #endif
 

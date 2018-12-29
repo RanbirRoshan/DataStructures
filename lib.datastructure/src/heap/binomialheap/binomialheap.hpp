@@ -36,7 +36,7 @@ public:
 
 	BinomialHeapNode ();
 
-	eTreeNodeType NodeType();
+	eNodeType NodeType();
 
 private:
 

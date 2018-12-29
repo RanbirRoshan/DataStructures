@@ -1,5 +1,4 @@
 #include "binomialheaptest.h"
-#include "stdafx.h"
 #include <cstdlib>
 #include <string.h>
 #include <climits>

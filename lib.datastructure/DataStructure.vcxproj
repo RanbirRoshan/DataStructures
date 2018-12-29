@@ -22,7 +22,7 @@
     <ProjectGuid>{F646EA54-2812-4E0B-8DCB-2894A2B87C11}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>DataStructure</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -92,7 +92,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -140,7 +140,6 @@
   <ItemGroup>
     <ClInclude Include="libdatastruct.h" />
     <ClInclude Include="src\common\environ.h" />
-    <ClInclude Include="src\common\treecommon.h" />
     <ClInclude Include="src\heap\binomialheap\binomialheap.hpp" />
     <ClInclude Include="src\heap\binomialheap\binomialheap.hxx" />
     <ClInclude Include="src\heap\fibonacciheap\fibonacciheap.hpp" />
@@ -149,14 +148,18 @@
     <ClInclude Include="src\heap\simpleheap\simpleheap.hpp" />
     <ClInclude Include="src\heap\simpleheap\simpleheap.hxx" />
     <ClInclude Include="src\libstr\libstr.h" />
-    <ClInclude Include="src\simplebtree\simplebtree.hpp" />
-    <ClInclude Include="src\simplebtree\simplebtree.hxx" />
+    <ClInclude Include="src\tree\redblack\redblack.hpp" />
+    <ClInclude Include="src\tree\simplebtree\simplebtree.hpp" />
+    <ClInclude Include="src\tree\simplebtree\simplebtree.hxx" />
+    <ClInclude Include="src\tree\treecommon.h" />
+    <ClInclude Include="src\tree\treedatastruct.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\heap\binomialheap\binomialheap.cpp" />
     <ClCompile Include="src\heap\fibonacciheap\fibonacciheap.cpp" />
     <ClCompile Include="src\heap\simpleheap\simpleheap.cpp" />
-    <ClCompile Include="src\simplebtree\simplebtree.cpp" />
+    <ClCompile Include="src\tree\redblack\redblack.cpp" />
+    <ClCompile Include="src\tree\simplebtree\simplebtree.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

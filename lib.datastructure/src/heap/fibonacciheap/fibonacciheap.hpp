@@ -44,7 +44,7 @@ public:
 
 	FiboHeapNode();
 
-	eTreeNodeType NodeType ();
+	eNodeType NodeType ();
 
 private:
 

@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\simplebtree">
-      <UniqueIdentifier>{385fde0a-9e45-41a5-8e6c-1038fdd31066}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\simplebtree">
-      <UniqueIdentifier>{10ef92c5-dba8-470d-92f4-7c5043826786}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\common">
       <UniqueIdentifier>{4c90c74a-4fa5-4b19-8b1c-3e5abb2f92fa}</UniqueIdentifier>
     </Filter>
@@ -49,6 +43,24 @@
     <Filter Include="Source Files\heap\simpleheap">
       <UniqueIdentifier>{8b0668e3-12ee-4eb5-99dc-918da417a922}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\tree">
+      <UniqueIdentifier>{b8f83997-db76-4ff3-9dfb-d9efd3ef5432}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\tree">
+      <UniqueIdentifier>{fed2e713-fa94-4fce-9c0f-3851b25f61c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\tree\simplebtree">
+      <UniqueIdentifier>{385fde0a-9e45-41a5-8e6c-1038fdd31066}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\tree\simplebtree">
+      <UniqueIdentifier>{10ef92c5-dba8-470d-92f4-7c5043826786}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\tree\redblack">
+      <UniqueIdentifier>{a8664c22-baed-4263-a531-b610bde8eed9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\tree\redblack">
+      <UniqueIdentifier>{45dad3ca-3be3-45f8-acca-bfd3827fe613}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -57,17 +69,8 @@
     <ClInclude Include="libdatastruct.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\simplebtree\simplebtree.hpp">
-      <Filter>Header Files\simplebtree</Filter>
-    </ClInclude>
     <ClInclude Include="src\libstr\libstr.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\common\treecommon.h">
-      <Filter>Header Files\common</Filter>
-    </ClInclude>
-    <ClInclude Include="src\simplebtree\simplebtree.hxx">
-      <Filter>Header Files\simplebtree</Filter>
     </ClInclude>
     <ClInclude Include="src\common\environ.h">
       <Filter>Header Files\common</Filter>
@@ -87,17 +90,29 @@
     <ClInclude Include="src\heap\binomialheap\binomialheap.hxx">
       <Filter>Header Files\heap\binomialheap</Filter>
     </ClInclude>
+    <ClInclude Include="src\tree\redblack\redblack.hpp">
+      <Filter>Header Files\tree\redblack</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tree\treedatastruct.h">
+      <Filter>Header Files\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tree\simplebtree\simplebtree.hpp">
+      <Filter>Header Files\tree\simplebtree</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tree\simplebtree\simplebtree.hxx">
+      <Filter>Header Files\tree\simplebtree</Filter>
+    </ClInclude>
     <ClInclude Include="src\heap\simpleheap\simpleheap.hpp">
       <Filter>Header Files\heap\simpleheap</Filter>
     </ClInclude>
     <ClInclude Include="src\heap\simpleheap\simpleheap.hxx">
       <Filter>Header Files\heap\simpleheap</Filter>
     </ClInclude>
+    <ClInclude Include="src\tree\treecommon.h">
+      <Filter>Header Files\tree</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\simplebtree\simplebtree.cpp">
-      <Filter>Source Files\simplebtree</Filter>
-    </ClCompile>
     <ClCompile Include="src\heap\binomialheap\binomialheap.cpp">
       <Filter>Source Files\heap\binomialheap</Filter>
     </ClCompile>
@@ -106,6 +121,12 @@
     </ClCompile>
     <ClCompile Include="src\heap\simpleheap\simpleheap.cpp">
       <Filter>Source Files\heap\simpleheap</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tree\simplebtree\simplebtree.cpp">
+      <Filter>Source Files\tree\simplebtree</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tree\redblack\redblack.cpp">
+      <Filter>Source Files\tree\redblack</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

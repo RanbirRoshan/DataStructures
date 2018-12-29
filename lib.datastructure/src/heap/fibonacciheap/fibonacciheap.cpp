@@ -21,9 +21,9 @@
 *
 * \return the node type of the current tree node
 */
-eTreeNodeType FiboHeapNode::NodeType()
+eNodeType FiboHeapNode::NodeType()
 {
-	return TNT_FIBO_HEAP;
+	return NT_FIBO_HEAP;
 }
 
 /*!
@@ -85,12 +85,12 @@ void FibonacciHeap::Destroy()
  *			- nullptr		in case of insertion failure
  * 
  * \note	A node that is a part of any other heap will not be inserted and 
- *			the function would return nullptr or a node that is not of TNT_FIBO_HEAP
+ *			the function would return nullptr or a node that is not of NT_FIBO_HEAP
  *			type is tried to be inserted into it
  */
 FiboHeapNode * FibonacciHeap::Insert(FiboHeapNode * pNode)
 {
-	if (!pNode || pNode->NodeType () != TNT_FIBO_HEAP)
+	if (!pNode || pNode->NodeType () != NT_FIBO_HEAP)
 		return nullptr;
 
 	// this can be relaxed but is coded so that proper node sanity is maintained in code

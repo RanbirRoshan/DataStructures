@@ -8,8 +8,8 @@
 // string related
 #include "src/libstr/libstr.h"
 
-// simple binary tree support
-#include "src/simplebtree/simplebtree.hpp"
+// tree related
+#include "src/tree/treedatastruct.h"
 
 // heap support
 #include "src/heap/heapdatastructure.h"

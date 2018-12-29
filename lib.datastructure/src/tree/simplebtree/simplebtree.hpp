@@ -10,8 +10,6 @@
 #ifndef SIMPLE_BINARY_TREE
 #define SIMPLE_BINARY_TREE
 
-#include "../common/treecommon.h"
-
 /*!
  * \class   SBTNode
  *
@@ -24,7 +22,7 @@
 class SBTNode: public TreeNode {
 public:
 
-	eTreeNodeType NodeType();
+	eNodeType		NodeType();
 
 private:
 	
@@ -45,11 +43,6 @@ private:
 typedef __int64 (*KeyCmpFunc) (const void* pKey1, const void *pKey2);
 
 /*!
- *	\brief	the function prototype for destory interface of simple binary tree
-*/
-typedef void	(*SBTreeDestroyFunc) (SBTNode *pNode);
-
-/*!
  * \class   SBTree
  *
  * \brief	a simple binary tree class
@@ -60,24 +53,25 @@ typedef void	(*SBTreeDestroyFunc) (SBTNode *pNode);
  *
  * \todo	the implementation for this class is not complete
 */
-class SBTree {
+class SBTree : public Tree {
 public:
 	// constructor and destructor
-	SBTree  (int pKeyOffset, KeyCmpFunc *pKeyCmpFunc, SBTreeDestroyFunc *pDestroyFunc);
+	SBTree  (int pKeyOffset, KeyCmpFunc pKeyCmpFunc, TreeDestroyFunc pDestroyFunc);
 	~SBTree ();
 
 	// tree operations
-	bool		Insert	(SBTNode *	pNode);
-	SBTNode*	Find	(void *	pkey);
-	SBTNode*	Remove	(void * pKey);
-	void		Destroy (SBTreeDestroyFunc *pDestroyFunc);
 
+	virtual bool		Insert	(SBTNode *	pNode);
+	virtual SBTNode*	Find	(void *	pkey);
+	virtual SBTNode*	Remove	(void * pKey);
+	virtual void		Destroy ();
+	virtual eNodeType   NodeType();
 
-private:
+protected:
 	SBTNode *			vRoot;				///< Root of the tree.
 	int					vKeyOffset;			///< The offset of the key in the user defined node.
-	KeyCmpFunc*			vKeyCmpFunc;		///< User callback function for key comparision.
-	SBTreeDestroyFunc * vDestroyFunc;		///< User callback function to destroy the nodes that are in the tree.
+	KeyCmpFunc			vKeyCmpFunc;		///< User callback function for key comparision.
+	TreeDestroyFunc		vDestroyFunc;		///< User callback function to destroy the nodes that are in the tree.
 };
 
 #include "simplebtree.hxx"

@@ -49,9 +49,9 @@ BinomialHeap::~BinomialHeap()
 *
 * \return the node type of the current tree node
 */
-eTreeNodeType BinomialHeapNode::NodeType()
+eNodeType BinomialHeapNode::NodeType()
 {
-	return TNT_BINOMIAL_HEAP;
+	return NT_BINOMIAL_HEAP;
 }
 
 /*!
@@ -95,7 +95,7 @@ BinomialHeapNode *	BinomialHeap::Insert(BinomialHeapNode* pNode)
 	}
 
 	// make developer life easy by pointing out wrong node use for the data structure
-	assert(pNode->NodeType () == TNT_BINOMIAL_HEAP);
+	assert(pNode->NodeType () == NT_BINOMIAL_HEAP);
 
 	if (!vRoot) {
 		

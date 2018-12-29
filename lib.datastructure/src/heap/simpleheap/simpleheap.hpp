@@ -26,7 +26,7 @@
 */
 class HeapNode : public TreeNode {
 public:
-	eTreeNodeType NodeType();
+	eNodeType NodeType();
 };
 
 /*!
@@ -56,7 +56,7 @@ protected:
 
 inline	bool	IsSecondNodeBtr (HeapNode * pNode1, HeapNode * pNode2);
 		bool	IsSecondKeyBtr  (void * pKey1, void * pKey2);
-inline 	int     GetKeyOffset    ();
+inline 	Offset  GetKeyOffset    ();
 
 private:
 	friend class BinomialHeap;
